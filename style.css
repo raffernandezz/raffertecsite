@@ -1504,53 +1504,7 @@ textarea {
   }
 }/* ====== Contato Responsivo ====== */
 
-/* ===== Contato: Cards ===== */
-#contact .contact-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;              /* espaço entre os cards */
-  flex-wrap: wrap;        /* permite quebrar linha no mobile */
-  margin: 2rem auto 0;
-  max-width: 900px;
-}
-
-#contact .contact-card {
-  flex: 1 1 300px;        /* ocupa pelo menos 300px e cresce proporcional */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 1rem 1.5rem;
-  min-width: 260px;
-  max-width: 380px;
-  text-align: left;
-  background: #fff;       /* opcional: fundo do card */
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-/* Ajuste dos cards de contato */
-#contact .contact-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;   /* permite quebrar linha no mobile */
-}
-
-/* Mobile: cards ficam um abaixo do outro */
-@media (max-width: 768px) {
-  #contact .contact-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  #contact .contact-card {
-    width: 100%;   /* ocupa toda a largura disponível */
-    max-width: 500px;
-    margin: 0 auto;
-  }
-}/* Mobile: cards em scroll horizontal */
+/* Mobile: cards em scroll horizontal */
 @media (max-width: 768px) {
   #contact .contact-actions {
     display: flex;
@@ -1565,31 +1519,3 @@ textarea {
     scroll-snap-align: center;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
