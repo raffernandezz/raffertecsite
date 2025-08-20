@@ -1529,18 +1529,7 @@ textarea {
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
-
-/* Mobile: empilhar os cards */
-@media (max-width: 700px) {
-  #contact .contact-actions {
-    flex-direction: column;   /* um embaixo do outro */
-    align-items: stretch;     /* ocupam toda a largura disponível */
-  }
-
-  #contact .contact-card {
-    max-width: 100%;          /* ocupa a largura toda no mobile */
-  }
-}/* Ajuste dos cards de contato */
+/* Ajuste dos cards de contato */
 #contact .contact-actions {
   display: flex;
   justify-content: center;
@@ -1562,6 +1551,7 @@ textarea {
     margin: 0 auto;
   }
 }
+
 
 
 
