@@ -1435,7 +1435,28 @@ textarea {
     width: 36px;
     height: 36px;
   }
+}/* ===== Header shrink no mobile (APENAS ADIÇÃO) ===== */
+@media (max-width: 900px) {
+  /* estados base no mobile */
+  .header-container {
+    transition: padding .25s ease;
+  }
+  .logo img {
+    height: 140px; /* tamanho inicial no mobile */
+    transition: height .25s ease, transform .25s ease, filter .25s ease;
+  }
+
+  /* estado encolhido quando rolar */
+  .header.shrink .header-container {
+    padding: 10px 0 8px 0;
+  }
+  .header.shrink .logo img {
+    height: 88px;  /* << ajuste aqui se quiser menor/maior ao rolar */
+    filter: drop-shadow(0 0 18px #4f97ff);
+  }
 }
+
+
 
 
 
