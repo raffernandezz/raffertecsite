@@ -190,36 +190,42 @@
     </div>
   </section>
 
-  <!-- CONTATO (HUB) -->
+ <!-- CONTATO (HUB) -->
 <section id="contact" class="contact-hub fade-up delay-2">
   <style>
-    /* ===== Contato: 2 cards lado a lado, centralizados ===== */
+    /* ===== Contato: 2 cards lado a lado ===== */
     #contact .contact-actions {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: stretch !important;
-      gap: 2rem !important;
-      flex-wrap: nowrap !important;
-      margin: 2rem auto 0 !important;
-      max-width: 900px !important;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 2rem;
+      flex-wrap: nowrap;
+      margin: 2rem auto 0;
+      max-width: 900px;
     }
 
+    /* Quando a tela for menor que 700px: empilha os cards */
     @media (max-width: 700px) {
       #contact .contact-actions {
-        flex-wrap: wrap !important;
-        gap: 1rem !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      #contact .contact-card {
+        width: 100%;
+        max-width: 320px;
       }
     }
 
     #contact .contact-card {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 0.8rem !important;
-      padding: 1rem 1.5rem !important;
-      min-width: 280px !important;
-      max-width: 380px !important;
-      text-align: left !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 1rem 1.5rem;
+      min-width: 280px;
+      max-width: 380px;
+      text-align: left;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
       transition: transform 0.2s ease, background 0.2s ease;
@@ -235,31 +241,30 @@
     <h2>Fale com a RafferTec</h2>
     <p class="contact-sub">Tire suas dúvidas e receba uma proposta em minutos.</p>
 
-   <div class="contact-actions" style="display: flex; justify-content: center;">
-  <!-- WhatsApp -->
-  <a class="contact-card wa" 
-     href="https://wa.me/5511982672795?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20processo.%20Pode%20me%20ajudar%3F" 
-     target="_blank" rel="noopener noreferrer"
-     style="margin-right: 0px;"> <!-- ajusta aqui -->
-    <img src="assets/whatsapp-logo.png" alt="WhatsApp" width="50" height="50">
-    <div>
-      <strong>WhatsApp</strong>
-      <span>Resposta rápida • 08h às 19h</span>
-    </div>
-  </a>
+    <div class="contact-actions">
+      <!-- WhatsApp -->
+      <a class="contact-card wa" 
+         href="https://wa.me/5511982672795?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20processo.%20Pode%20me%20ajudar%3F" 
+         target="_blank" rel="noopener noreferrer">
+        <img src="assets/whatsapp-logo.png" alt="WhatsApp" width="50" height="50">
+        <div>
+          <strong>WhatsApp</strong>
+          <span>Resposta rápida • 08h às 19h</span>
+        </div>
+      </a>
 
-  <!-- E-mail -->
-  <a class="contact-card mail" 
-     href="mailto:raffertecnologia@gmail.com?subject=Projeto%20de%20automa%C3%A7%C3%A3o%20-%20RafferTec&body=Ol%C3%A1%20RafferTec%2C%0A%0AQuero%20automatizar%20o%20seguinte%20processo%3A%0A-%20%0A%0AOr%C3%A7amento%20para%3A%20%0A%0AObrigado!"
-     style="margin-left: 50px;"> <!-- ajusta aqui -->
-    <img src="assets/enail.png" alt="E-mail" width="50" height="50">
-    <div>
-      <strong>E-mail</strong>
-      <span>raffertecnologia@gmail.com</span>
+      <!-- E-mail -->
+      <a class="contact-card mail" 
+         href="mailto:raffertecnologia@gmail.com?subject=Projeto%20de%20automa%C3%A7%C3%A3o%20-%20RafferTec&body=Ol%C3%A1%20RafferTec%2C%0A%0AQuero%20automatizar%20o%20seguinte%20processo%3A%0A-%20%0A%0AOr%C3%A7amento%20para%3A%20%0A%0AObrigado!">
+        <img src="assets/enail.png" alt="E-mail" width="50" height="50">
+        <div>
+          <strong>E-mail</strong>
+          <span>raffertecnologia@gmail.com</span>
+        </div>
+      </a>
     </div>
-  </a>
-</div>
-
+  </div>
+</section>
 
     <!-- Prova/segurança -->
     <ul class="contact-bullets">
@@ -355,6 +360,7 @@
 </script>
 </body>
 </html>
+
 
 
 
