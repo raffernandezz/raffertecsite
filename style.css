@@ -1479,6 +1479,19 @@ textarea {
   :root { --header-h: 0px; }
   body { padding-top: var(--header-h); } /* usa a altura medida */
 }
+/* Reserva automática da altura do header no mobile */
+@media (max-width: 900px) {
+  :root { --header-h: 0px; }
+  body { padding-top: var(--header-h); } /* usa a altura medida */
+}
+
+/* Opcional: dar um respiro extra para o herói no mobile */
+@media (max-width: 900px) {
+  .hero-section { 
+    margin-top: 8px;  /* ajusta aqui se quiser mais ou menos espaço */
+  }
+}
+
 
 
 
