@@ -12,15 +12,15 @@
   <meta property="og:url" content="https://seusite.com">
   <title>RafferTec | Automação Inteligente e Soluções Tecnológicas</title>
 
-  <!-- Pré-carregamento de recursos -->
+  <!-- Pré-carregamento -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" as="style">
   <link rel="preload" href="assets/logo.png" as="image">
-  <link rel="preload" href="assets/Insta logo.png" as="image">
+  <link rel="preload" href="assets/insta-logo.png" as="image">
 
-  <!-- Fonte moderna e tech -->
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
 
-  <!-- Ícones Feather (mantido para o menu) -->
+  <!-- Ícones Feather -->
   <script defer src="https://unpkg.com/feather-icons"></script>
   <script>
   if (typeof feather === 'undefined') {
@@ -28,7 +28,7 @@
     fallback.src = 'assets/feather.min.js';
     document.head.appendChild(fallback);
   }
-</script>
+  </script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -41,9 +41,11 @@
     </a>
     <nav aria-label="Menu principal" class="nav">
       <ul class="nav-list">
-        <li><a href="#hero" aria-current="page">Início</a></li>
+        <li><a href="#hero">Início</a></li>
         <li><a href="#services">Serviços</a></li>
         <li><a href="#projects">Projetos</a></li>
+        <li><a href="#why">Por que Automatizar?</a></li>
+        <li><a href="#about">Sobre Nós</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
       <button id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
@@ -54,172 +56,233 @@
 </header>
 
 <main>
+  <!-- HERO -->
   <section id="hero" class="hero-section">
-    <div class="container hero-content">
-      <h1 class="fade-in">Automação que Transforma seu Negócio</h1>
-      <p class="fade-in delay-1">
-        Soluções inteligentes em Python, Excel, Power Automate e APIs para otimizar seus processos.
-      </p>
-      <a 
-        href="https://wa.me/5511982672795?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="btn btn-primary gradient-btn fade-in delay-2"
-      >
-        Solicitar Orçamento
-      </a>
+    <div class="container hero-grid">
+      <!-- Mascote (imagem com balão) -->
+      <div class="mascote">
+        <img src="assets/personagem.png" alt="Mascote RafferTec" class="mascote-img" />
+      </div>
+
+      <!-- Texto -->
+      <div class="hero-content">
+        <h1 class="fade-in">Automação que Transforma seu Negócio</h1>
+        <p class="fade-in delay-1">
+          Soluções inteligentes em Python, Java, Excel, Microsoft Office e Robôs para otimizar seus processos.
+        </p>
+        <a 
+          href="https://wa.me/5511982672795?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
+          target="_blank" rel="noopener noreferrer"
+          class="btn btn-primary gradient-btn fade-in delay-2"
+        >Solicitar Orçamento</a>
+      </div>
     </div>
   </section>
 
+  <!-- SERVIÇOS -->
   <section id="services" class="services-section fade-up">
     <div class="container">
       <h2>Nossos Serviços</h2>
       <div class="cards">
-        <article class="card gradient-bg" tabindex="0" aria-label="Serviço de automação com Python">
-          <i data-feather="cpu" class="card-icon"></i>
-          <h3>Automação com Python</h3>
-          <p>Scripts personalizados para automatizar tarefas repetitivas, integrar sistemas e aumentar sua produtividade.</p>
-        </article>
-        <article class="card gradient-bg" tabindex="0" aria-label="Serviço de Excel inteligente">
-          <i data-feather="file-text" class="card-icon"></i>
-          <h3>Excel Inteligente</h3>
-          <p>Planilhas dinâmicas com VBA, análise automatizada e integração com APIs para controle total.</p>
-        </article>
-        <article class="card gradient-bg" tabindex="0" aria-label="Serviço de dashboards Power BI">
-          <i data-feather="bar-chart-2" class="card-icon"></i>
-          <h3>Dashboards Power BI</h3>
-          <p>Visualização clara e interativa dos seus dados para decisões rápidas e eficientes.</p>
-        </article>
-        <article class="card gradient-bg" tabindex="0" aria-label="Automação de Processos Empresariais">
-          <i data-feather="settings" class="card-icon"></i>
-          <h3>Automação de Processos Empresariais</h3>
-          <p>Automatizamos fluxos de trabalho, integração de sistemas, rotinas administrativas e operacionais.</p>
-        </article>
-        <article class="card gradient-bg" tabindex="0" aria-label="Robôs de Atendimento e Chatbots">
-          <i data-feather="message-circle" class="card-icon"></i>
-          <h3>Robôs de Atendimento e Chatbots</h3>
-          <p>Desenvolvimento de bots para WhatsApp, Instagram, sites e integração com APIs de comunicação.</p>
-        </article>
-        <article class="card gradient-bg" tabindex="0" aria-label="Automação de E-mails e Relatórios">
-          <i data-feather="mail" class="card-icon"></i>
-          <h3>Automação de E-mails e Relatórios</h3>
-          <p>Envio automático de e-mails, geração de relatórios, notificações e integração com plataformas.</p>
-        </article>
-        <article class="card gradient-bg" tabindex="0" aria-label="Integração de APIs e Sistemas">
-          <i data-feather="share-2" class="card-icon"></i>
-          <h3>Integração de APIs e Sistemas</h3>
-          <p>Conectamos sistemas, plataformas e bancos de dados para automação total dos seus processos.</p>
-        </article>
+        <article class="card gradient-bg"><i data-feather="cpu"></i><h3>Automação com Python</h3><p>Scripts personalizados para automatizar tarefas repetitivas, integrar sistemas e aumentar produtividade.</p></article>
+        <article class="card gradient-bg"><i data-feather="file-text"></i><h3>Excel Inteligente</h3><p>Planilhas dinâmicas com VBA, análise automatizada e integração com APIs para controle total.</p></article>
+        <article class="card gradient-bg"><i data-feather="bar-chart-2"></i><h3>Dashboards Power BI</h3><p>Visualização clara e interativa dos seus dados para decisões rápidas e eficientes.</p></article>
+        <article class="card gradient-bg"><i data-feather="settings"></i><h3>Automação de Processos Empresariais</h3><p>Automatizamos fluxos de trabalho, integração de sistemas, rotinas administrativas e operacionais.</p></article>
+        <article class="card gradient-bg"><i data-feather="message-circle"></i><h3>Robôs de Atendimento</h3><p>Desenvolvimento de bots para WhatsApp, Instagram, sites e integração com APIs de comunicação.</p></article>
+        <article class="card gradient-bg"><i data-feather="mail"></i><h3>Automação de E-mails</h3><p>Envio automático de e-mails, relatórios, notificações e integração com plataformas.</p></article>
+        <article class="card gradient-bg"><i data-feather="share-2"></i><h3>Integração de APIs</h3><p>Conectamos sistemas, plataformas e bancos de dados para automação total dos seus processos.</p></article>
       </div>
     </div>
   </section>
 
+  <!-- PROJETOS -->
   <section id="projects" class="projects-section fade-up delay-1">
     <div class="container">
       <h2>Projetos em Destaque</h2>
       <div class="projects-list">
-        <article class="project-card gradient-bg">
-          <h3>Conciliação Bancária Automatizada</h3>
-          <p>Projeto que integra arquivos OFX e planilhas Excel para conciliar pagamentos automaticamente.</p>
-        </article>
-        <article class="project-card gradient-bg">
-          <h3>Gerador Automático de Contratos</h3>
-          <p>Sistema para criar contratos personalizados de forma automática e ágil.</p>
-        </article>
-        <article class="project-card gradient-bg">
-          <h3>Robô de Atendimento para WhatsApp</h3>
-          <p>Automação para atendimento automático via WhatsApp e Instagram usando APIs.</p>
-        </article>
+        <article class="project-card gradient-bg"><h3>Conciliação Bancária</h3><p>Integra arquivos OFX e Excel para conciliar pagamentos automaticamente.</p></article>
+        <article class="project-card gradient-bg"><h3>Gerador Automático de Contratos</h3><p>Sistema para criar contratos personalizados de forma rápida e ágil.</p></article>
+        <article class="project-card gradient-bg"><h3>Robô de Atendimento</h3><p>Automação para WhatsApp e Instagram usando APIs.</p></article>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="contact-section fade-up delay-2">
+  <!-- POR QUE AUTOMATIZAR -->
+  <section id="why" class="why-section fade-up">
     <div class="container">
-      <h2>Contato</h2>
-      <p>Entre em contato para discutir seu projeto e receber uma solução personalizada.</p>
-      <form id="contact-form" autocomplete="off">
-        <div class="form-group">
-          <label for="nome">Nome completo</label>
-          <input type="text" id="nome" name="entry.2005620554" required placeholder="Seu nome" />
-        </div>
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="entry.1045781291" required placeholder="seu@email.com" />
-        </div>
-        <div class="form-group">
-          <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="entry.839337160" required placeholder="Como podemos ajudar?"></textarea>
-        </div>
-        <button type="submit" class="btn btn-secondary">Enviar Mensagem</button>
-        <p id="form-status" class="form-status"></p>
-      </form>
+      <h2>Por que Automatizar?</h2>
+      <p>
+        Automatizar processos significa ganhar tempo, reduzir erros e focar no que realmente importa. 
+        Desde tarefas simples no computador até fluxos complexos em empresas, a automação gera eficiência e economia imediata.
+      </p>
+      <p>
+        Cada minuto que você perde com tarefas manuais poderia estar sendo investido no crescimento do seu negócio. 
+        Não espere para modernizar sua rotina — quanto antes começar, mais rápido verá os resultados.
+      </p>
+      <a href="https://wa.me/5511982672795?text=Quero%20saber%20como%20automatizar%20minha%20empresa!" 
+         target="_blank" rel="noopener noreferrer" class="btn btn-primary gradient-btn">
+        Falar com um especialista
+      </a>
     </div>
   </section>
-</main>
 
+  <!-- SOBRE NÓS -->
+  <section id="about" class="about-section fade-up delay-3">
+    <div class="container about-content">
+      <h2>Sobre Nós</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            A <strong>RafferTec</strong> nasceu com o propósito de transformar a tecnologia em aliada
+            para empresas e pessoas. Fundada por mim, Rafael Fernandes, especialista em automações e 
+            desenvolvimento de sistemas, formado e especializado na área, hoje com 22 anos, eu criei a 
+            RafferTec para mostrar que a automação pode simplificar do simples ao complexo.
+          </p>
+          <p>
+            Nosso compromisso é trazer eficiência, reduzir custos e liberar seu tempo para o que realmente importa.
+          </p>
+        </div>
+        <div class="about-photo">
+          <img src="assets/rafa.jpg" alt="Foto de Rafael Fernandes - Fundador da RafferTec">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO (HUB) -->
+<section id="contact" class="contact-hub fade-up delay-2">
+  <style>
+    /* ===== Contato: 2 cards lado a lado, centralizados ===== */
+    #contact .contact-actions {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: stretch !important;
+      gap: 2rem !important;
+      flex-wrap: nowrap !important;
+      margin: 2rem auto 0 !important;
+      max-width: 900px !important;
+    }
+
+    @media (max-width: 700px) {
+      #contact .contact-actions {
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+      }
+    }
+
+    #contact .contact-card {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.8rem !important;
+      padding: 1rem 1.5rem !important;
+      min-width: 280px !important;
+      max-width: 380px !important;
+      text-align: left !important;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    #contact .contact-card:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.05);
+    }
+  </style>
+
+  <div class="container">
+    <h2>Fale com a RafferTec</h2>
+    <p class="contact-sub">Tire suas dúvidas e receba uma proposta em minutos.</p>
+
+   <div class="contact-actions" style="display: flex; justify-content: center;">
+  <!-- WhatsApp -->
+  <a class="contact-card wa" 
+     href="https://wa.me/5511982672795?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20processo.%20Pode%20me%20ajudar%3F" 
+     target="_blank" rel="noopener noreferrer"
+     style="margin-right: 0px;"> <!-- ajusta aqui -->
+    <img src="assets/whatsapp-logo.png" alt="WhatsApp" width="50" height="50">
+    <div>
+      <strong>WhatsApp</strong>
+      <span>Resposta rápida • 08h às 19h</span>
+    </div>
+  </a>
+
+  <!-- E-mail -->
+  <a class="contact-card mail" 
+     href="mailto:raffertecnologia@gmail.com?subject=Projeto%20de%20automa%C3%A7%C3%A3o%20-%20RafferTec&body=Ol%C3%A1%20RafferTec%2C%0A%0AQuero%20automatizar%20o%20seguinte%20processo%3A%0A-%20%0A%0AOr%C3%A7amento%20para%3A%20%0A%0AObrigado!"
+     style="margin-left: 50px;"> <!-- ajusta aqui -->
+    <img src="assets/enail.png" alt="E-mail" width="50" height="50">
+    <div>
+      <strong>E-mail</strong>
+      <span>raffertecnologia@gmail.com</span>
+    </div>
+  </a>
+</div>
+
+
+    <!-- Prova/segurança -->
+    <ul class="contact-bullets">
+      <li><i data-feather="check-circle"></i> Sem compromisso: diagnóstico grátis</li>
+      <li><i data-feather="shield"></i> Privacidade garantida • Dados protegidos</li>
+      <li><i data-feather="zap"></i> Do simples ao complexo: começamos já</li>
+    </ul>
+
+    <!-- FAQ sem JS -->
+    <div class="contact-faq">
+      <details>
+        <summary>Como funciona o atendimento?</summary>
+        <p>Você chama no WhatsApp ou mande um email. Entendemos seu processo, sugerimos a melhor automação e enviamos orçamento claro.</p>
+      </details>
+      <details>
+        <summary>Vocês fazem contratos e nota?</summary>
+        <p>Sim. Emitimos proposta, contrato e NFe quando necessário.</p>
+      </details>
+      <details>
+        <summary>Qual o prazo médio?</summary>
+        <p>Automação simples: 2–5 dias úteis. Projetos maiores: definimos um cronograma com marcos.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (adicionado de volta) -->
 <footer class="footer">
   <div class="container">
     <p>&copy; 2025 RafferTec - Tecnologia com Eficiência e Inovação.</p>
     <div class="social-icons">
       <a href="https://www.instagram.com/raffertec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <img src="assets/Insta logo.png" alt="Instagram" style="width:24px; height:24px;" />
+        <img src="assets/insta-logo.png" alt="Instagram" style="width:24px; height:24px;" />
       </a>
-      <a href="https://wa.me/5511982672795?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-        <img src="assets/Whatsapp Logo.png" alt="WhatsApp" style="width:24px; height:24px;" />
+      <a href="https://wa.me/5511982672795?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <img src="assets/whatsapp-logo.png" alt="WhatsApp" style="width:24px; height:24px;" />
       </a>
     </div>
   </div>
 </footer>
 
-<!-- Botão flutuante WhatsApp -->
+<!-- Botão flutuante WhatsApp (adicionado de volta) -->
 <a 
-  href="https://wa.me/5511982672795?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
+  href="https://wa.me/5511982672795?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." 
   target="_blank" 
   rel="noopener noreferrer" 
   class="whatsapp-float" 
-  aria-label="Chamar no WhatsApp"
->
-  <img src="assets/Whatsapp Logo.png" alt="WhatsApp" style="width:36px; height:36px;" />
+  aria-label="Chamar no WhatsApp">
+  <img src="assets/whatsapp-logo.png" alt="WhatsApp" style="width:36px; height:36px;" />
 </a>
 
-  <script>
-  // Ativa ícones Feather (mantido para o menu)
+<!-- Script final (feather + menu) -->
+<script>
   feather.replace();
 
-  // Toggle menu mobile
   const navToggle = document.getElementById('nav-toggle');
   const navList = document.querySelector('.nav-list');
-  navToggle.addEventListener('click', () => {
-    const isExpanded = navList.classList.toggle('active');
-    navToggle.setAttribute('aria-expanded', isExpanded);
-    navToggle.setAttribute('aria-label', isExpanded ? 'Fechar menu' : 'Abrir menu');
-  });
-
-  // Envio do formulário para o Google Forms
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = 'Enviando mensagem...';
-    status.classList.remove('form-error');
-
-    const data = new FormData(form);
-
-    try {
-      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSfgv8nu4WVVoXntn7nbeMlT85SQUq9eKAFC9tgQiMZ1uG8z0A/formResponse', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: data
-      });
-      status.textContent = 'Mensagem enviada com sucesso! Obrigado por entrar em contato.';
-      form.reset();
-    } catch (error) {
-      status.textContent = 'Erro ao enviar a mensagem. Tente novamente.';
-      status.classList.add('form-error');
-    }
-  });
+  if (navToggle && navList) {
+    navToggle.addEventListener('click', () => {
+      const isExpanded = navList.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', isExpanded);
+      navToggle.setAttribute('aria-label', isExpanded ? 'Fechar menu' : 'Abrir menu');
+    });
+  }
 </script>
 
 </body>
