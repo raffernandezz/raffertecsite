@@ -1540,7 +1540,30 @@ textarea {
   #contact .contact-card {
     max-width: 100%;          /* ocupa a largura toda no mobile */
   }
+}/* Ajuste dos cards de contato */
+#contact .contact-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;   /* permite quebrar linha no mobile */
 }
+
+/* Mobile: cards ficam um abaixo do outro */
+@media (max-width: 768px) {
+  #contact .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #contact .contact-card {
+    width: 100%;   /* ocupa toda a largura disponível */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+
 
 
 
