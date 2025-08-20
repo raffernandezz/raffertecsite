@@ -637,6 +637,734 @@ body {
 .fade-up.delay-7 { transition-delay: 0.7s; }
 .fade-up.delay-8 { transition-delay: 0.8s; }
 
+/* ---------------------------
+   Por que Automatizar
+--------------------------- */
+.why-automation-section {
+  padding: 80px 0;
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.why-automation-section h2 {
+  font-size: 2.6rem;
+  margin-bottom: 40px;
+  color: #4f97ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.reason {
+  background: linear-gradient(120deg, #192d59 60%, #4f97ff 100%);
+  border-radius: 20px;
+  padding: 30px 25px;
+  width: 250px;
+  box-shadow: 0 6px 20px rgba(31,55,123,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.reason:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(79,151,255,0.3);
+}
+
+.reason i {
+  color: #aad4ff;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+/* ---------------------------
+   Outros Serviços
+--------------------------- */
+.extra-services-section {
+  padding: 80px 0;
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.extra-services-section h2 {
+  font-size: 2.6rem;
+  margin-bottom: 40px;
+  color: #4f97ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ---------------------------
+   Sobre Nós
+--------------------------- */
+.about-section {
+  padding: 80px 0;
+  background: #0a0a0a;
+  color: #cfd9ff;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(79,151,255,0.25);
+  border: 3px solid #1432a8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 36px rgba(79,151,255,0.4);
+}
+
+.about-content {
+  flex: 2 1 400px;
+}
+
+.about-content h2 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: #4f97ff;
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.about-content .highlight {
+  font-weight: 700;
+  color: #aad4ff;
+}
+
+.about-content .btn {
+  margin-top: 16px;
+}
+
+/* ---------------------------
+   CTA WhatsApp
+--------------------------- */
+.cta-whatsapp {
+  background: linear-gradient(135deg, #1432a8, #3b6cff);
+  text-align: center;
+  padding: 60px 20px;
+  color: #fff;
+}
+
+.cta-whatsapp h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #aad4ff;
+}
+
+.cta-whatsapp p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+  color: #e3eaff;
+}
+
+.cta-whatsapp .btn {
+  font-size: 1.3rem;
+  padding: 16px 32px;
+}
+/* Ajustes para a foto do Sobre Nós */
+.about-image img {
+  max-width: 220px; /* diminui o tamanho */
+  border-radius: 50%; /* deixa em formato circular */
+  border: 6px solid #1432a8; /* moldura azul escuro */
+  padding: 6px; /* espaço entre foto e borda */
+  background: linear-gradient(135deg, #1432a8, #4f97ff); /* brilho no fundo */
+  box-shadow: 0 0 25px rgba(79,151,255,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(79,151,255,0.8);
+}
+/* =========================
+   ✨ EFEITOS DESTAQUE ✨
+========================= */
+
+/* Glow nos títulos */
+h2, h3 {
+  text-shadow: 0 0 10px #4f97ff, 0 0 20px #1432a8;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #4f97ff; }
+  to { text-shadow: 0 0 20px #4f97ff, 0 0 30px #1432a8; }
+}
+
+body, * {
+  cursor: auto !important;
+}
+/* ====== Seções com fundos diferenciados ====== */
+
+/* Serviços */
+.services-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1432a8 100%);
+  position: relative;
+  padding: 80px 0;
+}
+
+/* Projetos */
+.projects-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d2b 100%);
+  position: relative;
+  padding: 80px 0;
+}
+
+/* Por que automatizar */
+.why-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1432a8 100%);
+  position: relative;
+  padding: 80px 0;
+}
+
+/* Sobre nós */
+.about-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d2b 100%);
+  position: relative;
+  padding: 80px 0;
+}
+
+/* ====== Divisores diagonais ====== */
+.services-section::before,
+.projects-section::before,
+.why-section::before,
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: inherit;
+  transform: skewY(-3deg);
+  z-index: -1;
+}
+
+/* ====== Spotlight nos títulos ====== */
+.services-section h2,
+.projects-section h2,
+.why-section h2,
+.about-section h2 {
+  position: relative;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #f1f1f1;
+}
+
+.services-section h2::after,
+.projects-section h2::after,
+.why-section h2::after,
+.about-section h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 80px;
+  height: 3px;
+  background: #1432a8;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* ====== Cards com efeito de destaque ====== */
+.card,
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(20, 50, 168, 0.4);
+}
+
+}/* --- Ajuste da foto Sobre Nós --- */
+.about-photo img {
+  max-width: 280px;      /* deixa num tamanho controlado */
+  width: 100%;
+  border-radius: 50%;    /* moldura redonda */
+  border: 4px solid #1432a8; /* moldura azul escuro */
+  box-shadow: 0 0 20px rgba(20, 50, 168, 0.6);
+  object-fit: cover;
+}
+
+/* --- Fundos com degradê nas seções --- */
+.services-section,
+.projects-section,
+.why-section,
+.about-section {
+  background: linear-gradient(180deg, #0d0d0d 0%, #1432a8 100%);
+  padding: 80px 20px;
+  color: #f2f2f2; /* texto mais clarinho pra destacar */
+}
+
+.services-section h2,
+.projects-section h2,
+.why-section h2,
+.about-section h2 {
+  color: #ffffff;
+}
+/* Grid para alinhar texto e foto lado a lado */
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Ajuste da foto Sobre Nós */
+.about-photo img {
+  max-width: 250px;   /* controla o tamanho */
+  width: 100%;
+  border-radius: 50%; /* deixa redondo */
+  border: 5px solid #1432a8; /* moldura azul escuro */
+  box-shadow: 0 0 20px rgba(20, 50, 168, 0.6);
+  object-fit: cover;
+}
+/* ===== Padronização das seções ===== */
+section {
+  padding: 80px 0;
+}
+
+section h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+section p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+  color: #cccccc;
+  text-align: center;
+}
+
+/* ===== Fundos com gradiente ===== */
+.services-section,
+.projects-section,
+.why-automation,
+.about-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1432a8 100%);
+}
+
+/* ===== Sobre Nós (foto + texto) ===== */
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.about-text {
+  flex: 1;
+  text-align: justify;
+  max-width: 500px;
+}
+
+.about-photo img {
+  max-width: 180px;
+  border-radius: 50%;
+  border: 3px solid #1432a8;
+  box-shadow: 0 0 12px rgba(20, 50, 168, 0.6);
+  object-fit: cover;
+}
+/* ===== Ajuste visual do SOBRE NÓS ===== */
+.about-section {
+  text-align: center;
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.about-photo img {
+  max-width: 140px;
+  border-radius: 50%;
+  border: 2px solid #1432a8;
+  box-shadow: 0 0 8px rgba(20, 50, 168, 0.5);
+  object-fit: cover;
+}
+
+.about-text {
+  max-width: 500px;
+  text-align: justify;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+/* Layout em telas maiores */
+@media (min-width: 768px) {
+  .about-grid {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-photo {
+    flex: 0 0 30%;
+    text-align: center;
+  }
+
+  .about-text {
+    flex: 0 0 70%;
+  }
+}
+/* ===== Personagem lateral ===== */
+.character-container {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.character-img {
+  max-width: 220px;
+  height: auto;
+}
+
+/* Balão de fala */
+.speech-bubble {
+  position: relative;
+  background: #1432a8;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #1432a8 transparent;
+}
+
+/* Ajuste para celular */
+@media (max-width: 768px) {
+  .character-container {
+    position: static;
+    margin: 20px auto;
+  }
+
+  .character-img {
+    max-width: 160px;
+  }
+
+  .speech-bubble {
+    font-size: 0.9rem;
+  }
+}
+/* ===== HERO REFEITO EM GRID ===== */
+.hero-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  min-height: 500px;
+}
+
+.mascote {
+  text-align: center;
+}
+
+.mascote-img {
+  width: clamp(220px, 28vw, 380px);
+  height: auto;
+  filter: drop-shadow(0 8px 22px rgba(20,50,168,.35));
+}
+
+.hero-content {
+  text-align: left;
+}
+
+/* Mobile: fica um embaixo do outro */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-content {
+    text-align: center;
+  }
+}
+/* ===== CONTATO HUB — FORÇAR ESTILOS ===== */
+#contact.contact-hub {
+  text-align: center !important;
+  padding: 80px 20px !important;
+  background: linear-gradient(135deg, #1432a8, #3b6cff) !important;
+  color: #fff !important;
+}
+#contact.contact-hub h2 {
+  font-size: 2rem !important;
+  margin-bottom: 10px !important;
+  color: #aad4ff !important;
+}
+#contact.contact-hub .contact-sub {
+  font-size: 1.1rem !important;
+  color: #e3eaff !important;
+  margin-bottom: 28px !important;
+}
+
+/* Cards de ação */
+#contact.contact-hub .contact-actions {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(220px, 1fr)) !important;
+  gap: 18px !important;
+  justify-items: center !important;
+  align-items: stretch !important;
+  margin: 0 auto 18px !important;
+  max-width: 900px !important;
+}
+#contact.contact-hub .contact-card {
+  width: 100% !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 16px !important;
+  padding: 16px 18px !important;
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-decoration: none !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18) !important;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
+}
+#contact.contact-hub .contact-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25) !important;
+  background: rgba(255,255,255,0.12) !important;
+}
+#contact.contact-hub .contact-card strong { display:block !important; font-size:1.05rem !important; }
+#contact.contact-hub .contact-card span { opacity:.9 !important; font-size:.95rem !important; }
+#contact.contact-hub .contact-card i, 
+#contact.contact-hub .contact-card img { width: 28px !important; height: 28px !important; flex: 0 0 28px !important; }
+#contact.contact-hub .contact-card.wa { border-color: rgba(37,211,102,0.35) !important; }
+#contact.contact-hub .contact-card.mail { border-color: rgba(255,255,255,0.25) !important; }
+#contact.contact-hub .contact-card.call { border-color: rgba(170,212,255,0.45) !important; }
+
+/* Bullets */
+#contact.contact-hub .contact-bullets {
+  list-style: none !important;
+  display: flex !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  margin: 16px auto 0 !important;
+  padding: 0 !important;
+  max-width: 900px !important;
+}
+#contact.contact-hub .contact-bullets li {
+  background: rgba(0,0,0,0.18) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: .95rem !important;
+}
+#contact.contact-hub .contact-bullets i { width: 18px !important; height: 18px !important; }
+
+/* FAQ */
+#contact.contact-hub .contact-faq { max-width: 900px !important; margin: 22px auto 0 !important; text-align: left !important; }
+#contact.contact-hub .contact-faq details {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  margin-bottom: 10px !important;
+}
+#contact.contact-hub .contact-faq summary { cursor: pointer !important; font-weight: 700 !important; outline: none !important; }
+#contact.contact-hub .contact-faq p { margin: 8px 0 0 !important; color: #eef2ff !important; }
+
+/* Garante que todos os contact-cards fiquem iguais */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Caixinha fixa pros ícones */
+.contact-card .icon-box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-card .icon-box img,
+.contact-card .icon-box svg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+/* Garantir que o botão flutuante fica por cima de tudo */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2147483647; /* maior que 9999, garante topo */
+  pointer-events: auto;
+}
+
+.whatsapp-float img {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+/* ===== Cursor: normal no site, texto só em campos, pointer em interativos ===== */
+
+/* Padrão: cursor normal (não-I-beam) em blocos gerais */
+body, main, header, footer, section, .container {
+  cursor: default;
+}
+
+/* Interativos devem ter "mãozinha" */
+a[href],
+button,
+.btn,
+.nav-list li a,
+.contact-card,
+.card,
+.project-card,
+.whatsapp-float,
+summary {
+  cursor: pointer;
+}
+
+/* Evita selecionar texto em elementos de navegação/cta */
+.nav-list li a,
+.btn,
+button,
+.contact-card,
+.card,
+.project-card,
+.whatsapp-float,
+summary {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Campos de formulário continuam com cursor de texto (I-beam) */
+input,
+textarea {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+}
+/* ===== Contato: 2 cards lado a lado, centralizados ===== */
+#contact .contact-actions {
+  display: flex !important;
+  justify-content: center !important;   /* centraliza o grupo */
+  align-items: stretch !important;
+  gap: 2rem !important;                 /* espaço entre os cards */
+  flex-wrap: nowrap !important;         /* lado a lado em desktop */
+  margin: 2rem auto 0 !important;
+  max-width: 900px !important;
+}
+
+@media (max-width: 700px) {
+  #contact .contact-actions {
+    flex-wrap: wrap !important;         /* quebra no mobile */
+    gap: 1rem !important;
+  }
+}
+
+#contact .contact-card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.8rem !important;
+  padding: 1rem 1.5rem !important;
+
+  /* 🎯 Aqui você ajusta o tamanho do card */
+  min-width: 1000px !important;   /* largura mínima */
+  max-width: 1000px !important;   /* largura máxima (se quiser fixar igual ao min) */
+  height: 100px !important;      /* altura fixa */
+
+  text-align: left !important;
+}
+/* ===== Contato: força layout e tamanhos (edite aqui) ===== */
+
+/* Espaço entre os dois cards (aumente/diminua este valor) */
+#contact .contact-actions {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 48px !important;         /* <<< AJUSTE O ESPAÇO ENTRE OS CARDS AQUI */
+  flex-wrap: nowrap !important;
+}
+
+/* Tamanho do card do WhatsApp */
+#contact #card-wa {
+  width: 500px !important;      /* <<< LARGURA DO CARD WHATSAPP */
+  height: 200px !important;     /* <<< ALTURA DO CARD WHATSAPP */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  padding: 12px 18px !important;
+}
+
+/* Tamanho do card de E-mail */
+#contact #card-mail {
+  width: 2000px !important;      /* <<< LARGURA DO CARD E-MAIL */
+  height:200px !important;     /* <<< ALTURA DO CARD E-MAIL */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  padding: 12px 18px !important;
+}
+
+/* Ícones dos cards (mantém proporção) */
+#contact #card-wa img,
+#contact #card-mail img {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain !important;
+}
+
+
 
 
 
