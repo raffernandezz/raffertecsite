@@ -1454,7 +1454,29 @@ textarea {
     height: 88px;  /* << ajuste aqui se quiser menor/maior ao rolar */
     filter: drop-shadow(0 0 18px #4f97ff);
   }
+}/* ===== Mobile: header auto-hide ===== */
+@media (max-width: 900px) {
+  /* deixa o header fixo pra poder deslizar pra fora da tela */
+  .header {
+    position: fixed;      /* <— override do sticky só no mobile */
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform .25s ease, padding .25s ease;
+  }
+
+  /* empurra o conteúdo pra não ficar por baixo do header */
+  body {
+    padding-top: 120px;   /* AJUSTE: ~altura do seu header no mobile */
+  }
+
+  /* quando escondido, some pra cima */
+  .header.auto-hide {
+    transform: translateY(-100%);
+  }
 }
+
+
 
 
 
