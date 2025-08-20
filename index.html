@@ -335,7 +335,26 @@
     }
   });
 </script>
+  <script>
+  (function () {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    function setHeaderOffset() {
+      const h = header.offsetHeight || 0;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+
+    // Atualiza na carga, redimensionamento e após mudanças (shrink/auto-hide)
+    window.addEventListener('load', setHeaderOffset, { once: true });
+    window.addEventListener('resize', setHeaderOffset);
+    document.addEventListener('readystatechange', setHeaderOffset);
+    // Se você já tem scroll handlers (shrink/auto-hide), chame isto no fim deles:
+    window.addEventListener('scroll', () => { setHeaderOffset(); }, { passive: true });
+  })();
+</script>
 </body>
 </html>
+
 
 
