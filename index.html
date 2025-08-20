@@ -32,6 +32,47 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
+  <script>
+  (function () {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let lastY = window.scrollY || 0;
+    const upShowDelta = 6;    // sensibilidade pra mostrar ao subir
+    const downHideDelta = 6;  // sensibilidade pra esconder ao descer
+    const minStart = 10;      // ignora micro rolagens no topo
+
+    window.addEventListener('scroll', function () {
+      const y = window.scrollY || 0;
+      const dy = y - lastY;
+
+      // Só aplicamos o auto-hide no mobile (mesmo breakpoint do CSS)
+      const isMobile = window.matchMedia('(max-width: 900px)').matches;
+      if (!isMobile) {
+        header.classList.remove('auto-hide');
+        lastY = y;
+        return;
+      }
+
+      // Mantém seu shrink (se já existir)
+      if (y > 50) header.classList.add('shrink');
+      else        header.classList.remove('shrink');
+
+      // Auto-hide: desce = esconde, sobe = mostra
+      if (y > minStart) {
+        if (dy > downHideDelta) {
+          header.classList.add('auto-hide');    // esconder
+        } else if (dy < -upShowDelta) {
+          header.classList.remove('auto-hide'); // mostrar
+        }
+      } else {
+        header.classList.remove('auto-hide');   // no topo sempre visível
+      }
+
+      lastY = y;
+    }, { passive: true });
+  })();
+</script>
 <body>
 
 <header class="header" id="header">
@@ -296,4 +337,5 @@
 </script>
 </body>
 </html>
+
 
