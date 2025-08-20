@@ -1518,4 +1518,26 @@ textarea {
     flex: 0 0 80%;          /* cada card ocupa 80% da tela */
     scroll-snap-align: center;
   }
+}/* ===== Desktop (padrão) ===== */
+#contact .contact-actions {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: nowrap;    /* ficam lado a lado */
+  margin: 2rem auto 0;
+  max-width: 900px;
 }
+
+#contact .contact-card {
+  flex: 1 1 300px;      /* cada card ocupa um espaço fixo */
+  min-width: 280px;
+  max-width: 380px;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
