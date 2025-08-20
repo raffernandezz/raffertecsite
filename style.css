@@ -1504,30 +1504,44 @@ textarea {
   }
 }/* ====== Contato Responsivo ====== */
 
-/* Desktop: cards lado a lado */
+/* ===== Contato: Cards ===== */
 #contact .contact-actions {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  gap: 2rem;
-  flex-wrap: wrap; /* garante quebra se faltar espaço */
+  align-items: center;
+  gap: 2rem;              /* espaço entre os cards */
+  flex-wrap: wrap;        /* permite quebrar linha no mobile */
   margin: 2rem auto 0;
   max-width: 900px;
 }
 
-/* Mobile: empilha um embaixo do outro */
+#contact .contact-card {
+  flex: 1 1 300px;        /* ocupa pelo menos 300px e cresce proporcional */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  min-width: 260px;
+  max-width: 380px;
+  text-align: left;
+  background: #fff;       /* opcional: fundo do card */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Mobile: empilhar os cards */
 @media (max-width: 700px) {
   #contact .contact-actions {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+    flex-direction: column;   /* um embaixo do outro */
+    align-items: stretch;     /* ocupam toda a largura disponível */
   }
 
   #contact .contact-card {
-    width: 100%;
-    max-width: 520px;
+    max-width: 100%;          /* ocupa a largura toda no mobile */
   }
 }
+
 
 
 
