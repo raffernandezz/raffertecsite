@@ -1363,6 +1363,43 @@ textarea {
   height: 32px !important;
   object-fit: contain !important;
 }
+/* ===== HERO: layout lado a lado e tamanho do personagem ===== */
+.hero-grid{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: clamp(16px, 4vw, 48px);
+  text-align:left;              /* mantém o texto alinhado quando lado a lado */
+}
+
+/* tamanho do personagem (edite aqui) */
+.hero-section .mascote-img{
+  width: clamp(260px, 34vw, 520px);  /* 👈 MIN — FLUIDO — MAX */
+  height:auto;
+  display:block;
+}
+
+/* largura máxima do bloco de texto pra não esmagar a imagem */
+.hero-section .hero-content{
+  max-width: 580px;
+  margin-left:auto;             /* texto fica à direita do personagem */
+}
+
+/* responsivo: empilha no mobile */
+@media (max-width: 900px){
+  .hero-grid{ 
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero-section .hero-content{ 
+    max-width: 680px; 
+    margin: 0 auto; 
+  }
+  .hero-section .mascote-img{
+    width: clamp(220px, 60vw, 380px); /* 👈 tamanho no mobile (edite se quiser) */
+  }
+}
+
 
 
 
