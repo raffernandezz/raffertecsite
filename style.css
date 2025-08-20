@@ -1550,7 +1550,23 @@ textarea {
     max-width: 500px;
     margin: 0 auto;
   }
+}/* Mobile: cards em scroll horizontal */
+@media (max-width: 768px) {
+  #contact .contact-actions {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;       /* habilita rolagem lateral */
+    -webkit-overflow-scrolling: touch; /* suaviza no iOS */
+    scroll-snap-type: x mandatory;     /* snap pro card */
+  }
+
+  #contact .contact-card {
+    flex: 0 0 80%;          /* cada card ocupa 80% da tela */
+    scroll-snap-align: center;
+  }
 }
+
+
 
 
 
