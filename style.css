@@ -1398,7 +1398,46 @@ textarea {
   .hero-section .mascote-img{
     width: clamp(220px, 60vw, 380px); /* 👈 tamanho no mobile (edite se quiser) */
   }
+/* Ajustes Mobile */
+@media (max-width: 700px) {
+  /* Hero */
+  .hero-content h1 {
+    font-size: 2.2rem;   /* menor no celular */
+    text-align: center;
+  }
+  .hero-content p {
+    font-size: 1.1rem;
+    padding: 0 12px;
+  }
+  .hero-section .mascote-img {
+    width: clamp(200px, 55vw, 320px);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Seções genéricas */
+  section {
+    padding: 60px 20px !important;
+    text-align: center;
+  }
+
+  /* Contato */
+  #contact .contact-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1.2rem !important;
+  }
+  #contact .contact-card {
+    min-width: 100% !important;
+    justify-content: flex-start !important;
+    padding: 1.2rem;
+  }
+  #contact .contact-card img {
+    width: 36px;
+    height: 36px;
+  }
 }
+
+
 
 
 
