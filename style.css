@@ -1490,7 +1490,21 @@ textarea {
   .hero-section { 
     margin-top: 8px;  /* ajusta aqui se quiser mais ou menos espaço */
   }
+}/* ===== Contato responsivo ===== */
+@media (max-width: 700px) {
+  #contact .contact-actions {
+    flex-direction: column !important;   /* força um abaixo do outro */
+    align-items: center !important;      /* centraliza no eixo horizontal */
+    gap: 1.2rem !important;              /* espaço entre os cards */
+  }
+
+  #contact .contact-card {
+    width: 90% !important;               /* ocupa quase toda a largura da tela */
+    max-width: 380px !important;         /* mas não fica gigante */
+  }
 }
+
+
 
 
 
