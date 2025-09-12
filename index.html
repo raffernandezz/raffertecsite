@@ -646,6 +646,32 @@ window.addEventListener("scroll", () => {
   requestAnimationFrame(()=> moveUnderline(getActiveLink()));
 })();
 </script>
+/* ...todo o seu JS que já existe aqui em cima... */
 
+  /* === AUTOPLAY MOBILE (HERO + HEADER) === */
+  (function ensureInlineAutoplay(){
+    function tryEnable(selector){
+      var v = document.querySelector(selector);
+      if(!v) return;
+      v.muted = true;
+      v.setAttribute('muted','');
+      v.setAttribute('playsinline','');
+      v.setAttribute('webkit-playsinline','');
+      v.autoplay = true;
+
+      function play() {
+        v.play().catch(function(){ /* silencioso */ });
+      }
+      if (v.readyState >= 2) play();
+      else v.addEventListener('canplay', play, { once: true });
+
+      window.addEventListener('touchstart', play, { once:true, passive:true });
+      window.addEventListener('click', play, { once:true, passive:true });
+    }
+
+    tryEnable('#hero .bg-video');          // vídeo do HERO
+    tryEnable('.header .header-bg-video'); // vídeo do HEADER
+  })();
 </body>
 </html>
+
