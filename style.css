@@ -2503,4 +2503,29 @@ body .header.header-skin--azure {
   min-height: 100%;
   object-fit: cover;
 }
+/* ===== MOBILE: desliga vídeo e mostra fundo estático ===== */
+@media (max-width: 600px){
+  /* Esconde os vídeos */
+  #hero .bg-video,
+  .header .header-bg-video{
+    display: none !important;
+  }
+
+  /* HERO: fundo estático (use uma imagem ou só o gradiente azul) */
+  #hero{
+    background:
+      /* imagem opcional — troque pelo seu arquivo, se tiver */
+      url("assets/hero-poster.jpg") center/cover no-repeat,
+      radial-gradient(1200px 800px at 15% 15%, rgba(79,151,255,.20), transparent 60%),
+      radial-gradient(1000px 700px at 85% 85%, rgba(170,212,255,.14), transparent 60%),
+      linear-gradient(180deg, rgba(5,8,20,.55), rgba(5,8,20,.18) 40%, rgba(5,8,20,.60));
+  }
+
+  /* HEADER: volta a ter fundo (sem vídeo) */
+  .header{
+    background: linear-gradient(135deg, #0d1220, #1432a8, #4f97ff, #0d1220) !important;
+    background-size: 400% 400% !important;
+  }
+}
+
 
