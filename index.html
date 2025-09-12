@@ -79,9 +79,12 @@
 <!-- HERO -->
 <section id="hero" class="hero-section impact-strong">
   <!-- Vídeo de fundo -->
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="assets/tech-bg.mp4" type="video/mp4">
-  </video>
+ <video id="heroVideo"
+       class="bg-video"
+       muted autoplay loop playsinline webkit-playsinline
+       preload="metadata">
+  <source src="assets/tech-bg.mp4" type="video/mp4">
+</video>
   <!-- OVERLAYS DO HERO (não removem nada do que já existe) -->
 <div class="heroFx">
   <div class="heroFx-gradient"></div>
@@ -649,29 +652,26 @@ window.addEventListener("scroll", () => {
 /* ...todo o seu JS que já existe aqui em cima... */
 
   /* === AUTOPLAY MOBILE (HERO + HEADER) === */
-  (function ensureInlineAutoplay(){
-    function tryEnable(selector){
-      var v = document.querySelector(selector);
-      if(!v) return;
-      v.muted = true;
-      v.setAttribute('muted','');
-      v.setAttribute('playsinline','');
-      v.setAttribute('webkit-playsinline','');
-      v.autoplay = true;
+ (function(){
+  var v = document.getElementById('heroVideo');
+  if(!v) return;
 
-      function play() {
-        v.play().catch(function(){ /* silencioso */ });
-      }
-      if (v.readyState >= 2) play();
-      else v.addEventListener('canplay', play, { once: true });
+  // garante atributos que liberam autoplay no iOS/Android
+  v.muted = true;
+  v.autoplay = true;
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
 
-      window.addEventListener('touchstart', play, { once:true, passive:true });
-      window.addEventListener('click', play, { once:true, passive:true });
-    }
+  function play(){ v.play().catch(function(){}); }
 
-    tryEnable('#hero .bg-video');          // vídeo do HERO
-    tryEnable('.header .header-bg-video'); // vídeo do HEADER
-  })();
+  // tenta tocar assim que possível
+  if (v.readyState >= 2) play();
+  else v.addEventListener('canplay', play, { once:true });
+
+  // fallback: primeiro gesto do usuário (iOS costuma exigir)
+  window.addEventListener('pointerdown', play, { once:true, passive:true });
+})();
 </body>
 </html>
+
 
