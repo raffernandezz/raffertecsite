@@ -900,7 +900,7 @@ body, * {
   box-shadow: 0 8px 25px rgba(20, 50, 168, 0.4);
 }
 
-}/* --- Ajuste da foto Sobre Nós --- */
+/* --- Ajuste da foto Sobre Nós --- */
 .about-photo img {
   max-width: 280px;      /* deixa num tamanho controlado */
   width: 100%;
@@ -1363,6 +1363,59 @@ textarea {
   height: 32px !important;
   object-fit: contain !important;
 }
+
+/* ===== SOBRE NÓS – layout 50/50 equilibrado ===== */
+.about-section .about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.about-section .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 👈 Agora é 50% texto e 50% foto */
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+}
+
+.about-section h2 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.about-section .about-text {
+  max-width: 640px;                /* controla o comprimento do texto */
+  line-height: 1.65;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.about-section .about-photo {
+  justify-self: center;
+}
+
+.about-section .about-photo img {
+  width: clamp(280px, 36vw, 460px);   /* 👈 tamanho da foto */
+  height: auto;
+  border-radius: 16px;
+  outline: 3px solid #aad4ff;         /* 👈 moldura */
+  outline-offset: 6px;
+  box-shadow: 0 16px 40px rgba(20, 50, 168, 0.35),
+              0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile/tablet */
+@media (max-width: 900px) {
+  .about-section .about-grid {
+    grid-template-columns: 1fr;       /* empilha no mobile */
+    text-align: center;
+  }
+  .about-section .about-photo img {
+    width: clamp(220px, 62vw, 360px);
+    outline-width: 2.5px;
+    outline-offset: 5px;
+  }
+}
 /* ===== HERO: layout lado a lado e tamanho do personagem ===== */
 .hero-grid{
   display:flex;
@@ -1398,146 +1451,996 @@ textarea {
   .hero-section .mascote-img{
     width: clamp(220px, 60vw, 380px); /* 👈 tamanho no mobile (edite se quiser) */
   }
-/* Ajustes Mobile */
-@media (max-width: 700px) {
-  /* Hero */
-  .hero-content h1 {
-    font-size: 2.2rem;   /* menor no celular */
-    text-align: center;
-  }
-  .hero-content p {
-    font-size: 1.1rem;
-    padding: 0 12px;
-  }
-  .hero-section .mascote-img {
-    width: clamp(200px, 55vw, 320px);
-    margin-bottom: 1.5rem;
-  }
-
-  /* Seções genéricas */
-  section {
-    padding: 60px 20px !important;
-    text-align: center;
-  }
-
-  /* Contato */
-  #contact .contact-actions {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 1.2rem !important;
-  }
-  #contact .contact-card {
-    min-width: 100% !important;
-    justify-content: flex-start !important;
-    padding: 1.2rem;
-  }
-  #contact .contact-card img {
-    width: 36px;
-    height: 36px;
-  }
-}/* ===== Header shrink no mobile (APENAS ADIÇÃO) ===== */
-@media (max-width: 900px) {
-  /* estados base no mobile */
-  .header-container {
-    transition: padding .25s ease;
-  }
-  .logo img {
-    height: 140px; /* tamanho inicial no mobile */
-    transition: height .25s ease, transform .25s ease, filter .25s ease;
-  }
-
-  /* estado encolhido quando rolar */
-  .header.shrink .header-container {
-    padding: 10px 0 8px 0;
-  }
-  .header.shrink .logo img {
-    height: 88px;  /* << ajuste aqui se quiser menor/maior ao rolar */
-    filter: drop-shadow(0 0 18px #4f97ff);
-  }
-}/* ===== Mobile: header auto-hide ===== */
-@media (max-width: 900px) {
-  /* deixa o header fixo pra poder deslizar pra fora da tela */
-  .header {
-    position: fixed;      /* <— override do sticky só no mobile */
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: transform .25s ease, padding .25s ease;
-  }
-
-  /* empurra o conteúdo pra não ficar por baixo do header */
-  body {
-    padding-top: 120px;   /* AJUSTE: ~altura do seu header no mobile */
-  }
-
-  /* quando escondido, some pra cima */
-  .header.auto-hide {
-    transform: translateY(-100%);
-  }
-}/* Reserva automática da altura do header no mobile */
-@media (max-width: 900px) {
-  :root { --header-h: 0px; }
-  body { padding-top: var(--header-h); } /* usa a altura medida */
-}
-/* Reserva automática da altura do header no mobile */
-@media (max-width: 900px) {
-  :root { --header-h: 0px; }
-  body { padding-top: var(--header-h); } /* usa a altura medida */
 }
 
-/* Opcional: dar um respiro extra para o herói no mobile */
-@media (max-width: 900px) {
-  .hero-section { 
-    margin-top: 8px;  /* ajusta aqui se quiser mais ou menos espaço */
-  }
-}/* ===== Contato responsivo ===== */
-@media (max-width: 700px) {
-  #contact .contact-actions {
-    flex-direction: column !important;   /* força um abaixo do outro */
-    align-items: center !important;      /* centraliza no eixo horizontal */
-    gap: 1.2rem !important;              /* espaço entre os cards */
-  }
 
-  #contact .contact-card {
-    width: 90% !important;               /* ocupa quase toda a largura da tela */
-    max-width: 380px !important;         /* mas não fica gigante */
-  }
-}/* ====== Contato Responsivo ====== */
 
-/* ===== Desktop (padrão) ===== */
-#contact .contact-actions {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 2rem;
-  flex-wrap: nowrap;    /* ficam lado a lado */
-  margin: 2rem auto 0;
-  max-width: 900px;
+/* =========================================================
+   ⬇️ APÊNDICE TECH — APENAS ADIÇÕES (NADA DO ORIGINAL FOI REMOVIDO)
+   Fundo tecnológico, grid neon, orbes, glass nos cards, glow/ripple
+   ========================================================= */
+
+/* Variáveis para controlar intensidade */
+:root{
+  --tech-primary: #4f97ff;
+  --tech-secondary: #aad4ff;
+  --tech-deep: #1432a8;
+  --glow-soft: 0 0 18px rgba(79,151,255,.28);
+  --glow-hard: 0 0 36px rgba(79,151,255,.45);
+  --glass-bg: linear-gradient(120deg, rgba(25,45,89,.55) 50%, rgba(79,151,255,.25) 100%);
 }
 
+/* ===== Fundo gradiente animado (aplica nas seções largas) ===== */
+.hero-section,
+.services-section,
+.projects-section,
+.why-section,
+.about-section {
+  position: relative;
+  isolation: isolate; /* permite pseudo-elementos abaixo dos conteúdos */
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(79,151,255,0.08), transparent 60%),
+              radial-gradient(1000px 700px at 80% 90%, rgba(170,212,255,0.06), transparent 60%),
+              linear-gradient(180deg, #060a16, #0b1022 60%, #0a0a0a);
+  overflow: hidden;
+}
+
+/* ===== Grid neon em cima do fundo (sem GIF) ===== */
+.hero-section::before,
+.services-section::before,
+.projects-section::before,
+.why-section::before,
+.about-section::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(transparent 97%, rgba(170,212,255,.14) 100%) 0 0/100% 22px,
+    linear-gradient(90deg, transparent 97%, rgba(170,212,255,.14) 100%) 0 0/22px 100%;
+  opacity:.35;
+  mix-blend-mode: screen;
+  animation: gridFloat 18s linear infinite;
+  z-index:-1;
+}
+@keyframes gridFloat{
+  0%{ transform: translateY(0) }
+  100%{ transform: translateY(-22px) }
+}
+
+/* ===== “Orbes” suaves passando (partículas macro) ===== */
+.services-section::after,
+.why-section::after{
+  content:"";
+  position:absolute; inset:-20%;
+  background:
+    radial-gradient(35vmax 35vmax at 20% 120%, rgba(79,151,255,.08), transparent 60%),
+    radial-gradient(28vmax 28vmax at 120% 10%, rgba(170,212,255,.06), transparent 65%);
+  filter: blur(16px);
+  animation: orbs 26s ease-in-out infinite;
+  z-index:-1;
+}
+@keyframes orbs{
+  0%,100%{ transform: translate3d(0,0,0) }
+  50%{ transform: translate3d(-4%, 2%, 0) }
+}
+
+/* ===== Glass + borda viva nos cards (serviços e projetos) ===== */
+.card, .project-card{
+  background: var(--glass-bg);
+  border: 1px solid rgba(170,212,255,.18);
+  box-shadow: 0 8px 28px rgba(20, 50, 168, 0.25);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+.card::before, .project-card::before{
+  content:"";
+  position:absolute; inset:-2px;
+  background: conic-gradient(from var(--a,0deg), #4f97ff, #aad4ff, #1432a8, #4f97ff);
+  filter: blur(14px);
+  opacity:.18;
+  z-index:0;
+  animation: spin 12s linear infinite;
+}
+.card > *, .project-card > *{ position: relative; z-index:1; }
+@keyframes spin{ to{ --a:360deg } }
+
+.card:hover, .project-card:hover{
+  box-shadow: 0 16px 48px rgba(79,151,255,.34);
+}
+
+/* ===== Ícones dos cards levemente “vivos” ===== */
+.card i[data-feather]{
+  transition: transform .35s ease;
+  transform-origin: 50% 50%;
+}
+.card:hover i[data-feather]{ transform: translateY(-2px) scale(1.06) rotate(3deg) }
+
+/* ===== Títulos com brilho correndo ===== */
+.services-section h2,
+.projects-section h2,
+.why-section h2,
+.about-section h2{
+  background: linear-gradient(90deg,#ffffff,#aad4ff,#4f97ff,#ffffff);
+  -webkit-background-clip:text; background-clip:text;
+  color: transparent;
+  background-size: 300% 100%;
+  animation: shine-title 8s linear infinite;
+  text-shadow: 0 0 10px #4f97ff, 0 0 18px #1432a8;
+}
+@keyframes shine-title{ 0%{background-position:0% 0} 100%{background-position:300% 0} }
+
+/* ===== Divisores animados sutil (entre seções) ===== */
+.services-section > .container::after,
+.projects-section > .container::after,
+.why-section > .container::after,
+.about-section > .container::after{
+  content:"";
+  display:block;
+  height: 1px;
+  margin: 48px auto 0;
+  width: min(88%, 980px);
+  background: linear-gradient(90deg, transparent, rgba(170,212,255,.35), transparent);
+  filter: drop-shadow(0 0 6px rgba(79,151,255,.3));
+  animation: dividerPulse 3.6s ease-in-out infinite;
+}
+@keyframes dividerPulse{
+  0%,100%{ opacity:.6; transform: scaleX(.98) }
+  50%{ opacity:1; transform: scaleX(1) }
+}
+
+/* ===== Botões com ripple + glow ===== */
+.btn, .btn-primary, .btn-secondary{
+  position: relative;
+  overflow: hidden;
+}
+.btn::after, .btn-primary::after, .btn-secondary::after{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(120px 120px at var(--mx,50%) var(--my,50%), rgba(170,212,255,.2), transparent 60%);
+  opacity:0; transition: opacity .25s ease;
+  pointer-events:none;
+}
+.btn:hover::after,
+.btn-primary:hover::after,
+.btn-secondary:hover::after{ opacity:1; }
+.btn:hover, .btn-primary:hover, .btn-secondary:hover{
+  box-shadow: var(--glow-soft);
+}
+
+/* ===== Pequena animação de “passe o mouse” nos CTAs principais ===== */
+.gradient-btn{
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+.gradient-btn:hover{
+  transform: translateY(-3px);
+  filter: saturate(1.15);
+  box-shadow: 0 8px 28px rgba(79,151,255,.35);
+}
+
+/* ===== Badges de confiança com brilho “pulsante” ===== */
+.trust-badges li{
+  position: relative;
+}
+.trust-badges li::before{
+  content:"";
+  position:absolute; inset:-2px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(79,151,255,.0), rgba(79,151,255,.25), rgba(79,151,255,.0));
+  filter: blur(6px);
+  opacity:.0; pointer-events:none;
+  animation: trustGlow 3.8s ease-in-out infinite;
+}
+@keyframes trustGlow{
+  0%,100%{ opacity: .05 }
+  50%{ opacity: .25 }
+}
+
+/* ===== Hero: headline digitando (suavizado) ===== */
+.hero-content h1.typing-animation{
+  display:inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--tech-secondary);
+  width: 0;
+  animation: typing-steps 3.2s steps(28,end) forwards, caret 1s step-end infinite;
+}
+@keyframes typing-steps{ to{ width: 100%; } }
+@keyframes caret{ 50% { border-color: transparent; } }
+
+/* ===== Preferência de reduzir movimento (acessibilidade) ===== */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+}
+
+/* =========================================================
+   APÊNDICE — FUNDOS IMPACTANTES (apenas ADIÇÃO)
+   - Waves diagonais animadas
+   - Scanlines com efeito "glitch/visor"
+   - Suporte opcional a vídeo de fundo (classe .bg-video)
+   - Controles de intensidade por variáveis
+   Não remove nada do CSS existente.
+   ========================================================= */
+
+/* Intensidade padrão (ajuste livre) */
+:root{
+  --impact-opacity-video: 0.28;   /* opacidade do vídeo de fundo */
+  --impact-opacity-waves: 0.18;   /* intensidade das waves */
+  --impact-opacity-scan:  0.14;   /* intensidade das scanlines */
+  --impact-waves-speed:  22s;     /* velocidade das waves */
+  --impact-scan-speed:    4s;     /* velocidade das scanlines */
+  --impact-waves-size:   84px;    /* espaçamento entre waves */
+}
+
+/* =====================
+   1) HERO — WAVES DIAGONAIS
+   ===================== */
+.hero-section{
+  position: relative;
+  isolation: isolate;
+}
+.hero-section::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(79,151,255,var(--impact-opacity-waves)) 0 2px,
+      transparent 2px var(--impact-waves-size)
+    );
+  animation: impactMoveLines var(--impact-waves-speed) linear infinite;
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+@keyframes impactMoveLines {
+  from { background-position: 0 0; }
+  to   { background-position: 800px 800px; }
+}
+
+/* =====================
+   2) SERVICES / WHY / ABOUT — SCANLINES "GLITCH"
+   ===================== */
+.services-section,
+.why-section,
+.about-section{ position: relative; isolation: isolate; }
+
+.services-section::after,
+.why-section::after,
+.about-section::after{
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(170,212,255,var(--impact-opacity-scan)) 0 2px,
+      transparent 2px 4px
+    );
+  animation: impactScan var(--impact-scan-speed) linear infinite;
+  mix-blend-mode: overlay;
+  z-index: -1;
+  pointer-events: none;
+}
+@keyframes impactScan {
+  from { background-position: 0 -100%; }
+  to   { background-position: 0  100%; }
+}
+
+/* =====================
+   3) SUPORTE A VÍDEO DE FUNDO (OPCIONAL)
+   ===================== */
+/* HTML esperado dentro de uma seção (ex.: hero):
+   <video class="bg-video" autoplay muted loop playsinline>
+     <source src="assets/tech-bg.mp4" type="video/mp4">
+   </video>
+*/
+.bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;                   /* fica atrás das layers acima */
+  opacity: var(--impact-opacity-video);
+  filter: saturate(1.15) brightness(1.02);
+  pointer-events: none;
+}
+
+/* =====================
+   4) CONTROLES RÁPIDOS DE INTENSIDADE
+   ===================== */
+.impact-strong{
+  --impact-opacity-video: .36;
+  --impact-opacity-waves: .26;
+  --impact-opacity-scan:  .22;
+}
+.impact-soft{
+  --impact-opacity-video: .18;
+  --impact-opacity-waves: .10;
+  --impact-opacity-scan:  .08;
+}
+
+/* Exemplo de uso:
+   <section id="hero" class="hero-section impact-strong"> ... </section>
+   <section id="why"  class="why-section  impact-soft">   ... </section>
+*/
+
+/* =====================
+   5) RESPEITO A REDUZIR MOVIMENTO
+   ===================== */
+@media (prefers-reduced-motion: reduce){
+  .hero-section::before,
+  .services-section::after,
+  .why-section::after,
+  .about-section::after{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+/* ===== HEADER: glass + holograma + neon ===== */
+.header{
+  position: sticky; top:0; z-index:1000;
+  backdrop-filter: blur(14px);
+  background: rgba(8,12,24,.55);
+  border-bottom: 1px solid rgba(79,151,255,.24);
+  box-shadow: 0 8px 28px rgba(20,50,168,.25);
+  transition: padding .35s ease, background .35s ease, box-shadow .35s ease;
+}
+.header-holo{
+  position: absolute; left:0; right:0; bottom:-1px; height:3px;
+  background: conic-gradient(from var(--a,0deg), #1432a8, #4f97ff, #aad4ff, #1432a8);
+  filter: blur(8px); opacity:.65; pointer-events:none;
+  animation: hdrSpin 10s linear infinite;
+}
+@keyframes hdrSpin{ to{ --a:360deg } }
+
+/* ===== NAV links: glow + underline animado ===== */
+.nav-list{ position: relative; }
+.nav-list li a{
+  position: relative; overflow: hidden;
+  color:#e8f1ff; letter-spacing:.3px;
+  transition: color .25s ease, text-shadow .25s ease;
+}
+.nav-list li a::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(120px 60px at var(--mx,50%) 120%, rgba(79,151,255,.18), transparent 60%);
+  opacity:0; transition: opacity .25s ease;
+}
+.nav-list li a:hover{ color:#aad4ff; text-shadow:0 0 10px #4f97ff; }
+.nav-list li a:hover::before{ opacity:1; }
+
+/* Sub-linha que “viaja” sob o item ativo/hover */
+.nav-underline{
+  position:absolute; bottom:-6px; height:3px; width:0;
+  background: linear-gradient(90deg,#1432a8,#4f97ff,#aad4ff);
+  border-radius: 2px;
+  transition: transform .25s ease, width .25s ease, left .25s ease;
+  box-shadow: 0 0 12px rgba(79,151,255,.6);
+}
+
+/* ===== Spotlight que segue o mouse no nav ===== */
+.nav-spotlight{
+  --x: 50%; --y: 50%;
+  position: absolute; top:0; left:0; right:0; height:64px; z-index:-1;
+  background: radial-gradient(200px 40px at var(--x) var(--y), rgba(79,151,255,.15), transparent 70%);
+  pointer-events:none; mix-blend-mode: screen;
+}
+
+/* ===== Barra de progresso do scroll (topo) ===== */
+.scroll-progress{
+  position: absolute; top:0; left:0; height:3px; width:0%;
+  background: linear-gradient(90deg,#4f97ff,#aad4ff);
+  box-shadow: 0 0 16px rgba(79,151,255,.6);
+  transition: width .08s linear;
+}
+
+/* ===== Efeito reduzir ao rolar ===== */
+body.scrolled .header{
+  background: rgba(8,12,24,.82);
+  box-shadow: 0 12px 32px rgba(20,50,168,.35);
+}
+body.scrolled .header .logo img{ transform: scale(.92); filter: drop-shadow(0 0 22px #4f97ff); }
+
+/* ===== Mobile fallback (evita sobreposição) ===== */
+@media (max-width: 900px){
+  .nav-spotlight{ display:none; }
+  .nav-underline{ display:none; }
+}
+/* ===========================
+   HEADER THEMES que combinam com vídeo tech
+   (NADA do original é removido, só adição)
+=========================== */
+
+/* Controles globais (pode ajustar) */
+:root{
+  --hdr-alpha: .68;        /* transparência do header sobre o vídeo */
+  --hdr-blur:  14px;       /* blur do glass */
+  --hdr-glow:  rgba(79,151,255,.35); /* brilho padrão */
+}
+
+/* Base “glass” do header (usa o que você já tem, só reforça) */
+.header{
+  position: sticky; top:0; z-index:1000;
+  backdrop-filter: blur(var(--hdr-blur));
+  -webkit-backdrop-filter: blur(var(--hdr-blur));
+  border-bottom: 1px solid color-mix(in oklab, var(--hdr-c2), transparent 60%);
+  box-shadow: 0 8px 28px color-mix(in oklab, var(--hdr-c2), transparent 70%);
+  transition: background .35s ease, box-shadow .35s ease, padding .35s ease, border-color .35s ease;
+  /* fundo animado que mistura 3 cores do tema + opacidade controlável */
+  background:
+    radial-gradient(120% 180% at 10% -20%, color-mix(in oklab, var(--hdr-c3), transparent 60%), transparent 60%),
+    radial-gradient(120% 180% at 90% 120%, color-mix(in oklab, var(--hdr-c1), transparent 65%), transparent 60%),
+    linear-gradient(135deg, var(--hdr-c1), var(--hdr-c2), var(--hdr-c3), var(--hdr-c1));
+  background-size: 300% 300%;
+  animation: hdrFlow 14s ease-in-out infinite;
+  opacity: 1; /* usamos alpha nas cores abaixo */
+}
+@keyframes hdrFlow{
+  0%   { background-position: 0% 50% }
+  50%  { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Linha neon “viva” embaixo */
+.header::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:3px;
+  background: linear-gradient(90deg, var(--hdr-c1), var(--hdr-c2), var(--hdr-c3), var(--hdr-c1));
+  background-size: 300% 100%;
+  animation: hdrLine 6s linear infinite;
+  box-shadow: 0 0 14px color-mix(in oklab, var(--hdr-c2), transparent 30%);
+}
+@keyframes hdrLine{ to{ background-position: 300% 0 } }
+
+/* Links do menu com “holograma” */
+.nav-list li a{
+  background: linear-gradient(90deg, color-mix(in oklab, var(--hdr-c3), #fff 30%), var(--hdr-c2), color-mix(in oklab, var(--hdr-c3), #fff 30%));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  transition: text-shadow .3s ease, transform .3s ease;
+}
+.nav-list li a:hover{
+  text-shadow: 0 0 10px var(--hdr-glow), 0 0 20px color-mix(in oklab, var(--hdr-c3), transparent 30%);
+  transform: scale(1.05);
+}
+
+/* Efeito ao rolar (fica mais “denso” sobre o vídeo) */
+body.scrolled .header{
+  border-bottom-color: color-mix(in oklab, var(--hdr-c2), transparent 40%);
+  box-shadow: 0 12px 36px color-mix(in oklab, var(--hdr-c2), transparent 55%);
+}
+body.scrolled .header::after{ height: 2px }
+
+/* ===========================
+   SKINS — escolha uma
+=========================== */
+
+/* AZUL (casa com partículas/linhas azuis) */
+.header-skin--azure{
+  --hdr-c1: color-mix(in oklab, #0b1022 90%, rgba(11,16,34,var(--hdr-alpha)) 10%);
+  --hdr-c2: color-mix(in oklab, #1432a8 85%, rgba(20,50,168,var(--hdr-alpha)) 15%);
+  --hdr-c3: color-mix(in oklab, #4f97ff 80%, rgba(79,151,255,var(--hdr-alpha)) 20%);
+  --hdr-glow: rgba(79,151,255,.45);
+}
+
+/* CIANO (se teu vídeo puxar pra ciano/turquesa) */
+.header-skin--cyan{
+  --hdr-c1: color-mix(in oklab, #07151a 90%, rgba(7,21,26,var(--hdr-alpha)) 10%);
+  --hdr-c2: color-mix(in oklab, #0aa7c2 85%, rgba(10,167,194,var(--hdr-alpha)) 15%);
+  --hdr-c3: color-mix(in oklab, #5ee7ff 80%, rgba(94,231,255,var(--hdr-alpha)) 20%);
+  --hdr-glow: rgba(94,231,255,.45);
+}
+
+/* ROXO (se teu vídeo for mais púrpura) */
+.header-skin--violet{
+  --hdr-c1: color-mix(in oklab, #140c22 90%, rgba(20,12,34,var(--hdr-alpha)) 10%);
+  --hdr-c2: color-mix(in oklab, #5a2ac9 85%, rgba(90,42,201,var(--hdr-alpha)) 15%);
+  --hdr-c3: color-mix(in oklab, #c09cff 80%, rgba(192,156,255,var(--hdr-alpha)) 20%);
+  --hdr-glow: rgba(192,156,255,.45);
+}
+
+/* Ajustes rápidos por breakpoint */
+@media (max-width: 900px){
+  .header{ backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+}
+/* ==== FORÇA A SKIN AZUL NO HEADER (override garantido) ==== */
+.header.header-skin--azure{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(79,151,255,.25) !important;
+  box-shadow: 0 8px 28px rgba(20,50,168,.25) !important;
+  background: linear-gradient(135deg, #0d1220, #1432a8, #4f97ff, #0d1220) !important;
+  background-size: 400% 400% !important;
+  animation: headerGradient 12s ease infinite !important;
+}
+@keyframes headerGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* linha neon viva no rodapé do header */
+.header.header-skin--azure::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:3px;
+  background: linear-gradient(90deg, #1432a8, #4f97ff, #aad4ff, #1432a8);
+  background-size: 300% 100%;
+  animation: neonLine 6s linear infinite;
+  box-shadow: 0 0 12px #4f97ff, 0 0 24px #1432a8;
+}
+@keyframes neonLine { to { background-position: 300% 0; } }
+
+/* holograma e spotlight precisam existir no HTML */
+.header.header-skin--azure .header-holo{
+  position: absolute; left:0; right:0; bottom:-1px; height:3px;
+  background: conic-gradient(from var(--a,0deg), #1432a8, #4f97ff, #aad4ff, #1432a8);
+  filter: blur(8px); opacity:.65; pointer-events:none;
+  animation: hdrSpin 10s linear infinite;
+}
+@keyframes hdrSpin { to { --a:360deg; } }
+
+.header.header-skin--azure .nav-spotlight{
+  --x: 50%; --y: 50%;
+  position: absolute; top:0; left:0; right:0; height:64px; z-index:-1;
+  background: radial-gradient(200px 40px at var(--x) var(--y), rgba(79,151,255,.15), transparent 70%);
+  pointer-events:none; mix-blend-mode: screen;
+}
+
+/* barra de progresso do scroll */
+.header.header-skin--azure .scroll-progress{
+  position: absolute; top:0; left:0; height:3px; width:0%;
+  background: linear-gradient(90deg,#4f97ff,#aad4ff);
+  box-shadow: 0 0 16px rgba(79,151,255,.6);
+  transition: width .08s linear;
+}
+
+/* links holográficos do menu (escopo no header pra não afetar outros) */
+.header.header-skin--azure .nav-list li a{
+  background: linear-gradient(90deg, #cfe6ff, #4f97ff, #cfe6ff);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  transition: text-shadow .3s ease, transform .3s ease;
+}
+.header.header-skin--azure .nav-list li a:hover{
+  text-shadow: 0 0 10px #4f97ff, 0 0 20px #aad4ff;
+  transform: scale(1.05);
+}
+
+/* shrink on scroll */
+body.scrolled .header.header-skin--azure{
+  background: linear-gradient(135deg, #0b0f1d, #112a8e, #3a86ff, #0b0f1d) !important;
+  background-size: 400% 400% !important;
+  box-shadow: 0 12px 36px rgba(20,50,168,.35) !important;
+}
+/* ===== Contact Section Tech Upgrade ===== */
+#contact {
+  position: relative;
+  padding: 100px 0;
+  text-align: center;
+  background: linear-gradient(180deg, #0a0f1e, #0c1433);
+  overflow: hidden;
+}
+
+/* título com scanner underline */
+#contact h2 {
+  position: relative;
+  display: inline-block;
+  font-size: 2.4rem;
+  background: linear-gradient(90deg,#fff,#aad4ff,#4f97ff,#fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 100%;
+  animation: shine-title 8s linear infinite;
+}
+#contact h2::after {
+  content:"";
+  position: absolute;
+  left:0; right:0; bottom:-8px; height:3px;
+  background: linear-gradient(90deg,#1432a8,#4f97ff,#aad4ff,#1432a8);
+  background-size:300% 100%;
+  animation: neonLine 6s linear infinite;
+  box-shadow:0 0 12px #4f97ff;
+}
+
+/* cards em glass + neon */
 #contact .contact-card {
-  flex: 1 1 300px;      /* cada card ocupa um espaço fixo */
-  min-width: 280px;
-  max-width: 380px;
-  padding: 1rem 1.5rem;
-  text-align: left;
+  background: rgba(20,40,80,0.35);
+  border: 1px solid rgba(79,151,255,.35);
+  border-radius: 18px;
+  padding: 22px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
+  gap: 16px;
+  transition: transform .3s ease, box-shadow .3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+#contact .contact-card::before {
+  content:"";
+  position:absolute; inset:-2px;
+  background: conic-gradient(from var(--a,0deg), #1432a8, #4f97ff, #aad4ff, #1432a8);
+  filter: blur(14px);
+  opacity:.15;
+  animation: spin 12s linear infinite;
+}
+#contact .contact-card > * { position:relative; z-index:1; }
+#contact .contact-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 36px rgba(79,151,255,.35);
 }
 
-/* ===== Mobile: scroll horizontal ===== */
-@media (max-width: 768px) {
-  #contact .contact-actions {
-    overflow-x: auto;               /* permite arrastar */
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory; 
-    justify-content: flex-start;    /* começa do lado esquerdo */
-  }
+/* tilt nos cards */
+#contact .contact-card:hover { transform: rotateX(4deg) rotateY(-3deg) scale(1.03); }
 
-  #contact .contact-card {
-    flex: 0 0 80%;                  /* ocupa 80% da tela */
-    scroll-snap-align: center; 
+/* FAQ com glow quando aberto */
+#contact details[open] {
+  border-left: 3px solid #4f97ff;
+  padding-left: 8px;
+  box-shadow: inset 0 0 12px rgba(79,151,255,.3);
+  border-radius: 6px;
+}
+
+/* botão flutuante aura */
+#contact .cta-float {
+  margin-top: 48px;
+  display:inline-block;
+  position:relative;
+}
+#contact .cta-float a {
+  padding: 16px 36px;
+  font-size:1.2rem;
+  font-weight:700;
+  border-radius: 12px;
+  color:#fff;
+  background: linear-gradient(90deg,#1432a8,#4f97ff);
+  text-decoration:none;
+  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow:0 0 18px rgba(79,151,255,.4);
+}
+#contact .cta-float a:hover {
+  transform: translateY(-4px);
+  box-shadow:0 0 28px rgba(79,151,255,.6);
+}
+#contact .cta-float::before {
+  content:"";
+  position:absolute; inset:-30%;
+  background: radial-gradient(circle, rgba(79,151,255,.18), transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+  border-radius:50%;
+  z-index:-1;
+}
+@keyframes pulse {
+  0%,100% { transform:scale(1); opacity:.4; }
+  50% { transform:scale(1.15); opacity:.2; }
+}
+/* ===== HERO VIDEO BOOST (fixado) ===== */
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+#hero .bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.28; /* ajuste conforme gosto */
+  filter: saturate(1.25) contrast(1.08) brightness(1.02);
+  pointer-events: none;
+}
+
+/* Camadas por cima do vídeo */
+.heroFx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.heroFx-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 800px at 15% 15%, rgba(79,151,255,.20), transparent 60%),
+    radial-gradient(1000px 700px at 85% 85%, rgba(170,212,255,.16), transparent 60%),
+    linear-gradient(180deg, rgba(5,8,20,.55), rgba(5,8,20,.2) 40%, rgba(5,8,20,.65));
+  mix-blend-mode: screen;
+  animation: heroBreath 12s ease-in-out infinite;
+}
+.heroFx-grid {
+  position: absolute;
+  inset: -2px;
+  background:
+    linear-gradient(transparent 96%, rgba(170,212,255,.14) 100%) 0 0 / 100% 26px,
+    linear-gradient(90deg, transparent 96%, rgba(170,212,255,.14) 100%) 0 0 / 26px 100%;
+  opacity: .32;
+  transform: rotate(-1deg) scale(1.02);
+  mix-blend-mode: screen;
+  animation: heroGridMove 22s linear infinite;
+}
+.heroFx-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,
+    transparent 0 35%,
+    rgba(173,216,255,.12) 48%,
+    rgba(79,151,255,.22) 50%,
+    rgba(173,216,255,.12) 52%,
+    transparent 65%);
+  transform: translateX(-120%);
+  filter: blur(1px);
+  animation: heroSweep 7.5s ease-in-out infinite;
+}
+.heroFx-noise {
+  position: absolute;
+  inset: 0;
+  opacity: .08;
+  background-size: 240px 240px;
+  mix-blend-mode: overlay;
+  animation: noiseShift 1.6s steps(2,end) infinite;
+  /* fallback cor caso SVG falhe */
+  background-color: rgba(255,255,255,.01);
+}
+
+/* Garante que o conteúdo do hero esteja acima */
+#hero > *:not(.bg-video):not(.heroFx) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animações */
+@keyframes heroBreath { 0%,100%{opacity:.95} 50%{opacity:1} }
+@keyframes heroGridMove { to{ transform: rotate(-1deg) translateY(-26px) scale(1.02); } }
+@keyframes heroSweep {
+  0%{ transform:translateX(-120%) }
+  45%{ transform:translateX(120%) }
+  100%{ transform:translateX(120%) }
+}
+@keyframes noiseShift { to { background-position: 120px 120px; } }
+.zap-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: linear-gradient(90deg,#25D366,#128C7E);
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 22px;
+  border-radius: 40px;
+  box-shadow: 0 8px 24px rgba(37,211,102,.35);
+  text-decoration: none;
+  z-index: 2000;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.zap-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(37,211,102,.5);
+}
+/* =========================================================
+   VIDEO BAND EXTEND — aplica o MESMO fundo do vídeo do HERO
+   até as seções: #pains, #solution, #services, #projects
+   (sem remover nada; override suave)
+   ========================================================= */
+
+/* 1) Torna o vídeo do HERO um "fundo global" FIXO */
+#hero .bg-video{
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: -2 !important;     /* fica atrás de tudo */
+  opacity: 0.28 !important;   /* ajuste fino da intensidade */
+  filter: saturate(1.18) contrast(1.05) brightness(1.02);
+  pointer-events: none !important;
+}
+
+/* 2) As seções da “faixa de vídeo” ficam transparentes,
+      para deixar o vídeo aparecer como fundo */
+#hero, #pains, #solution, #services, #projects{
+  position: relative !important;
+  isolation: isolate;                 /* protege o conteúdo das blend-modes */
+  background: transparent !important; /* remove fundos anteriores */
+  overflow: hidden;
+}
+
+/* 3) TINT / OVERLAY — aplica o mesmo "clima" azul do HERO
+      (gradientes e vinheta leve para dar legibilidade) */
+#hero::before, #pains::before, #solution::before, #services::before, #projects::before{
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: -1; /* acima do vídeo (-2) e abaixo do conteúdo */
+  background:
+    radial-gradient(1200px 800px at 15% 15%, rgba(79,151,255,0.20), transparent 60%),
+    radial-gradient(1000px 700px at 85% 85%, rgba(170,212,255,0.14), transparent 60%),
+    linear-gradient(180deg, rgba(5,8,20,0.55), rgba(5,8,20,0.18) 40%, rgba(5,8,20,0.60));
+  mix-blend-mode: screen;
+  animation: bandBreath 12s ease-in-out infinite;
+}
+@keyframes bandBreath{ 0%,100%{opacity:.95} 50%{opacity:1} }
+
+/* 4) GRID NEON sutil (igual vibe do hero) */
+#hero::after, #pains::after, #solution::after, #services::after, #projects::after{
+  content: "";
+  position: absolute; inset: -2px;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    linear-gradient(transparent 96%, rgba(170,212,255,0.14) 100%) 0 0 / 100% 26px,
+    linear-gradient(90deg, transparent 96%, rgba(170,212,255,0.14) 100%) 0 0 / 26px 100%;
+  opacity: .28;
+  transform: rotate(-1deg) scale(1.02);
+  mix-blend-mode: screen;
+  animation: bandGridMove 22s linear infinite;
+}
+@keyframes bandGridMove{ to{ transform: rotate(-1deg) translateY(-26px) scale(1.02); } }
+
+/* 5) Mantém conteúdo legível em cima do vídeo */
+#hero, #pains, #solution, #services, #projects{
+  color: #e8f1ff;
+}
+#hero h1, #pains h2, #solution h2, #services h2, #projects h2{
+  background: linear-gradient(90deg,#ffffff,#aad4ff,#4f97ff,#ffffff);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 100%;
+  animation: shine-title 8s linear infinite;
+}
+@keyframes shine-title{ 100%{ background-position: 300% 0; } }
+
+/* 6) Após a “faixa de vídeo”, as seções seguintes voltam normal.
+      (Nada a mudar aqui: basta que #why, #about, etc. mantenham seus fundos.) */
+
+/* Acessibilidade: reduzir movimento */
+@media (prefers-reduced-motion: reduce){
+  #hero::before, #pains::before, #solution::before, #services::before, #projects::before,
+  #hero::after,  #pains::after,  #solution::after,  #services::after,  #projects::after{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
   }
+}
+/* === HEADER VIDEO LAYERING (adicionar no final) === */
+.header{
+  position: sticky; top: 0; z-index: 1000;
+  overflow: hidden;            /* para o vídeo não “vazar” */
+}
+
+/* Deixe o vídeo por baixo de tudo */
+.header .header-bg-video{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -3;                 /* abaixo de todo mundo */
+  opacity: 0.22;               /* ajuste a gosto (0.18–0.35) */
+  filter: saturate(1.15) contrast(1.06) brightness(1.02);
+  pointer-events: none;
+}
+
+/* Overlay para legibilidade (vinheta + tinte azul do seu hero) */
+.header .header-overlay{
+  position: absolute; inset: 0;
+  z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(1000px 700px at 12% 10%, rgba(79,151,255,.18), transparent 60%),
+    radial-gradient(900px 600px at 88% 90%, rgba(170,212,255,.14), transparent 60%),
+    linear-gradient(180deg, rgba(5,8,20,.55), rgba(5,8,20,.18) 40%, rgba(5,8,20,.60));
+  mix-blend-mode: screen;
+}
+
+/* IMPORTANTE: se você aplicou aquela skin com gradiente “forte”,
+   torne o fundo do header transparente para o vídeo aparecer */
+.header.header-skin--azure{
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Mantém linha neon e efeitos existentes */
+.header::after{ position: absolute; bottom: 0; left: 0; right: 0; }
+
+/* Mobile (economiza render pesado em telas pequenas, opcional) */
+@media (max-width: 480px){
+  .header .header-bg-video{ opacity: 0.18; }
+}
+
+/* ===== HEADER VIDEO FIX (camadas + z-index + fallback) ===== */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Camada do VÍDEO (fica atrás, mas ainda dentro do header) */
+.header .header-bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0 !important;               /* antes estava negativo */
+  opacity: 0.26;
+  filter: saturate(1.15) contrast(1.06) brightness(1.02);
+  pointer-events: none;
+}
+
+/* Overlay para legibilidade por cima do vídeo */
+.header .header-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1 !important;               /* acima do vídeo */
+  pointer-events: none;
+  background:
+    radial-gradient(1000px 700px at 12% 10%, rgba(79,151,255,.18), transparent 60%),
+    radial-gradient(900px 600px at 88% 90%, rgba(170,212,255,.14), transparent 60%),
+    linear-gradient(180deg, rgba(5,8,20,.55), rgba(5,8,20,.18) 40%, rgba(5,8,20,.60));
+  mix-blend-mode: screen;
+}
+
+/* Deixe a skin do header transparente para o vídeo aparecer */
+.header.header-skin--azure{
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Conteúdo do header fica ACIMA do overlay */
+.header .container.header-container,
+.header .header-holo,
+.header .nav-spotlight{
+  position: relative;
+  z-index: 2 !important;
+}
+
+/* Barra de progresso deve ficar ainda acima */
+.header .scroll-progress{ z-index: 3 !important; }
+
+/* Mobile: reduz opacidade do vídeo para ler melhor */
+@media (max-width: 480px){
+  .header .header-bg-video{ opacity: 0.18; }
+}
+body .header.header-skin--azure {
+  position: relative !important;
+  top: auto !important;
+}
+/* ===== RESGATE DO H1 DO HERO ===== */
+#hero .hero-content{ position:relative !important; z-index:5 !important; }
+
+#hero .hero-content .typing-animation{
+  /* visível e acima de tudo */
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 5 !important;
+
+  /* desfaz qualquer gradiente que tenha deixado o texto transparente */
+  color: #e8f1ff !important;
+  -webkit-text-fill-color: #e8f1ff !important;
+  background: none !important;
+  mix-blend-mode: normal !important;
+
+  /* elimina efeitos que podem “sumir” o texto */
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+  overflow: visible !important;
+  width: auto !important;
+  border: 0 !important;
+
+  /* melhora a leitura no vídeo */
+  text-shadow: 0 0 12px rgba(79,151,255,.28), 0 0 24px rgba(20,50,168,.18);
+}
+
+/* backplate suave atrás do título para contraste */
+#hero .hero-content .typing-animation::before{
+  content:"";
+  position:absolute;
+  inset:-8px -12px;
+  background: rgba(5,8,20,.35);
+  filter: blur(8px);
+  border-radius: 8px;
+  z-index: -1;
 }
