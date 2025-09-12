@@ -6,29 +6,6 @@
   <meta name="description" content="RafferTec oferece automação inteligente com Python, Excel, Power BI e APIs para otimizar processos empresariais.">
   <meta name="keywords" content="automação, Python, Excel, Power BI, chatbots, APIs, RafferTec">
   <meta name="author" content="RafferTec">
-
-  <!-- Open Graph (quando compartilha no WhatsApp, Facebook etc) -->
-  <meta property="og:title" content="RafferTec | Automação Inteligente">
-  <meta property="og:description" content="Soluções em automação com Python, Excel, Power BI e APIs.">
-  <meta property="og:image" content="https://seusite.com/assets/logo.png">
-  <meta property="og:url" content="https://seusite.com">
-
-  <!-- Título que aparece na guia -->
-  <title>RafferTec | Automação Inteligente e Soluções Tecnológicas</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="assets/R.png" type="image/png">
-  <!-- Opcional para compatibilidade máxima -->
-  <link rel="shortcut icon" href="assets/R.ico" type="image/x-icon">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
-</head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="RafferTec oferece automação inteligente com Python, Excel, Power BI e APIs para otimizar processos empresariais.">
-  <meta name="keywords" content="automação, Python, Excel, Power BI, chatbots, APIs, RafferTec">
-  <meta name="author" content="RafferTec">
   <meta property="og:title" content="RafferTec | Automação Inteligente">
   <meta property="og:description" content="Soluções em automação com Python, Excel, Power BI e APIs.">
   <meta property="og:image" content="https://seusite.com/assets/logo.png">
@@ -54,51 +31,30 @@
   </script>
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Estilo mínimo para o fundo tecnológico -->
+  <style>
+    #tech-bg{
+      position: fixed; inset: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(79,151,255,0.08), transparent 60%),
+                  radial-gradient(1000px 700px at 80% 90%, rgba(170,212,255,0.06), transparent 60%),
+                  #05070f;
+    }
+  </style>
 </head>
-  <script>
-  (function () {
-    const header = document.querySelector('.header');
-    if (!header) return;
-
-    let lastY = window.scrollY || 0;
-    const upShowDelta = 6;    // sensibilidade pra mostrar ao subir
-    const downHideDelta = 6;  // sensibilidade pra esconder ao descer
-    const minStart = 10;      // ignora micro rolagens no topo
-
-    window.addEventListener('scroll', function () {
-      const y = window.scrollY || 0;
-      const dy = y - lastY;
-
-      // Só aplicamos o auto-hide no mobile (mesmo breakpoint do CSS)
-      const isMobile = window.matchMedia('(max-width: 900px)').matches;
-      if (!isMobile) {
-        header.classList.remove('auto-hide');
-        lastY = y;
-        return;
-      }
-
-      // Mantém seu shrink (se já existir)
-      if (y > 50) header.classList.add('shrink');
-      else        header.classList.remove('shrink');
-
-      // Auto-hide: desce = esconde, sobe = mostra
-      if (y > minStart) {
-        if (dy > downHideDelta) {
-          header.classList.add('auto-hide');    // esconder
-        } else if (dy < -upShowDelta) {
-          header.classList.remove('auto-hide'); // mostrar
-        }
-      } else {
-        header.classList.remove('auto-hide');   // no topo sempre visível
-      }
-
-      lastY = y;
-    }, { passive: true });
-  })();
-</script>
 <body>
 
-<header class="header" id="header">
+<!-- Fundo tecnológico -->
+<canvas id="tech-bg" aria-hidden="true"></canvas>
+
+<header class="header header-skin--azure" id="header">
+  <!-- Holograma e progress bar -->
+  <div class="header-holo"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="nav-spotlight" aria-hidden="true"></div>
+
   <div class="container header-container">
     <a href="#" class="logo" aria-label="Logo RafferTec">
       <img src="assets/logo.png" alt="Logo RafferTec" class="logo-img" />
@@ -107,7 +63,6 @@
       <ul class="nav-list">
         <li><a href="#hero">Início</a></li>
         <li><a href="#services">Serviços</a></li>
-        <li><a href="#projects">Projetos</a></li>
         <li><a href="#why">Por que Automatizar?</a></li>
         <li><a href="#about">Sobre Nós</a></li>
         <li><a href="#contact">Contato</a></li>
@@ -119,42 +74,201 @@
   </div>
 </header>
 
-<main>
-  <!-- HERO -->
-  <section id="hero" class="hero-section">
-    <div class="container hero-grid">
-      <!-- Mascote (imagem com balão) -->
-      <div class="mascote">
-        <img src="assets/personagem.png" alt="Mascote RafferTec" class="mascote-img" />
-      </div>
 
-      <!-- Texto -->
-      <div class="hero-content">
-        <h1 class="fade-in">Automação que Transforma seu Negócio</h1>
-        <p class="fade-in delay-1">
-          Soluções inteligentes em Python, Java, Excel, Microsoft Office e Robôs para otimizar seus processos.
-        </p>
-        <a 
-          href="https://wa.me/5511988949040?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
-          target="_blank" rel="noopener noreferrer"
-          class="btn btn-primary gradient-btn fade-in delay-2"
-        >Solicitar Orçamento</a>
+<main>
+<!-- HERO -->
+<section id="hero" class="hero-section impact-strong">
+  <!-- Vídeo de fundo -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="assets/tech-bg.mp4" type="video/mp4">
+  </video>
+  <!-- OVERLAYS DO HERO (não removem nada do que já existe) -->
+<div class="heroFx">
+  <div class="heroFx-gradient"></div>
+  <div class="heroFx-grid"></div>
+  <div class="heroFx-sweep"></div>
+  <div class="heroFx-noise"></div>
+</div>
+
+
+  <div class="container hero-grid">
+    <!-- Mascote -->
+    <div class="mascote">
+      <img src="assets/personagem.png" alt="Mascote RafferTec" class="mascote-img" loading="lazy" />
+    </div>
+
+    <!-- Texto -->
+    <div class="hero-content">
+      <h1 class="typing-animation">Automação e Sites</h1>
+      <p>
+        Scripts, robôs e websites rápidos para cortar tarefas manuais e aumentar vendas — sem dor de cabeça.
+      </p>
+
+      <div class="cta-wrap" style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="https://wa.me/5511988949040?text=Ol%C3%A1!%20Quero%20um%20diagn%C3%B3stico%20gratuito."
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary gradient-btn magnet">Diagnóstico Gratuito</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- DORES DO CLIENTE -->
+  <section id="pains" class="fade-up">
+    <div class="container">
+      <h2>Está passando por isso?</h2>
+      <div class="cards">
+        <article class="card gradient-bg">
+          <i data-feather="clock"></i>
+          <h3>Horas perdidas em tarefas repetitivas</h3>
+          <p>Planilhas, copiando e colando dados, conferindo manualmente... isso rouba seu dia.</p>
+        </article>
+        <article class="card gradient-bg">
+          <i data-feather="alert-triangle"></i>
+          <h3>Erros que custam caro</h3>
+          <p>Notas erradas, conciliações falhas, respostas atrasadas — tudo por processos manuais.</p>
+        </article>
+        <article class="card gradient-bg">
+          <i data-feather="message-circle"></i>
+          <h3>Demora no atendimento</h3>
+          <p>Leads esfriam. Clientes vão embora. Atendimento precisa ser 24/7 e organizado.</p>
+        </article>
+      </div>
+      <div style="margin-top:18px;">
+        <a class="btn btn-primary gradient-btn magnet"
+           href="https://wa.me/5511988949040?text=Quero%20resolver%20essas%20dores%20com%20automa%C3%A7%C3%A3o."
+           target="_blank" rel="noopener">Resolver agora no WhatsApp</a>
       </div>
     </div>
   </section>
+
+  <!-- NOSSA SOLUÇÃO -->
+  <section id="solution" class="fade-up">
+    <div class="container">
+      <h2>Como a RafferTec resolve</h2>
+      <div class="cards">
+        <article class="card gradient-bg">
+          <i data-feather="cpu"></i>
+          <h3>Integração & Automação</h3>
+          <p>APIs, bots e scripts Python que conectam sistemas e executam rotinas sozinhos.</p>
+        </article>
+        <article class="card gradient-bg">
+          <i data-feather="bar-chart-2"></i>
+          <h3>Clareza nos Dados</h3>
+          <p>Dashboards e relatórios automáticos para decisões em minutos, não horas.</p>
+        </article>
+        <article class="card gradient-bg">
+          <i data-feather="smartphone"></i>
+          <h3>Atendimento que converte</h3>
+          <p>Robôs para WhatsApp/Instagram/Site com linguagem natural e fluxos eficazes.</p>
+        </article>
+      </div>
+      <div style="margin-top:18px;">
+        <a class="btn btn-primary gradient-btn magnet"
+           href="https://wa.me/5511988949040?text=Quero%20aplicar%20isso%20no%20meu%20neg%C3%B3cio."
+           target="_blank" rel="noopener">Aplicar no meu negócio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL (depoimentos curtos) -->
+  <section id="social-proof" class="fade-up">
+    <div class="container">
+      <h2>Resultados que falam por si</h2>
+      <div class="cards">
+        <article class="card gradient-bg">
+          <p>“Reduzimos 4h/dia de rotina manual com automações da RafferTec.”</p>
+          <strong>— Maria S., Finanças</strong>
+        </article>
+        <article class="card gradient-bg">
+          <p>“O novo fluxo de atendimento dobrou os leads em 30 dias.”</p>
+          <strong>— João P., E-commerce</strong>
+        </article>
+        <article class="card gradient-bg">
+          <p>“Site rápido + BI = decisões em minutos e mais vendas.”</p>
+          <strong>— Camila R., Serviços</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA DIRETA -->
+  <section id="offer" class="fade-up">
+    <div class="container" style="text-align:center;">
+      <h2>Diagnóstico Gratuito Hoje</h2>
+      <p>Descubra onde sua empresa perde tempo e como automatizar para ganhar eficiência já.</p>
+      <a class="btn btn-primary gradient-btn magnet"
+         href="https://wa.me/5511988949040?text=Quero%20meu%20diagn%C3%B3stico%20gratuito."
+         target="_blank" rel="noopener">🚀 Quero meu diagnóstico no WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- CHAMADA FINAL -->
+  <section id="final-cta" class="fade-up">
+    <div class="container" style="text-align:center;">
+      <h2>Pronto para começar?</h2>
+      <p>Cada dia sem automação é dinheiro e tempo indo embora. Vamos destravar seu crescimento.</p>
+      <a class="btn btn-primary gradient-btn magnet"
+         href="https://wa.me/5511988949040?text=Vamos%20come%C3%A7ar%20minha%20automa%C3%A7%C3%A3o."
+         target="_blank" rel="noopener">💬 Falar agora no WhatsApp</a>
+    </div>
+  </section>
+
 
   <!-- SERVIÇOS -->
   <section id="services" class="services-section fade-up">
     <div class="container">
       <h2>Nossos Serviços</h2>
       <div class="cards">
-        <article class="card gradient-bg"><i data-feather="cpu"></i><h3>Automação com Python</h3><p>Scripts personalizados para automatizar tarefas repetitivas, integrar sistemas e aumentar produtividade.</p></article>
-        <article class="card gradient-bg"><i data-feather="file-text"></i><h3>Excel Inteligente</h3><p>Planilhas dinâmicas com VBA, análise automatizada e integração com APIs para controle total.</p></article>
-        <article class="card gradient-bg"><i data-feather="bar-chart-2"></i><h3>Dashboards Power BI</h3><p>Visualização clara e interativa dos seus dados para decisões rápidas e eficientes.</p></article>
-        <article class="card gradient-bg"><i data-feather="settings"></i><h3>Automação de Processos Empresariais</h3><p>Automatizamos fluxos de trabalho, integração de sistemas, rotinas administrativas e operacionais.</p></article>
-        <article class="card gradient-bg"><i data-feather="message-circle"></i><h3>Robôs de Atendimento</h3><p>Desenvolvimento de bots para WhatsApp, Instagram, sites e integração com APIs de comunicação.</p></article>
-        <article class="card gradient-bg"><i data-feather="mail"></i><h3>Automação de E-mails</h3><p>Envio automático de e-mails, relatórios, notificações e integração com plataformas.</p></article>
-        <article class="card gradient-bg"><i data-feather="share-2"></i><h3>Integração de APIs</h3><p>Conectamos sistemas, plataformas e bancos de dados para automação total dos seus processos.</p></article>
+        <article class="card gradient-bg">
+          <i data-feather="cpu"></i>
+          <h3>Automação com Python</h3>
+          <p>Reduza 80% do tempo em rotinas operacionais com integrações e robôs sob medida.</p>
+        </article>
+
+        <article class="card gradient-bg">
+          <i data-feather="file-text"></i>
+          <h3>Excel Inteligente</h3>
+          <p>Planilhas dinâmicas com VBA, análise automatizada e integração com APIs para controle total.</p>
+        </article>
+
+        <article class="card gradient-bg">
+          <i data-feather="bar-chart-2"></i>
+          <h3>Dashboards Power BI</h3>
+          <p>Decisões em minutos: indicadores claros, alertas e atualização automática.</p>
+        </article>
+
+        <article class="card gradient-bg">
+          <i data-feather="settings"></i>
+          <h3>Automação de Processos Empresariais</h3>
+          <p>Orquestração ponta a ponta: do formulário ao ERP, zero retrabalho.</p>
+        </article>
+
+        <article class="card gradient-bg">
+          <i data-feather="message-circle"></i>
+          <h3>Robôs de Atendimento</h3>
+          <p>WhatsApp, Instagram e site: atendimento 24/7 com linguagem natural.</p>
+        </article>
+
+        <article class="card gradient-bg">
+          <i data-feather="mail"></i>
+          <h3>Automação de E-mails</h3>
+          <p>Envio de relatórios, notificações e fluxos de aprovação totalmente automatizados.</p>
+        </article>
+
+        <article class="card gradient-bg">
+          <i data-feather="share-2"></i>
+          <h3>Integração de APIs</h3>
+          <p>Conecte plataformas, bancos de dados e serviços em um único fluxo.</p>
+        </article>
+
+        <!-- Novo Serviço -->
+        <article class="card gradient-bg">
+          <i data-feather="monitor"></i>
+          <h3>Criação de Sites</h3>
+          <p>Sites rápidos (Lighthouse 90+), SEO técnico e design focado em conversão.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -164,9 +278,18 @@
     <div class="container">
       <h2>Projetos em Destaque</h2>
       <div class="projects-list">
-        <article class="project-card gradient-bg"><h3>Conciliação Bancária</h3><p>Integra arquivos OFX e Excel para conciliar pagamentos automaticamente.</p></article>
-        <article class="project-card gradient-bg"><h3>Gerador Automático de Contratos</h3><p>Sistema para criar contratos personalizados de forma rápida e ágil.</p></article>
-        <article class="project-card gradient-bg"><h3>Robô de Atendimento</h3><p>Automação para WhatsApp e Instagram usando APIs.</p></article>
+        <article class="project-card gradient-bg">
+          <h3>Conciliação Bancária</h3>
+          <p>Integra arquivos OFX e Excel para conciliar pagamentos automaticamente.</p>
+        </article>
+        <article class="project-card gradient-bg">
+          <h3>Gerador Automático de Contratos</h3>
+          <p>Sistema para criar contratos personalizados de forma rápida e ágil.</p>
+        </article>
+        <article class="project-card gradient-bg">
+          <h3>Robô de Atendimento</h3>
+          <p>Automação para WhatsApp e Instagram usando APIs.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -183,8 +306,8 @@
         Cada minuto que você perde com tarefas manuais poderia estar sendo investido no crescimento do seu negócio. 
         Não espere para modernizar sua rotina — quanto antes começar, mais rápido verá os resultados.
       </p>
-      <a href="https://wa.me/5511988949040?text=Quero%20saber%20como%20automatizar%20minha%20empresa!" 
-         target="_blank" rel="noopener noreferrer" class="btn btn-primary gradient-btn">
+      <a href="https://wa.me/5511982672795?text=Quero%20saber%20como%20automatizar%20minha%20empresa!" 
+         target="_blank" rel="noopener noreferrer" class="btn btn-primary gradient-btn magnet">
         Falar com um especialista
       </a>
     </div>
@@ -207,140 +330,107 @@
           </p>
         </div>
         <div class="about-photo">
-          <img src="assets/rafa.jpg" alt="Foto de Rafael Fernandes - Fundador da RafferTec">
+          <img src="assets/rafa.jpg" alt="Foto de Rafael Fernandes - Fundador da RafferTec" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
- <!-- CONTATO (HUB) -->
-<section id="contact" class="contact-hub fade-up delay-2">
-  <style>
-    /* ===== Contato: 2 cards lado a lado ===== */
-    #contact .contact-actions {
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      gap: 2rem;
-      flex-wrap: nowrap;
-      margin: 2rem auto 0;
-      max-width: 900px;
-    }
-
-    /* Quando a tela for menor que 700px: empilha os cards */
-    @media (max-width: 700px) {
+  <!-- CONTATO (HUB) -->
+  <section id="contact" class="contact-hub fade-up delay-2">
+    <style>
+      /* Mantém os 2 cards lado a lado sem exageros de largura */
       #contact .contact-actions {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 18px !important;
+        margin: 2rem auto 0 !important;
+        max-width: 900px !important;
       }
-      #contact .contact-card {
-        width: 100%;
-        max-width: 320px;
-      }
-    }
+      #contact .contact-card { min-width: unset !important; max-width: unset !important; height: auto !important; }
+    </style>
 
-    #contact .contact-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      padding: 1rem 1.5rem;
-      min-width: 280px;
-      max-width: 380px;
-      text-align: left;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
+    <div class="container">
+      <h2>Fale com a RafferTec</h2>
+      <p class="contact-sub">Tire suas dúvidas e receba uma proposta em minutos.</p>
 
-    #contact .contact-card:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.05);
-    }
-  </style>
+      <div class="contact-actions">
+        <!-- WhatsApp -->
+        <a class="contact-card wa" 
+          href="https://wa.me/5511988949040?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20processo.%20Pode%20me%20ajudar%3F" 
+          target="_blank" rel="noopener noreferrer">
+          <img src="assets/whatsapp-logo.png" alt="WhatsApp" width="50" height="50" loading="lazy">
+          <div>
+            <strong>WhatsApp</strong>
+            <span>Resposta rápida • 08h às 19h</span>
+          </div>
+        </a>
 
-  <div class="container">
-    <h2>Fale com a RafferTec</h2>
-    <p class="contact-sub">Tire suas dúvidas e receba uma proposta em minutos.</p>
+        <!-- E-mail -->
+        <a class="contact-card mail" 
+          href="mailto:raffertecnologia@gmail.com?subject=Projeto%20de%20automa%C3%A7%C3%A3o%20-%20RafferTec&body=Ol%C3%A1%20RafferTec%2C%0A%0AQuero%20automatizar%20o%20seguinte%20processo%3A%0A-%20%0A%0AOr%C3%A7amento%20para%3A%20%0A%0AObrigado!">
+          <img src="assets/enail.png" alt="E-mail" width="50" height="50" loading="lazy">
+          <div>
+            <strong>E-mail</strong>
+            <span>raffertecnologia@gmail.com</span>
+          </div>
+        </a>
+      </div>
 
-    <div class="contact-actions">
-      <!-- WhatsApp -->
-      <a class="contact-card wa" 
-         href="https://wa.me/5511988949040?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20processo.%20Pode%20me%20ajudar%3F" 
-         target="_blank" rel="noopener noreferrer">
-        <img src="assets/whatsapp-logo.png" alt="WhatsApp" width="50" height="50">
-        <div>
-          <strong>WhatsApp</strong>
-          <span>Resposta rápida • 08h às 19h</span>
-        </div>
-      </a>
+      <!-- Prova/segurança -->
+      <ul class="contact-bullets">
+        <li><i data-feather="check-circle"></i> Sem compromisso: diagnóstico grátis</li>
+        <li><i data-feather="shield"></i> Privacidade garantida • Dados protegidos</li>
+        <li><i data-feather="zap"></i> Do simples ao complexo: começamos já</li>
+      </ul>
 
-      <!-- E-mail -->
-      <a class="contact-card mail" 
-         href="mailto:raffertecnologia@gmail.com?subject=Projeto%20de%20automa%C3%A7%C3%A3o%20-%20RafferTec&body=Ol%C3%A1%20RafferTec%2C%0A%0AQuero%20automatizar%20o%20seguinte%20processo%3A%0A-%20%0A%0AOr%C3%A7amento%20para%3A%20%0A%0AObrigado!">
-        <img src="assets/enail.png" alt="E-mail" width="50" height="50">
-        <div>
-          <strong>E-mail</strong>
-          <span>raffertecnologia@gmail.com</span>
-        </div>
-      </a>
+      <!-- FAQ sem JS -->
+      <div class="contact-faq">
+        <details>
+          <summary>Como funciona o atendimento?</summary>
+          <p>Você chama no WhatsApp ou mande um email. Entendemos seu processo, sugerimos a melhor automação e enviamos orçamento claro.</p>
+        </details>
+        <details>
+          <summary>Vocês fazem contratos e nota?</summary>
+          <p>Sim. Emitimos proposta, contrato e NFe quando necessário.</p>
+        </details>
+        <details>
+          <summary>Qual o prazo médio?</summary>
+          <p>Automação simples: 2–5 dias úteis. Projetos maiores: definimos um cronograma com marcos.</p>
+        </details>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-    <!-- Prova/segurança -->
-    <ul class="contact-bullets">
-      <li><i data-feather="check-circle"></i> Sem compromisso: diagnóstico grátis</li>
-      <li><i data-feather="shield"></i> Privacidade garantida • Dados protegidos</li>
-      <li><i data-feather="zap"></i> Do simples ao complexo: começamos já</li>
-    </ul>
-
-    <!-- FAQ sem JS -->
-    <div class="contact-faq">
-      <details>
-        <summary>Como funciona o atendimento?</summary>
-        <p>Você chama no WhatsApp ou mande um email. Entendemos seu processo, sugerimos a melhor automação e enviamos orçamento claro.</p>
-      </details>
-      <details>
-        <summary>Vocês fazem contratos e nota?</summary>
-        <p>Sim. Emitimos proposta, contrato e NFe quando necessário.</p>
-      </details>
-      <details>
-        <summary>Qual o prazo médio?</summary>
-        <p>Automação simples: 2–5 dias úteis. Projetos maiores: definimos um cronograma com marcos.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER (adicionado de volta) -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <p>&copy; 2025 RafferTec - Tecnologia com Eficiência e Inovação.</p>
     <div class="social-icons">
       <a href="https://www.instagram.com/raffertec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <img src="assets/insta-logo.png" alt="Instagram" style="width:24px; height:24px;" />
+        <img src="assets/insta-logo.png" alt="Instagram" style="width:24px; height:24px;" loading="lazy" />
       </a>
       <a href="https://wa.me/5511988949040?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-        <img src="assets/whatsapp-logo.png" alt="WhatsApp" style="width:24px; height:24px;" />
+        <img src="assets/whatsapp-logo.png" alt="WhatsApp" style="width:24px; height:24px;" loading="lazy" />
       </a>
     </div>
   </div>
 </footer>
 
-<!-- Botão flutuante WhatsApp (adicionado de volta) -->
+<!-- Botão flutuante WhatsApp -->
 <a 
   href="https://wa.me/5511988949040?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." 
   target="_blank" 
   rel="noopener noreferrer" 
   class="whatsapp-float" 
   aria-label="Chamar no WhatsApp">
-  <img src="assets/whatsapp-logo.png" alt="WhatsApp" style="width:36px; height:36px;" />
+  <img src="assets/whatsapp-logo.png" alt="WhatsApp" style="width:36px; height:36px;" loading="lazy" />
 </a>
 
-<!-- Script final (feather + menu) -->
+<!-- Script final (feather + menu + efeitos avançados) -->
 <script>
+  // Feather + menu (mantém)
   feather.replace();
 
   const navToggle = document.getElementById('nav-toggle');
@@ -352,41 +442,210 @@
       navToggle.setAttribute('aria-label', isExpanded ? 'Fechar menu' : 'Abrir menu');
     });
   }
-</script>
-<script>
-  window.addEventListener("scroll", function() {
-    const header = document.querySelector("header");
-    if (window.scrollY > 50) {   // quando rolar mais que 50px
-      header.classList.add("shrink");
-    } else {
-      header.classList.remove("shrink");
+
+  // ==== Partículas conectadas (leve, sem lib) ====
+  (function(){
+    const c = document.getElementById('tech-bg');
+    if(!c) return;
+    const ctx = c.getContext('2d');
+    let W,H, DPR = Math.max(1, Math.floor(window.devicePixelRatio||1));
+    let points=[];
+    function resize(){
+      W = c.width = innerWidth * DPR;
+      H = c.height = innerHeight * DPR;
+      c.style.width = innerWidth+'px';
+      c.style.height = innerHeight+'px';
+      const density = Math.floor((innerWidth*innerHeight)/14000);
+      points = Array.from({length: density}, () => ({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.25*DPR,
+        vy: (Math.random()-0.5)*0.25*DPR
+      }));
+    }
+    window.addEventListener('resize', resize, {passive:true});
+    resize();
+
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      // Move + desenha pontos
+      ctx.fillStyle = 'rgba(173, 216, 255, 0.8)';
+      for(const p of points){
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p>H) p.vy*=-1;
+        if(p.y<0||p.y>H) p.vy*=-1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 1.5*DPR, 0, Math.PI*2); ctx.fill();
+      }
+      // Ligações
+      for(let i=0;i<points.length;i++){
+        for(let j=i+1;j<points.length;j++){
+          const dx=points[i].x-points[j].x, dy=points[i].y-points[j].y;
+          const d2 = dx*dx+dy*dy, max = 140*DPR, max2=max*max;
+          if(d2<max2){
+            const a = 1 - (d2/max2);
+            ctx.strokeStyle = `rgba(170,212,255,${0.18*a})`;
+            ctx.lineWidth = DPR*0.6*a;
+            ctx.beginPath(); ctx.moveTo(points[i].x, points[i].y); ctx.lineTo(points[j].x, points[j].y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  // ==== Reveal no scroll (usa .fade-in/.fade-up/.card/.project-card) ====
+  (function(){
+    const els = document.querySelectorAll('.fade-in, .fade-up, .card, .project-card');
+    if(!('IntersectionObserver' in window) || !els.length) return;
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('active'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'-10% 0px -10% 0px', threshold: 0.05});
+    els.forEach(el=>io.observe(el));
+  })();
+
+  // ==== Tilt 3D em cards ====
+  (function(){
+    const cards = document.querySelectorAll('.card, .project-card');
+    const clamp = (n,min,max)=>Math.max(min,Math.min(max,n));
+    cards.forEach(card=>{
+      let rID=null;
+      function onMove(e){
+        const b = card.getBoundingClientRect();
+        const x = (e.clientX - b.left)/b.width;
+        const y = (e.clientY - b.top)/b.height;
+        const rx = clamp((0.5 - y)*12, -12, 12);
+        const ry = clamp((x - 0.5)*18, -18, 18);
+        cancelAnimationFrame(rID);
+        rID = requestAnimationFrame(()=> card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)` );
+      }
+      function reset(){ card.style.transform = 'translateZ(0)'; }
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', reset);
+    });
+  })();
+
+  // ==== Botões magnéticos (.magnet) ====
+  (function(){
+    const mags = document.querySelectorAll('.magnet');
+    mags.forEach(btn=>{
+      const strength = 20;
+      let af;
+      function onMove(e){
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width/2);
+        const y = e.clientY - (r.top  + r.height/2);
+        cancelAnimationFrame(af);
+        af = requestAnimationFrame(()=>{
+          btn.style.transform = `translate(${x/strength}px, ${y/strength}px)`;
+        });
+      }
+      function reset(){ btn.style.transform = 'translate(0,0)'; }
+      btn.addEventListener('mousemove', onMove);
+      btn.addEventListener('mouseleave', reset);
+    });
+  })();
+  // Scroll effect para header
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    document.body.classList.add("scrolled");
+  } else {
+    document.body.classList.remove("scrolled");
+  }
+});
+// ===== Scroll progress
+(function(){
+  const bar = document.querySelector('.scroll-progress');
+  if(!bar) return;
+  const onScroll = () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (scrolled * 100).toFixed(2) + '%';
+    document.body.classList.toggle('scrolled', window.scrollY > 50);
+  };
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
+// ===== Spotlight do nav (segue o mouse)
+(function(){
+  const nav = document.querySelector('.nav');
+  const spot = document.querySelector('.nav-spotlight');
+  if(!nav || !spot) return;
+  nav.addEventListener('mousemove', (e)=>{
+    const r = nav.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    spot.style.setProperty('--x', x+'px');
+    spot.style.setProperty('--y', y+'px');
+    // passa coords aos links p/ radial interno
+    const link = e.target.closest('.nav-list a');
+    if(link){
+      const lr = link.getBoundingClientRect();
+      const mx = (e.clientX - lr.left) + 'px';
+      link.style.setProperty('--mx', mx);
     }
   });
-</script>
-  <script>
-  (function () {
-    const header = document.querySelector('.header');
-    if (!header) return;
+})();
 
-    function setHeaderOffset() {
-      const h = header.offsetHeight || 0;
-      document.documentElement.style.setProperty('--header-h', h + 'px');
+// ===== Sub-linha que marca link ativo/hover e seção atual
+(function(){
+  const list = document.querySelector('.nav-list');
+  if(!list) return;
+  // cria underline
+  let underline = document.createElement('span');
+  underline.className = 'nav-underline';
+  list.appendChild(underline);
+
+  const links = [...list.querySelectorAll('a[href^="#"]')];
+  function moveUnderline(el){
+    if(!el) return;
+    const r = el.getBoundingClientRect();
+    const pr = list.getBoundingClientRect();
+    underline.style.width = r.width+'px';
+    underline.style.left  = (r.left - pr.left) + 'px';
+  }
+
+  // hover segue o mouse
+  links.forEach(a=>{
+    a.addEventListener('mouseenter', ()=> moveUnderline(a));
+  });
+  list.addEventListener('mouseleave', ()=> {
+    // volta para o ativo atual (pela seção)
+    const active = getActiveLink();
+    moveUnderline(active);
+  });
+
+  // observa seções pra marcar ativo
+  const sects = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  const io = new IntersectionObserver((entries)=>{
+    // pega a seção mais visível
+    let topMost = null, maxRatio = 0;
+    entries.forEach(e=>{
+      if(e.isIntersecting && e.intersectionRatio > maxRatio){
+        maxRatio = e.intersectionRatio; topMost = e.target;
+      }
+    });
+    if(topMost){
+      const link = links.find(l => l.getAttribute('href') === '#'+topMost.id);
+      if(link){ moveUnderline(link); }
     }
+  }, {rootMargin:'-20% 0px -70% 0px', threshold:[0.1, 0.25, 0.5, 0.75]});
+  sects.forEach(s => io.observe(s));
 
-    // Atualiza na carga, redimensionamento e após mudanças (shrink/auto-hide)
-    window.addEventListener('load', setHeaderOffset, { once: true });
-    window.addEventListener('resize', setHeaderOffset);
-    document.addEventListener('readystatechange', setHeaderOffset);
-    // Se você já tem scroll handlers (shrink/auto-hide), chame isto no fim deles:
-    window.addEventListener('scroll', () => { setHeaderOffset(); }, { passive: true });
-  })();
+  function getActiveLink(){
+    // fallback: o 1º link
+    return links.find(l => l.getAttribute('href') === location.hash) || links[0];
+  }
+  // posição inicial
+  requestAnimationFrame(()=> moveUnderline(getActiveLink()));
+})();
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
