@@ -2444,3 +2444,63 @@ body .header.header-skin--azure {
   border-radius: 8px;
   z-index: -1;
 }
+/* ===== MOBILE TUNE: HERO + VIDEO ===== */
+@media (max-width: 600px){
+  /* Hero ocupa viewport útil e respira melhor */
+  #hero{
+    min-height: 100dvh;            /* usa a altura real do device */
+    padding: 64px 0 40px !important;
+  }
+
+  /* Empilha conteúdo e controla gaps */
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1fr !important;
+    align-items: center;
+    gap: 18px !important;
+  }
+
+  /* Mascote menor e centrada */
+  .mascote{ display:flex; justify-content:center; }
+  .mascote-img{
+    max-width: min(56vw, 240px);
+    max-height: 42vh;
+    height: auto;
+    opacity: .95;
+  }
+
+  /* Título e parágrafo responsivos (sem estourar) */
+  #hero .hero-content h1,
+  #hero .hero-content .typing-animation{
+    font-size: clamp(1.6rem, 6vw + .6rem, 2.3rem) !important;
+    line-height: 1.15 !important;
+    color: #e8f1ff !important;
+    -webkit-text-fill-color: #e8f1ff !important;
+    background: none !important;
+    text-align: center;
+  }
+  #hero .hero-content p{
+    font-size: clamp(1rem, 1.6vw + .6rem, 1.1rem);
+    line-height: 1.55;
+    opacity: .95;
+    text-align: center;
+  }
+
+  /* Botões mais confortáveis no polegar */
+  .cta-wrap{ justify-content: center; }
+  .cta-wrap .btn{
+    padding: 12px 18px;
+    font-size: 0.98rem;
+  }
+
+  /* Vídeo um pouco mais suave no mobile */
+  #hero .bg-video{ opacity: .22 !important; }
+}
+
+/* Header sempre com altura “real” do conteúdo e vídeo cobrindo */
+.header{ min-height: 64px; }
+.header .header-bg-video{
+  min-height: 100%;
+  object-fit: cover;
+}
+
