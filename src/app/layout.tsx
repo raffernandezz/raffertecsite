@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://raffertec.com.br"),
+  metadataBase: new URL("https://raffertec.com"),
   title: "RafferTec | Landing Pages que Convertem",
   description:
     "Criamos landing pages profissionais e desenvolvemos aplicativos, sistemas web, automações e soluções digitais para pequenos e médios negócios.",
