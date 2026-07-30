@@ -10,16 +10,22 @@ import {
   DeviceFrame,
   type LandingVariant,
 } from "@/components/ui/LandingMockup";
+import {
+  RestaurantConceptCardPreview,
+  RestaurantConceptModalGallery,
+} from "@/components/ui/RestaurantConceptShowcase";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/FadeIn";
 
 const possibilities: {
   title: string;
   variant: LandingVariant;
   features: string[];
+  portfolio?: boolean;
 }[] = [
   {
     title: "Landing page para restaurante",
     variant: "restaurant",
+    portfolio: true,
     features: [
       "Apresentação do negócio",
       "Cardápio",
@@ -55,10 +61,12 @@ const possibilities: {
 function DemoModal({
   variant,
   title,
+  portfolio,
   onClose,
 }: {
   variant: LandingVariant;
   title: string;
+  portfolio?: boolean;
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -97,7 +105,7 @@ function DemoModal({
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.97, opacity: 0, y: 16 }}
         transition={{ duration: 0.25 }}
-        className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
+        className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -138,14 +146,20 @@ function DemoModal({
           </button>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-8 rounded-xl bg-surface px-4 py-8 sm:flex-row sm:px-10 sm:py-10">
-          <DeviceFrame type="laptop" className="w-full max-w-md">
-            <LandingScreen variant={variant} density="modal" />
-          </DeviceFrame>
-          <DeviceFrame type="phone" className="w-[100px] shrink-0 sm:w-[110px]">
-            <LandingScreen variant={variant} compact density="modal" />
-          </DeviceFrame>
-        </div>
+        {portfolio && variant === "restaurant" ? (
+          <div className="rounded-xl bg-[#faf5ef] px-4 py-6 sm:px-6 sm:py-8">
+            <RestaurantConceptModalGallery />
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-8 rounded-xl bg-surface px-4 py-8 sm:flex-row sm:px-10 sm:py-10">
+            <DeviceFrame type="laptop" className="w-full max-w-md">
+              <LandingScreen variant={variant} density="modal" />
+            </DeviceFrame>
+            <DeviceFrame type="phone" className="w-[100px] shrink-0 sm:w-[110px]">
+              <LandingScreen variant={variant} compact density="modal" />
+            </DeviceFrame>
+          </div>
+        )}
 
         <p className="mt-6 text-center text-sm leading-relaxed text-muted">
           Demonstração visual de possibilidade de projeto. Não representa um
@@ -174,8 +188,12 @@ export function LandingPossibilities() {
           {possibilities.map((item) => (
             <StaggerItem key={item.title} className="h-full">
               <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 hover:border-gray-200 hover:shadow-md">
-                <div className="flex shrink-0 items-center justify-center bg-surface px-4 py-8 sm:px-5">
-                  <LandingMockup variant={item.variant} size="md" />
+                <div className="flex shrink-0 items-center justify-center bg-[#faf5ef] px-4 py-8 sm:px-5">
+                  {item.portfolio && item.variant === "restaurant" ? (
+                    <RestaurantConceptCardPreview />
+                  ) : (
+                    <LandingMockup variant={item.variant} size="md" />
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
@@ -217,6 +235,7 @@ export function LandingPossibilities() {
           <DemoModal
             variant={demo.variant}
             title={demo.title}
+            portfolio={demo.portfolio}
             onClose={() => setDemo(null)}
           />
         )}
