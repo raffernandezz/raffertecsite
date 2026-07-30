@@ -147,7 +147,7 @@ function DemoModal({
         </div>
 
         {portfolio && variant === "restaurant" ? (
-          <div className="rounded-xl bg-[#faf5ef] px-4 py-6 sm:px-6 sm:py-8">
+          <div className="rounded-xl bg-surface px-4 py-6 sm:px-6 sm:py-8">
             <RestaurantConceptModalGallery />
           </div>
         ) : (
@@ -188,7 +188,7 @@ export function LandingPossibilities() {
           {possibilities.map((item) => (
             <StaggerItem key={item.title} className="h-full">
               <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 hover:border-gray-200 hover:shadow-md">
-                <div className="flex shrink-0 items-center justify-center bg-[#faf5ef] px-4 py-8 sm:px-5">
+                <div className="flex min-h-[280px] shrink-0 items-center justify-center bg-surface px-4 py-8 sm:px-5">
                   {item.portfolio && item.variant === "restaurant" ? (
                     <RestaurantConceptCardPreview />
                   ) : (

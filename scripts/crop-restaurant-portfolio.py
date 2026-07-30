@@ -11,14 +11,15 @@ OUT.mkdir(parents=True, exist_ok=True)
 img = Image.open(SRC)
 w, h = img.size
 
+# Recortes focados no conteúdo das telas (sem bordas do mockup)
 crops = {
-    "desktop-hero": (0.24, 0.07, 0.99, 0.41),
-    "desktop-menu": (0.24, 0.41, 0.52, 0.69),
-    "desktop-reviews": (0.50, 0.41, 0.99, 0.69),
-    "mobile-hero": (0.02, 0.70, 0.26, 0.98),
-    "mobile-menu": (0.25, 0.70, 0.49, 0.98),
-    "mobile-reviews": (0.49, 0.70, 0.73, 0.98),
-    "mobile-nav": (0.72, 0.70, 0.98, 0.98),
+    "desktop-hero": (0.27, 0.11, 0.96, 0.39),
+    "desktop-menu": (0.27, 0.43, 0.50, 0.67),
+    "desktop-reviews": (0.52, 0.43, 0.96, 0.67),
+    "mobile-hero": (0.05, 0.72, 0.24, 0.96),
+    "mobile-menu": (0.27, 0.72, 0.47, 0.96),
+    "mobile-reviews": (0.52, 0.72, 0.71, 0.96),
+    "mobile-nav": (0.74, 0.72, 0.95, 0.96),
 }
 
 for name, (left, top, right, bottom) in crops.items():
@@ -26,35 +27,3 @@ for name, (left, top, right, bottom) in crops.items():
     cropped = img.crop(box)
     cropped.save(OUT / f"{name}.png", optimize=True)
     print(f"{name}: {cropped.size}")
-
-hero = Image.open(OUT / "desktop-hero.png")
-m1 = Image.open(OUT / "mobile-hero.png")
-m2 = Image.open(OUT / "mobile-menu.png")
-
-target_w = 560
-hero_resized = hero.resize(
-    (target_w, int(hero.height * target_w / hero.width)),
-    Image.Resampling.LANCZOS,
-)
-phone_w = 84
-m1_r = m1.resize(
-    (phone_w, int(m1.height * phone_w / m1.width)),
-    Image.Resampling.LANCZOS,
-)
-m2_r = m2.resize(
-    (phone_w, int(m2.height * phone_w / m2.width)),
-    Image.Resampling.LANCZOS,
-)
-
-composite = Image.new("RGB", (target_w, hero_resized.height), (250, 245, 238))
-composite.paste(hero_resized, (0, 0))
-composite.paste(
-    m1_r,
-    (target_w - phone_w * 2 - 24, hero_resized.height - m1_r.height - 8),
-)
-composite.paste(
-    m2_r,
-    (target_w - phone_w - 12, hero_resized.height - m2_r.height - 8),
-)
-composite.save(OUT / "card-preview.png", optimize=True)
-print(f"card-preview: {composite.size}")
