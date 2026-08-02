@@ -233,7 +233,7 @@ function DeviceFrame({ type, children, className }: DeviceFrameProps) {
             <div className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
             <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
           </div>
-          <div className="aspect-[16/10] overflow-hidden rounded-sm bg-white">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-white">
             {children}
           </div>
         </div>
@@ -245,7 +245,7 @@ function DeviceFrame({ type, children, className }: DeviceFrameProps) {
   return (
     <div className={className}>
       <div className="rounded-[1rem] border-[2.5px] border-gray-800 bg-gray-800 p-0.5 shadow-lg">
-        <div className="aspect-[9/16] w-full overflow-hidden rounded-[0.85rem] bg-white">
+        <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[0.85rem] bg-white">
           {children}
         </div>
       </div>
