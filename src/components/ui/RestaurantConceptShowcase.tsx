@@ -47,18 +47,18 @@ const mobileShots = [
 function ScreenImage({
   src,
   alt,
-  className,
+  fit = "cover",
 }: {
   src: string;
   alt: string;
-  className?: string;
+  fit?: "cover" | "contain";
 }) {
   return (
     <Image
       src={src}
       alt={alt}
       fill
-      className={`object-cover object-top ${className ?? ""}`}
+      className={fit === "contain" ? "object-contain object-top" : "object-cover object-top"}
       sizes="(max-width: 768px) 100vw, 400px"
     />
   );
@@ -83,7 +83,7 @@ function GalleryShot({
       <div
         className={`relative overflow-hidden rounded-lg border border-border bg-white shadow-sm ${aspectClass}`}
       >
-        <ScreenImage src={src} alt={alt} />
+        <ScreenImage src={src} alt={alt} fit="cover" />
       </div>
       <figcaption className="mt-2 text-center text-xs text-muted">
         {label}
@@ -92,29 +92,19 @@ function GalleryShot({
   );
 }
 
-/** Miniatura do card — mesmo padrão visual dos outros conceitos */
+/** Preview do card — imagem composta limpa (sem encaixar PNG dentro de outro mockup) */
 export function RestaurantConceptCardPreview() {
   return (
-    <div className="relative mx-auto flex w-full max-w-[300px] items-end justify-center">
-      <DeviceFrame type="laptop" className="relative z-10 w-full max-w-[300px]">
-        <div className="relative aspect-[16/10] w-full bg-white">
-          <ScreenImage
-            src={`${BASE}/desktop-hero.png`}
-            alt="Demonstração conceitual — landing page para restaurante"
-          />
-        </div>
-      </DeviceFrame>
-      <DeviceFrame
-        type="phone"
-        className="absolute -right-1 bottom-3 z-20 w-[96px] sm:-right-2"
-      >
-        <div className="relative aspect-[9/16] w-full bg-white">
-          <ScreenImage
-            src={`${BASE}/mobile-hero.png`}
-            alt="Demonstração mobile — restaurante"
-          />
-        </div>
-      </DeviceFrame>
+    <div className="relative mx-auto w-full max-w-[320px]">
+      <Image
+        src={`${BASE}/card-preview.png`}
+        alt="Demonstração conceitual — landing page para restaurante em notebook e celular"
+        width={900}
+        height={560}
+        className="h-auto w-full object-contain"
+        sizes="(max-width: 768px) 90vw, 320px"
+        priority={false}
+      />
     </div>
   );
 }
@@ -127,7 +117,16 @@ export function RestaurantConceptModalGallery() {
           Versão desktop
         </p>
         <div className="space-y-4">
-          <GalleryShot {...desktopShots[0]} aspect="desktop" />
+          <div className="flex justify-center rounded-xl bg-surface px-4 py-6 sm:px-8">
+            <DeviceFrame type="laptop" className="w-full max-w-lg">
+              <div className="relative h-full min-h-[180px] w-full">
+                <ScreenImage
+                  src={desktopShots[0].src}
+                  alt={desktopShots[0].alt}
+                />
+              </div>
+            </DeviceFrame>
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <GalleryShot {...desktopShots[1]} aspect="desktop" />
             <GalleryShot {...desktopShots[2]} aspect="desktop" />
@@ -141,7 +140,14 @@ export function RestaurantConceptModalGallery() {
         </p>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {mobileShots.map((shot) => (
-            <GalleryShot key={shot.src} {...shot} aspect="mobile" />
+            <div key={shot.src} className="flex flex-col items-center">
+              <DeviceFrame type="phone" className="w-full max-w-[120px]">
+                <div className="relative h-full min-h-[160px] w-full">
+                  <ScreenImage src={shot.src} alt={shot.alt} />
+                </div>
+              </DeviceFrame>
+              <p className="mt-2 text-center text-xs text-muted">{shot.label}</p>
+            </div>
           ))}
         </div>
       </div>
