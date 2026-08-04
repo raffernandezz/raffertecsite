@@ -5,19 +5,29 @@ const BASE = "/assets/portfolio/restaurant";
 
 const desktopShots = [
   {
-    src: `${BASE}/desktop-hero.png`,
-    alt: "Demonstração desktop — página inicial do restaurante",
+    src: `${BASE}/landing-mockup.png`,
+    alt: "Cantinho Nordestino — landing page em desktop e mobile",
     label: "Página inicial",
+  },
+  {
+    src: `${BASE}/desktop-about-mockup.png`,
+    alt: "Cantinho Nordestino — seção sobre o restaurante",
+    label: "O cantinho",
+  },
+  {
+    src: `${BASE}/desktop-reviews-mockup.png`,
+    alt: "Cantinho Nordestino — avaliações e Instagram",
+    label: "Avaliações",
+  },
+  {
+    src: `${BASE}/desktop-footer-mockup.png`,
+    alt: "Cantinho Nordestino — hero e rodapé",
+    label: "Hero e rodapé",
   },
   {
     src: `${BASE}/desktop-menu.png`,
     alt: "Demonstração desktop — destaques do cardápio",
     label: "Cardápio",
-  },
-  {
-    src: `${BASE}/desktop-reviews.png`,
-    alt: "Demonstração desktop — avaliações e Instagram",
-    label: "Avaliações",
   },
 ];
 
@@ -129,8 +139,9 @@ export function RestaurantConceptModalGallery() {
         <div className="space-y-4">
           <GalleryShot {...desktopShots[0]} aspect="desktop" />
           <div className="grid gap-4 sm:grid-cols-2">
-            <GalleryShot {...desktopShots[1]} aspect="desktop" />
-            <GalleryShot {...desktopShots[2]} aspect="desktop" />
+            {desktopShots.slice(1).map((shot) => (
+              <GalleryShot key={shot.src} {...shot} aspect="desktop" />
+            ))}
           </div>
         </div>
       </div>

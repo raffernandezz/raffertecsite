@@ -2,73 +2,55 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import {
+  ArrowUpRight,
+  Building2,
+  Scissors,
+  Stethoscope,
+  UtensilsCrossed,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import {
-  LandingMockup,
-  LandingScreen,
-  DeviceFrame,
-  type LandingVariant,
-} from "@/components/ui/LandingMockup";
-import {
-  RestaurantConceptCardPreview,
-  RestaurantConceptModalGallery,
-} from "@/components/ui/RestaurantConceptShowcase";
+  RestaurantCardMockup,
+  RestaurantModalGallery,
+  restaurantPreviewSurface,
+  BarberCardMockup,
+  BarberModalGallery,
+  barberPreviewSurface,
+} from "@/components/ui/PortfolioMockups";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/FadeIn";
+import { Button } from "@/components/ui/Button";
+import { WHATSAPP_DESCRIBE_PROJECT_URL } from "@/lib/utils";
 
-const possibilities: {
-  title: string;
-  variant: LandingVariant;
-  features: string[];
-  portfolio?: boolean;
-}[] = [
+const segments = [
   {
-    title: "Landing page para restaurante",
-    variant: "restaurant",
-    portfolio: true,
-    features: [
-      "Apresentação do negócio",
-      "Cardápio",
-      "Localização",
-      "WhatsApp",
-      "Reservas por contato",
-    ],
+    icon: UtensilsCrossed,
+    title: "Restaurantes & food",
+    features: ["Cardápio digital", "iFood / WhatsApp", "Localização e reservas"],
+    accent: "from-amber-500/20 to-orange-600/10",
   },
   {
-    title: "Landing page para clínica",
-    variant: "clinic",
-    features: [
-      "Apresentação da clínica",
-      "Especialidades",
-      "Profissionais",
-      "Localização",
-      "Contato para agendamento",
-    ],
+    icon: Stethoscope,
+    title: "Clínicas & saúde",
+    features: ["Especialidades", "Equipe médica", "Agendamento por contato"],
+    accent: "from-sky-500/20 to-blue-600/10",
   },
   {
-    title: "Landing page para barbearia",
-    variant: "barber",
-    features: [
-      "Apresentação da barbearia",
-      "Serviços",
-      "Preços",
-      "Galeria",
-      "WhatsApp",
-    ],
+    icon: Scissors,
+    title: "Barbearias & estética",
+    features: ["Serviços e preços", "Galeria de trabalhos", "WhatsApp direto"],
+    accent: "from-violet-500/20 to-purple-600/10",
+  },
+  {
+    icon: Building2,
+    title: "Outros segmentos",
+    features: ["Sites institucionais", "Landing pages", "Sistemas sob medida"],
+    accent: "from-blue-500/20 to-indigo-600/10",
   },
 ];
 
-function DemoModal({
-  variant,
-  title,
-  portfolio,
-  onClose,
-}: {
-  variant: LandingVariant;
-  title: string;
-  portfolio?: boolean;
-  onClose: () => void;
-}) {
+function RestaurantDemoModal({ onClose }: { onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -95,7 +77,7 @@ function DemoModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-4 sm:items-center sm:p-6"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-4 sm:items-center sm:p-6"
       onClick={onClose}
       role="presentation"
     >
@@ -105,28 +87,34 @@ function DemoModal({
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.97, opacity: 0, y: 16 }}
         transition={{ duration: 0.25 }}
-        className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
+        className="max-h-[min(92dvh,900px)] w-full max-w-4xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-6 md:p-8"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="demo-modal-title"
+        aria-labelledby="restaurant-demo-title"
       >
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <span className="inline-block rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-muted">
-              Projeto conceitual
+            <span
+              className="inline-block rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700"
+            >
+              Projeto real
             </span>
             <h3
-              id="demo-modal-title"
-              className="mt-3 text-xl font-semibold text-foreground"
+              id="restaurant-demo-title"
+              className="mt-3 text-xl font-semibold text-[#071426]"
             >
-              {title}
+              Cantinho Nordestino — landing page para restaurante
             </h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Site completo com cardápio, avaliações, localização e integração
+              com iFood e WhatsApp.
+            </p>
           </div>
           <button
             ref={closeBtnRef}
             onClick={onClose}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border text-muted transition-colors hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:bg-slate-50 hover:text-[#071426] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             aria-label="Fechar demonstração"
           >
             <svg
@@ -146,98 +134,318 @@ function DemoModal({
           </button>
         </div>
 
-        {portfolio && variant === "restaurant" ? (
-          <div className="rounded-xl bg-surface px-4 py-6 sm:px-6 sm:py-8">
-            <RestaurantConceptModalGallery />
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center gap-8 rounded-xl bg-surface px-4 py-8 sm:flex-row sm:px-10 sm:py-10">
-            <DeviceFrame type="laptop" className="w-full max-w-md">
-              <LandingScreen variant={variant} density="modal" />
-            </DeviceFrame>
-            <DeviceFrame type="phone" className="w-[100px] shrink-0 sm:w-[110px]">
-              <LandingScreen variant={variant} compact density="modal" />
-            </DeviceFrame>
-          </div>
-        )}
+        <div className={cn("rounded-xl px-4 py-6 sm:px-6 sm:py-8", restaurantPreviewSurface)}>
+          <RestaurantModalGallery />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
-        <p className="mt-6 text-center text-sm leading-relaxed text-muted">
-          Demonstração visual de possibilidade de projeto. Não representa um
-          cliente real.
-        </p>
+function BarberDemoModal({ onClose }: { onClose: () => void }) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    },
+    [onClose]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    closeBtnRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [handleKeyDown]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-4 sm:items-center sm:p-6"
+      onClick={onClose}
+      role="presentation"
+    >
+      <motion.div
+        ref={dialogRef}
+        initial={{ scale: 0.97, opacity: 0, y: 16 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.97, opacity: 0, y: 16 }}
+        transition={{ duration: 0.25 }}
+        className="max-h-[min(92dvh,900px)] w-full max-w-4xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-6 md:p-8"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="barber-demo-title"
+      >
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <span
+              className="inline-block rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700"
+            >
+              Projeto real
+            </span>
+            <h3
+              id="barber-demo-title"
+              className="mt-3 text-xl font-semibold text-[#071426]"
+            >
+              Conexão 12 Barber Shop — landing page para barbearia
+            </h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Site premium com identidade sofisticada, agendamento, serviços,
+              galeria, serviços e localização da barbearia.
+            </p>
+          </div>
+          <button
+            ref={closeBtnRef}
+            onClick={onClose}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:bg-slate-50 hover:text-[#071426] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            aria-label="Fechar demonstração"
+          >
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div className={cn("rounded-xl px-4 py-6 sm:px-6 sm:py-8", barberPreviewSurface)}>
+          <BarberModalGallery />
+        </div>
       </motion.div>
     </motion.div>
   );
 }
 
 export function LandingPossibilities() {
-  const [demo, setDemo] = useState<(typeof possibilities)[0] | null>(null);
+  const [activeDemo, setActiveDemo] = useState<"restaurant" | "barber" | null>(
+    null
+  );
 
   return (
-    <section id="possibilidades" className="bg-white py-28 lg:py-36">
+    <section
+      id="possibilidades"
+      className="section-shell relative overflow-hidden bg-white pb-24 pt-10 lg:pb-32 lg:pt-14"
+    >
       <Container>
         <FadeIn>
-          <SectionHeader
-            label="Exemplos de landing pages"
-            title="Possibilidades para o seu negócio"
-            description="Cada landing page é criada de forma personalizada, respeitando a identidade, o público e os objetivos de cada empresa."
-          />
+          <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
+            <div>
+              <p className="technical-label text-[10px] text-blue-600">
+                Trabalhos · sites por segmento
+              </p>
+              <h2
+                className="mt-4 max-w-2xl font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold tracking-[-0.045em] text-[#071426] sm:text-4xl lg:text-5xl"
+              >
+                Cada negócio tem uma linguagem visual própria.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-slate-600">
+              Mostramos trabalho real quando existe — e adaptamos a estratégia,
+              conteúdo e interface para o seu segmento, sem copiar template
+              genérico.
+            </p>
+          </div>
         </FadeIn>
 
-        <StaggerContainer className="mt-16 grid items-stretch gap-8 lg:grid-cols-3">
-          {possibilities.map((item) => (
-            <StaggerItem key={item.title} className="h-full">
-              <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 hover:border-gray-200 hover:shadow-md">
-                <div className="flex min-h-[280px] shrink-0 items-center justify-center bg-surface px-4 py-8 sm:px-5">
-                  {item.portfolio && item.variant === "restaurant" ? (
-                    <RestaurantConceptCardPreview />
-                  ) : (
-                    <LandingMockup variant={item.variant} size="md" />
-                  )}
-                </div>
+        {/* Projeto real — restaurante */}
+        <FadeIn delay={0.06}>
+          <article
+            className="group mt-14 overflow-hidden rounded-3xl border border-slate-200 bg-[#f8fafc] transition-all duration-500 hover:border-blue-300 hover:shadow-[0_24px_60px_rgba(15,40,90,0.08)] lg:grid lg:grid-cols-[1.2fr_0.8fr]"
+          >
+            <div
+              className={cn(
+                "flex min-h-[280px] items-center justify-center px-4 py-8 sm:px-8 sm:py-10 lg:min-h-[420px] lg:border-r lg:border-slate-200",
+                restaurantPreviewSurface
+              )}
+            >
+              <RestaurantCardMockup />
+            </div>
 
-                <div className="flex flex-1 flex-col p-6">
-                  <span className="inline-block w-fit rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-muted">
-                    Projeto conceitual
-                  </span>
-                  <h3 className="mt-4 min-h-[3.5rem] text-lg font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <ul className="mt-4 flex flex-1 flex-col gap-2">
-                    {item.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-2 text-sm text-muted"
-                      >
-                        <span className="h-1 w-1 shrink-0 rounded-full bg-brand" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 pb-8">
-                    <button
-                      type="button"
-                      onClick={() => setDemo(item)}
-                      className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-border bg-white px-5 py-2.5 text-sm font-medium text-foreground shadow-sm transition-all duration-200 hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:w-auto"
-                    >
-                      Ver demonstração
-                    </button>
-                  </div>
-                </div>
+            <div className="flex flex-col p-7 sm:p-8 lg:p-10">
+              <span
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-emerald-700"
+              >
+                Projeto real
+              </span>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-[#071426] sm:text-[1.65rem]">
+                Cantinho Nordestino
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Landing page para restaurante de comida nordestina — com
+                cardápio, avaliações, localização e pedidos via iFood e
+                WhatsApp.
+              </p>
+              <ul className="mt-6 flex flex-col gap-2.5 border-t border-slate-200 pt-5">
+                {[
+                  "Apresentação do negócio",
+                  "Cardápio completo",
+                  "Localização e horários",
+                  "WhatsApp e iFood",
+                  "Reservas por contato",
+                ].map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-center gap-2 text-sm text-slate-600"
+                  >
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => setActiveDemo("restaurant")}
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-5 py-2.5 text-sm font-semibold text-blue-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                >
+                  Ver telas do projeto
+                </button>
+                <Button
+                  href={WHATSAPP_DESCRIBE_PROJECT_URL}
+                  external
+                  variant="outline"
+                  size="md"
+                  className="min-h-[46px]"
+                >
+                  Quero um site assim
+                  <ArrowUpRight className="h-4 w-4" />
+                </Button>
               </div>
+            </div>
+          </article>
+        </FadeIn>
+
+        {/* Projeto real — barbearia */}
+        <FadeIn delay={0.08}>
+          <article
+            className="group mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-[#f8fafc] transition-all duration-500 hover:border-blue-300 hover:shadow-[0_24px_60px_rgba(15,40,90,0.08)] lg:grid lg:grid-cols-[0.8fr_1.2fr]"
+          >
+            <div className="flex flex-col p-7 sm:p-8 lg:p-10">
+              <span
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-emerald-700"
+              >
+                Projeto real
+              </span>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-[#071426] sm:text-[1.65rem]">
+                Conexão 12 Barber Shop
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Landing page para barbearia em Diadema — visual premium,
+                agendamento, serviços, galeria e localização.
+              </p>
+              <ul className="mt-6 flex flex-col gap-2.5 border-t border-slate-200 pt-5">
+                {[
+                  "Hero com identidade marcante",
+                  "Agendamento e WhatsApp",
+                  "Serviços e experiência",
+                  "Galeria de trabalhos",
+                  "Localização e horários",
+                ].map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-center gap-2 text-sm text-slate-600"
+                  >
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => setActiveDemo("barber")}
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-5 py-2.5 text-sm font-semibold text-blue-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                >
+                  Ver telas do projeto
+                </button>
+                <Button
+                  href={WHATSAPP_DESCRIBE_PROJECT_URL}
+                  external
+                  variant="outline"
+                  size="md"
+                  className="min-h-[46px]"
+                >
+                  Quero um site assim
+                  <ArrowUpRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+
+            <div
+              className={cn(
+                "flex min-h-[280px] items-center justify-center px-4 py-8 sm:px-8 sm:py-10 lg:min-h-[420px] lg:border-l lg:border-slate-200",
+                barberPreviewSurface
+              )}
+            >
+              <BarberCardMockup />
+            </div>
+          </article>
+        </FadeIn>
+
+        {/* Segmentos — sem mockups falsos */}
+        <FadeIn delay={0.1}>
+          <p className="mt-14 text-center text-xs font-medium tracking-wide text-slate-500">
+            Também desenvolvemos para
+          </p>
+        </FadeIn>
+
+        <StaggerContainer
+          className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          staggerDelay={0.07}
+        >
+          {segments.map((segment) => (
+            <StaggerItem key={segment.title}>
+              <article
+                className="group h-full rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-blue-200 hover:shadow-[0_16px_40px_rgba(15,40,90,0.06)]"
+              >
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-gradient-to-br ${segment.accent} text-blue-700 transition-transform duration-300 group-hover:scale-105`}
+                >
+                  <segment.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-[#071426]">
+                  {segment.title}
+                </h3>
+                <ul className="mt-3 space-y-1.5">
+                  {segment.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="text-xs leading-5 text-slate-500"
+                    >
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             </StaggerItem>
           ))}
         </StaggerContainer>
       </Container>
 
       <AnimatePresence>
-        {demo && (
-          <DemoModal
-            variant={demo.variant}
-            title={demo.title}
-            portfolio={demo.portfolio}
-            onClose={() => setDemo(null)}
-          />
+        {activeDemo === "restaurant" && (
+          <RestaurantDemoModal onClose={() => setActiveDemo(null)} />
+        )}
+        {activeDemo === "barber" && (
+          <BarberDemoModal onClose={() => setActiveDemo(null)} />
         )}
       </AnimatePresence>
     </section>

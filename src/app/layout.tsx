@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/space-grotesk";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://raffertec.com"),
-  title: "RafferTec | Landing Pages que Convertem",
+  title: "RafferTec | Tecnologia sob medida para negócios",
   description:
-    "Criamos landing pages profissionais e desenvolvemos aplicativos, sistemas web, automações e soluções digitais para pequenos e médios negócios.",
+    "Sites, aplicativos, sistemas e automações desenvolvidos com estratégia e engenharia. Da ideia à publicação, com acompanhamento direto.",
   keywords: [
     "landing page",
     "site profissional",
@@ -23,13 +20,32 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "RafferTec" }],
   openGraph: {
-    title: "RafferTec | Landing Pages que Convertem",
+    title: "RafferTec | Tecnologia sob medida para negócios",
     description:
-      "Landing pages profissionais para pequenos e médios negócios. Design premium, resultado real.",
+      "Sites, apps e sistemas com design premium e entrega real. Produto publicado nas lojas, processo transparente.",
     images: ["/assets/logo.png"],
     type: "website",
     locale: "pt_BR",
+    siteName: "RafferTec",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "RafferTec | Tecnologia sob medida para negócios",
+    description:
+      "Sites, apps e sistemas com entrega real. TrampoFeito publicado nas lojas.",
+    images: ["/assets/logo.png"],
+  },
+  icons: {
+    icon: "/assets/logo.png",
+    apple: "/assets/logo.png",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#f8fafc",
 };
 
 export default function RootLayout({
@@ -38,8 +54,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={inter.variable}>
-      <body className="antialiased">{children}</body>
+    <html lang="pt-BR">
+      <body className="antialiased">
+        <JsonLd />
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }

@@ -1,132 +1,124 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, MessageCircle, Plus } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { WHATSAPP_URL } from "@/lib/utils";
 
 const faqs = [
-  {
-    question: "Quanto custa uma landing page?",
-    answer:
-      "A landing page essencial começa em R$ 297 para projetos objetivos, com até 5 seções, botão para WhatsApp, publicação e até 2 rodadas de ajustes iniciais. O valor final depende da quantidade de seções, conteúdo e funcionalidades adicionais.",
-  },
-  {
-    question: "Em quanto tempo fica pronta?",
-    answer:
-      "O prazo é definido conforme o projeto e o envio dos materiais necessários.",
-  },
-  {
-    question: "A landing page funciona no celular?",
-    answer:
-      "Sim. Todas as páginas são desenvolvidas para funcionar em computadores, tablets e celulares.",
-  },
-  {
-    question: "Vocês também criam aplicativos e sistemas?",
-    answer:
-      "Sim. A RafferTec também desenvolve aplicativos mobile, sistemas web, automações e integrações.",
-  },
-  {
-    question: "Preciso já ter textos e imagens?",
-    answer:
-      "Não necessariamente. Podemos orientar a organização do conteúdo, mas fotos, informações e identidade visual do negócio ajudam a deixar o projeto mais personalizado.",
-  },
-  {
-    question: "O domínio e a hospedagem estão inclusos?",
-    answer:
-      "O domínio pode ter custo anual, e a hospedagem depende da solução escolhida. Serviços externos são avaliados conforme o projeto. Qualquer custo recorrente é informado antes da contratação.",
-  },
+  [
+    "Como é definido o valor de um projeto?",
+    "O investimento considera escopo, quantidade de telas, integrações, conteúdo e complexidade técnica. Depois da conversa inicial, enviamos uma proposta clara com entregas, prazo e condições.",
+  ],
+  [
+    "A RafferTec faz apenas sites e landing pages?",
+    "Não. Desenvolvemos sites institucionais, aplicativos Android e iOS, sistemas web, painéis administrativos, automações e integrações entre plataformas.",
+  ],
+  [
+    "Em quanto tempo o projeto fica pronto?",
+    "O prazo depende do escopo e da disponibilidade dos materiais. Um site objetivo pode levar poucas semanas; produtos e sistemas mais complexos são organizados em etapas.",
+  ],
+  [
+    "Vou conseguir acompanhar o desenvolvimento?",
+    "Sim. Você recebe atualizações, prévias e participa das decisões importantes. O processo foi desenhado para evitar surpresas na entrega.",
+  ],
+  [
+    "Vocês ajudam com conteúdo e identidade visual?",
+    "Ajudamos a organizar a mensagem, a hierarquia do conteúdo e a direção visual. Quando o projeto exige produção especializada adicional, alinhamos isso antes de iniciar.",
+  ],
+  [
+    "Existe suporte depois da publicação?",
+    "Sim. A entrega inclui orientação e suporte inicial. Manutenção contínua, evolução e novas funcionalidades podem ser contratadas conforme a necessidade.",
+  ],
 ];
 
-function FAQItem({
-  question,
-  answer,
-  isOpen,
-  onToggle,
-}: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <div className="border-b border-border">
-      <button
-        onClick={onToggle}
-        className="flex w-full items-center justify-between py-6 text-left transition-colors hover:text-brand"
-        aria-expanded={isOpen}
-      >
-        <span className="pr-8 text-base font-medium text-foreground">
-          {question}
-        </span>
-        <motion.span
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="flex h-6 w-6 shrink-0 items-center justify-center text-muted"
-        >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"
-            />
-          </svg>
-        </motion.span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="overflow-hidden"
-          >
-            <p className="pb-6 text-[15px] leading-relaxed text-muted">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-surface py-28 lg:py-36">
+    <section
+      id="faq"
+      className="section-shell bg-white py-24 text-[#071426] lg:py-32"
+    >
       <Container>
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
+        <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
           <FadeIn>
-            <SectionHeader
-              label="Perguntas frequentes"
-              title="Tire suas dúvidas"
-              description="Respondemos as perguntas mais comuns. Se a sua não estiver aqui, fale conosco."
-              align="left"
-            />
+            <div className="lg:sticky lg:top-32">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600">
+                <MessageCircle className="h-5 w-5" />
+              </span>
+              <p className="technical-label mt-7 text-[10px] text-blue-600">
+                Perguntas frequentes
+              </p>
+              <h2 className="mt-4 font-[family-name:'Space_Grotesk_Variable'] text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
+                Antes de começar, tire suas dúvidas.
+              </h2>
+              <p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">
+                Não encontrou sua pergunta? Fale diretamente com a gente.
+              </p>
+              <Button
+                href={WHATSAPP_URL}
+                external
+                variant="outline"
+                className="mt-7"
+              >
+                Fazer uma pergunta
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </div>
           </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div>
-              {faqs.map((faq, i) => (
-                <FAQItem
-                  key={faq.question}
-                  question={faq.question}
-                  answer={faq.answer}
-                  isOpen={openIndex === i}
-                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-                />
-              ))}
+          <FadeIn delay={0.1}>
+            <div className="space-y-3">
+              {faqs.map(([q, a], i) => {
+                const active = open === i;
+                return (
+                  <article
+                    key={q}
+                    className={`overflow-hidden rounded-2xl border transition-all ${
+                      active
+                        ? "border-blue-200 bg-blue-50/60"
+                        : "border-slate-200 bg-[#f8fafc] hover:border-slate-300"
+                    }`}
+                  >
+                    <button
+                      onClick={() => setOpen(active ? null : i)}
+                      className="flex w-full items-center gap-4 p-5 text-left sm:p-6"
+                      aria-expanded={active}
+                    >
+                      <span className="technical-label text-[9px] text-blue-600">
+                        0{i + 1}
+                      </span>
+                      <span className="flex-1 text-sm font-semibold sm:text-base">
+                        {q}
+                      </span>
+                      <motion.span
+                        animate={{ rotate: active ? 45 : 0 }}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200"
+                      >
+                        <Plus className="h-4 w-4" />
+                      </motion.span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {active && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="px-5 pb-6 pl-[4.75rem] text-sm leading-7 text-slate-600 sm:px-6 sm:pl-[5.25rem]">
+                            {a}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </article>
+                );
+              })}
             </div>
           </FadeIn>
         </div>

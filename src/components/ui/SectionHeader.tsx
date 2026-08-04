@@ -5,6 +5,7 @@ interface SectionHeaderProps {
   title: string;
   description?: string;
   align?: "left" | "center";
+  theme?: "dark" | "light";
   className?: string;
 }
 
@@ -13,8 +14,11 @@ export function SectionHeader({
   title,
   description,
   align = "center",
+  theme = "dark",
   className,
 }: SectionHeaderProps) {
+  const isDark = theme === "dark";
+
   return (
     <div
       className={cn(
@@ -24,15 +28,32 @@ export function SectionHeader({
       )}
     >
       {label && (
-        <p className="mb-3 text-sm font-medium tracking-wide text-brand uppercase">
+        <p
+          className={cn(
+            "technical-label mb-4 text-[10px]",
+            isDark ? "text-brand" : "text-brand"
+          )}
+        >
           {label}
         </p>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+      <h2
+        className={cn(
+          "font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold tracking-[-.04em] sm:text-4xl lg:text-[3.15rem] lg:leading-[1.08]",
+          isDark ? "text-white" : "text-foreground"
+        )}
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-lg leading-relaxed text-muted">{description}</p>
+        <p
+          className={cn(
+            "mt-5 max-w-xl text-base leading-7",
+            isDark ? "text-gray-400" : "text-muted"
+          )}
+        >
+          {description}
+        </p>
       )}
     </div>
   );

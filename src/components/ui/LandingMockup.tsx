@@ -18,7 +18,7 @@ const configs = {
     subtitle: "Pratos feitos com ingredientes frescos e receitas tradicionais.",
     services: ["Almoço", "Jantar", "Delivery"],
     cta: "Pedir pelo WhatsApp",
-    location: "Centro · Diadema",
+    location: "Atendimento nacional",
   },
   clinic: {
     bg: "bg-[#f5f9ff]",
@@ -42,7 +42,7 @@ const configs = {
     subtitle: "Ambiente confortável e profissionais experientes.",
     services: ["Corte", "Barba", "Sobrancelha"],
     cta: "Chamar no WhatsApp",
-    location: "Centro · Diadema",
+    location: "Atendimento nacional",
   },
 };
 

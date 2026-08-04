@@ -1,81 +1,75 @@
 "use client";
 
+import { CheckCircle2, Clock3, MessageSquareText, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { ContactForm } from "@/components/ui/ContactForm";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { WHATSAPP_PROPOSAL_URL } from "@/lib/utils";
 
-const included = [
-  "Design responsivo",
-  "Apresentação da empresa",
-  "Serviços",
-  "Botão para WhatsApp",
-  "Localização",
-  "Publicação",
-  "Até 2 rodadas de ajustes iniciais",
+const assurances = [
+  {
+    icon: MessageSquareText,
+    title: "Conversa direta",
+    text: "Você fala com quem vai construir.",
+  },
+  {
+    icon: Clock3,
+    title: "Etapas visíveis",
+    text: "Acompanhamento durante todo o projeto.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Escopo transparente",
+    text: "Prazos e custos alinhados antes de começar.",
+  },
 ];
 
 export function LandingOffer() {
   return (
-    <section id="oferta" className="bg-white py-28 lg:py-36">
+    <section id="oferta" className="section-shell bg-[#f8fafc] py-20 lg:py-28">
       <Container>
-        <FadeIn>
-          <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-white p-8 text-center sm:p-12">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              Sua empresa ainda não possui uma página profissional?
-            </h2>
-
-            <div className="mt-8">
-              <p className="text-lg font-semibold text-foreground">
-                Landing page essencial a partir de R$ 297
+        <div className="grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-20">
+          <FadeIn>
+            <div className="lg:sticky lg:top-28">
+              <p className="technical-label text-[10px] text-blue-600">
+                Comece uma conversa
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                Para negócios que precisam apresentar serviços, localização e
-                contato em uma página profissional.
+              <h2 className="mt-5 font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#071426] sm:text-5xl">
+                Seu próximo projeto pode começar aqui.
+              </h2>
+              <p className="mt-6 max-w-md text-[15px] leading-7 text-slate-600">
+                Conte o que sua empresa precisa. Nós ajudamos a definir o melhor
+                caminho — site, aplicativo, sistema ou automação.
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                Plano básico com até 5 seções, botão para WhatsApp e publicação.
-                Projetos com recursos adicionais recebem orçamento personalizado.
-              </p>
-            </div>
-
-            <ul className="mt-8 grid gap-2 text-left sm:grid-cols-2">
-              {included.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2.5 text-sm text-muted"
-                >
-                  <svg
-                    className="h-4 w-4 shrink-0 text-brand"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    aria-hidden="true"
+              <div className="mt-8 space-y-3">
+                {assurances.map(({ icon: Icon, title, text }) => (
+                  <div
+                    key={title}
+                    className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-4"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-6 text-xs leading-relaxed text-muted">
-              Domínio, serviços externos e funcionalidades adicionais podem ser
-              cobrados separadamente.
-            </p>
-
-            <div className="mt-10">
-              <Button href={WHATSAPP_PROPOSAL_URL} size="lg" external>
-                Quero solicitar uma proposta
-              </Button>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-semibold text-[#071426]">
+                        {title}
+                      </h3>
+                      <p className="mt-1 text-xs leading-5 text-slate-500">
+                        {text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-7 flex items-center gap-2 text-xs text-slate-500">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                Primeiro contato sem custo e sem compromisso.
+              </p>
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
+          <FadeIn delay={0.06}>
+            <ContactForm />
+          </FadeIn>
+        </div>
       </Container>
     </section>
   );
