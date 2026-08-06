@@ -43,16 +43,16 @@ export function FeaturedProject() {
     >
       <Container>
         <FadeIn>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
               <p className="text-[11px] font-semibold tracking-[0.14em] text-[#e85d5d]">
                 CASE REAL
               </p>
-              <h2 className="mt-2 font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold tracking-[-0.035em] sm:text-[2.75rem]">
+              <h2 className="mt-2 font-[family-name:'Space_Grotesk_Variable'] text-2xl font-semibold tracking-[-0.035em] sm:text-3xl lg:text-[2.75rem]">
                 TrampoFeito
               </h2>
             </div>
-            <Button href={TRAMPOFEITO_APP_STORE} external size="md">
+            <Button href={TRAMPOFEITO_APP_STORE} external size="md" className="w-full sm:w-auto">
               Conhecer o aplicativo
               <ArrowUpRight className="h-4 w-4" />
             </Button>
@@ -60,11 +60,11 @@ export function FeaturedProject() {
         </FadeIn>
 
         <FadeIn delay={0.06}>
-          <TrampoFeitoShowcase className="mt-10 lg:mt-12" />
+          <TrampoFeitoShowcase className="mt-8 lg:mt-12" />
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="mt-12 grid gap-8 border-t border-slate-200 pt-10 lg:grid-cols-3 lg:gap-10 lg:pt-12">
+          <div className="mt-8 grid gap-6 border-t border-slate-200 pt-8 sm:mt-12 sm:gap-8 sm:pt-10 lg:grid-cols-3 lg:gap-10 lg:pt-12">
             {editorialBlocks.map((block) => (
               <div key={block.title}>
                 <h3 className="text-sm font-semibold text-[#071426]">
@@ -77,8 +77,8 @@ export function FeaturedProject() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-col gap-6 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-4">
+          <div className="mt-8 flex flex-col gap-5 border-t border-slate-200 pt-6 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:pt-8">
+            <div className="min-w-0 space-y-3 sm:space-y-4">
               <p className="text-xs tracking-wide text-slate-500">
                 {technologies.join(" · ")}
               </p>
@@ -89,7 +89,7 @@ export function FeaturedProject() {
               external
               variant="outline"
               size="sm"
-              className="border-[#e85d5d]/40 text-[#071426] hover:border-[#e85d5d]/60 hover:bg-[#e85d5d]/5 hover:text-[#c24141]"
+              className="w-full border-[#e85d5d]/40 text-[#071426] hover:border-[#e85d5d]/60 hover:bg-[#e85d5d]/5 hover:text-[#c24141] sm:w-auto"
             >
               Quero desenvolver um aplicativo
               <ArrowUpRight className="h-4 w-4" />

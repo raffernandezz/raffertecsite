@@ -22,6 +22,7 @@ import {
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { WHATSAPP_DESCRIBE_PROJECT_URL } from "@/lib/utils";
+import { ModalPortal } from "@/components/ui/ModalPortal";
 
 const segments = [
   {
@@ -77,7 +78,7 @@ function RestaurantDemoModal({ onClose }: { onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-4 sm:items-center sm:p-6"
+      className="fixed inset-0 z-[200] flex items-end justify-center bg-slate-900/50 sm:items-center sm:p-6"
       onClick={onClose}
       role="presentation"
     >
@@ -87,14 +88,14 @@ function RestaurantDemoModal({ onClose }: { onClose: () => void }) {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.97, opacity: 0, y: 16 }}
         transition={{ duration: 0.25 }}
-        className="max-h-[min(92dvh,900px)] w-full max-w-4xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-6 md:p-8"
+        className="flex h-[min(100dvh,100%)] max-h-[100dvh] w-full max-w-4xl flex-col overflow-hidden rounded-t-2xl border border-slate-200 bg-white shadow-2xl sm:h-auto sm:max-h-[min(92dvh,900px)] sm:rounded-2xl"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="restaurant-demo-title"
       >
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <div>
+        <div className="flex shrink-0 items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 sm:gap-4 sm:px-6 sm:py-5 md:px-8">
+          <div className="min-w-0 pr-2">
             <span
               className="inline-block rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700"
             >
@@ -102,13 +103,12 @@ function RestaurantDemoModal({ onClose }: { onClose: () => void }) {
             </span>
             <h3
               id="restaurant-demo-title"
-              className="mt-3 text-xl font-semibold text-[#071426]"
+              className="mt-2 text-base font-semibold leading-snug text-[#071426] sm:mt-3 sm:text-xl"
             >
-              Cantinho Nordestino — landing page para restaurante
+              Cantinho Nordestino
             </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Site completo com cardápio, avaliações, localização e integração
-              com iFood e WhatsApp.
+            <p className="mt-1 hidden text-sm text-slate-600 sm:block">
+              Landing page para restaurante — cardápio, avaliações e pedidos.
             </p>
           </div>
           <button
@@ -134,7 +134,13 @@ function RestaurantDemoModal({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        <div className={cn("rounded-xl px-4 py-6 sm:px-6 sm:py-8", restaurantPreviewSurface)}>
+        <div
+          className={cn(
+            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6 sm:py-6 md:px-8",
+            restaurantPreviewSurface
+          )}
+          data-lenis-prevent
+        >
           <RestaurantModalGallery />
         </div>
       </motion.div>
@@ -169,7 +175,7 @@ function BarberDemoModal({ onClose }: { onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-4 sm:items-center sm:p-6"
+      className="fixed inset-0 z-[200] flex items-end justify-center bg-slate-900/50 sm:items-center sm:p-6"
       onClick={onClose}
       role="presentation"
     >
@@ -179,14 +185,14 @@ function BarberDemoModal({ onClose }: { onClose: () => void }) {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.97, opacity: 0, y: 16 }}
         transition={{ duration: 0.25 }}
-        className="max-h-[min(92dvh,900px)] w-full max-w-4xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-6 md:p-8"
+        className="flex h-[min(100dvh,100%)] max-h-[100dvh] w-full max-w-4xl flex-col overflow-hidden rounded-t-2xl border border-slate-200 bg-white shadow-2xl sm:h-auto sm:max-h-[min(92dvh,900px)] sm:rounded-2xl"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="barber-demo-title"
       >
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <div>
+        <div className="flex shrink-0 items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 sm:gap-4 sm:px-6 sm:py-5 md:px-8">
+          <div className="min-w-0 pr-2">
             <span
               className="inline-block rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700"
             >
@@ -194,13 +200,12 @@ function BarberDemoModal({ onClose }: { onClose: () => void }) {
             </span>
             <h3
               id="barber-demo-title"
-              className="mt-3 text-xl font-semibold text-[#071426]"
+              className="mt-2 text-base font-semibold leading-snug text-[#071426] sm:mt-3 sm:text-xl"
             >
-              Conexão 12 Barber Shop — landing page para barbearia
+              Conexão 12 Barber Shop
             </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Site premium com identidade sofisticada, agendamento, serviços,
-              galeria, serviços e localização da barbearia.
+            <p className="mt-1 hidden text-sm text-slate-600 sm:block">
+              Landing page para barbearia — serviços, galeria e agendamento.
             </p>
           </div>
           <button
@@ -226,7 +231,13 @@ function BarberDemoModal({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        <div className={cn("rounded-xl px-4 py-6 sm:px-6 sm:py-8", barberPreviewSurface)}>
+        <div
+          className={cn(
+            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6 sm:py-6 md:px-8",
+            barberPreviewSurface
+          )}
+          data-lenis-prevent
+        >
           <BarberModalGallery />
         </div>
       </motion.div>
@@ -272,7 +283,7 @@ export function LandingPossibilities() {
           >
             <div
               className={cn(
-                "flex min-h-[280px] items-center justify-center px-4 py-8 sm:px-8 sm:py-10 lg:min-h-[420px] lg:border-r lg:border-slate-200",
+                "flex min-h-[220px] items-center justify-center overflow-hidden px-3 py-6 sm:min-h-[280px] sm:px-8 sm:py-10 lg:min-h-[420px] lg:border-r lg:border-slate-200",
                 restaurantPreviewSurface
               )}
             >
@@ -391,7 +402,7 @@ export function LandingPossibilities() {
 
             <div
               className={cn(
-                "flex min-h-[280px] items-center justify-center px-4 py-8 sm:px-8 sm:py-10 lg:min-h-[420px] lg:border-l lg:border-slate-200",
+                "flex min-h-[220px] items-center justify-center overflow-hidden px-3 py-6 sm:min-h-[280px] sm:px-8 sm:py-10 lg:min-h-[420px] lg:border-l lg:border-slate-200",
                 barberPreviewSurface
               )}
             >
@@ -440,14 +451,16 @@ export function LandingPossibilities() {
         </StaggerContainer>
       </Container>
 
-      <AnimatePresence>
-        {activeDemo === "restaurant" && (
-          <RestaurantDemoModal onClose={() => setActiveDemo(null)} />
-        )}
-        {activeDemo === "barber" && (
-          <BarberDemoModal onClose={() => setActiveDemo(null)} />
-        )}
-      </AnimatePresence>
+      <ModalPortal>
+        <AnimatePresence>
+          {activeDemo === "restaurant" && (
+            <RestaurantDemoModal onClose={() => setActiveDemo(null)} />
+          )}
+          {activeDemo === "barber" && (
+            <BarberDemoModal onClose={() => setActiveDemo(null)} />
+          )}
+        </AnimatePresence>
+      </ModalPortal>
     </section>
   );
 }

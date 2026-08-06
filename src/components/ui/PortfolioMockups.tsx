@@ -95,14 +95,40 @@ function LaptopScreenShot({
   label: string;
 }) {
   return (
-    <figure className="flex flex-col">
-      <div className="flex justify-center rounded-xl bg-white px-3 py-4 sm:px-4 sm:py-5">
-        <MockupImage src={src} alt={alt} className="max-h-[min(380px,65vw)] w-full sm:max-h-[min(420px,50vw)]" />
+    <figure className="flex w-full flex-col">
+      <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-slate-100 bg-white px-2 py-4 sm:min-h-[240px] sm:px-4 sm:py-5">
+        {/* img nativo — layout mais previsível no modal mobile */}
+        <img
+          src={src}
+          alt={alt}
+          className="block h-auto w-full max-h-[min(52vh,360px)] object-contain sm:max-h-[min(420px,50vw)]"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <figcaption className="mt-2.5 text-center text-xs font-medium text-slate-500">
         {label}
       </figcaption>
     </figure>
+  );
+}
+
+function ProjectScreensGrid({
+  screens,
+}: {
+  screens: { src: string; alt: string; label: string }[];
+}) {
+  return (
+    <div className="flex flex-col gap-8 sm:grid sm:grid-cols-2 sm:gap-6">
+      {screens.map((screen) => (
+        <LaptopScreenShot
+          key={screen.src}
+          src={screen.src}
+          alt={screen.alt}
+          label={screen.label}
+        />
+      ))}
+    </div>
   );
 }
 
@@ -123,38 +149,14 @@ export function RestaurantCardMockup() {
 /** Modal do restaurante */
 export function RestaurantModalGallery() {
   return (
-    <div className="space-y-8">
-      <div>
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Telas do projeto
-        </p>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {restaurantDesktopScreens.map((screen) => (
-            <LaptopScreenShot
-              key={screen.src}
-              src={screen.src}
-              alt={screen.alt}
-              label={screen.label}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Versão mobile
-        </p>
-        <div className="flex items-center justify-center py-4">
-          <Image
-            src={`${RESTAURANT}/mobile-mockup.png`}
-            alt="Cantinho Nordestino — versão mobile da landing page"
-            width={520}
-            height={1040}
-            className="mx-auto h-auto w-auto max-h-[520px] max-w-[min(100%,280px)] object-contain drop-shadow-[0_24px_48px_rgba(15,40,90,0.12)]"
-            sizes="280px"
-          />
-        </div>
-      </div>
+    <div>
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        Telas do projeto
+      </p>
+      <p className="mb-4 text-[11px] text-slate-500 sm:hidden">
+        Role para ver todas as telas
+      </p>
+      <ProjectScreensGrid screens={restaurantDesktopScreens} />
     </div>
   );
 }
@@ -178,19 +180,13 @@ export function BarberModalGallery() {
   return (
     <div className="space-y-8">
       <div>
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
           Telas do projeto
         </p>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {barberScreens.map((screen) => (
-            <LaptopScreenShot
-              key={screen.src}
-              src={screen.src}
-              alt={screen.alt}
-              label={screen.label}
-            />
-          ))}
-        </div>
+        <p className="mb-4 text-[11px] text-slate-500 sm:hidden">
+          Role para ver todas as telas
+        </p>
+        <ProjectScreensGrid screens={barberScreens} />
       </div>
     </div>
   );

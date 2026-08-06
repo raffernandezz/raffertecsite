@@ -250,10 +250,10 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
         />
       </div>
 
-      <div className="relative px-5 py-8 sm:px-10 sm:py-10 lg:px-6 lg:py-10">
+      <div className="relative px-3 py-6 sm:px-10 sm:py-10 lg:px-6 lg:py-10">
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-3 pb-1 [-ms-overflow-style:none] scrollbar-none sm:gap-5 sm:px-4 lg:gap-5 lg:justify-center lg:overflow-visible lg:px-2 [&::-webkit-scrollbar]:hidden"
+          className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1 pb-1 [-ms-overflow-style:none] scrollbar-none sm:gap-5 sm:px-4 lg:gap-5 lg:justify-center lg:overflow-visible lg:px-2 [&::-webkit-scrollbar]:hidden"
         >
           {showcaseSlides.map((screen, index) => {
             const isActive = index === activeIndex;
@@ -270,7 +270,7 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
                   delay: reduceMotion ? 0 : index * 0.06,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="snap-center shrink-0"
+                className="w-[min(78vw,220px)] shrink-0 snap-center sm:w-auto"
               >
                 <motion.button
                   type="button"
@@ -278,24 +278,24 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
                   aria-label={`Ver tela: ${screen.label}`}
                   aria-pressed={isActive}
                   animate={{
-                    scale: isActive ? 1 : 0.9,
-                    y: isActive ? 0 : 10,
-                    opacity: isActive ? 1 : 0.48,
+                    scale: isActive ? 1 : 0.92,
+                    y: isActive ? 0 : 8,
+                    opacity: isActive ? 1 : 0.55,
                   }}
                   whileHover={
                     reduceMotion || isActive
                       ? undefined
-                      : { scale: 0.94, opacity: 0.72 }
+                      : { scale: 0.96, opacity: 0.75 }
                   }
                   transition={spring}
-                  className="cursor-pointer border-0 bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-[#e85d5d]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="w-full cursor-pointer border-0 bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-[#e85d5d]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <DeviceMockup
                     src={screen.src}
                     alt={screen.alt}
                     size="lg"
                     className={cn(
-                      "mx-auto w-[168px] sm:w-[188px] lg:w-[196px] transition-[filter] duration-500",
+                      "mx-auto w-full max-w-[220px] sm:max-w-[196px] transition-[filter] duration-500",
                       isActive &&
                         "drop-shadow-[0_28px_56px_rgba(232,93,93,0.28)]"
                     )}
@@ -307,7 +307,7 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
         </div>
 
         {/* Contexto da tela em foco */}
-        <div className="mt-8 flex flex-col items-center text-center">
+        <div className="mt-6 flex flex-col items-center text-center sm:mt-8">
           <motion.div
             key={activeIndex}
             initial={reduceMotion ? false : { opacity: 0, y: 8 }}
@@ -324,18 +324,18 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
           </motion.div>
 
           {/* Navegação + indicadores */}
-          <div className="mt-6 flex items-center gap-4">
+          <div className="mt-5 flex items-center gap-3 sm:mt-6 sm:gap-4">
             <button
               type="button"
               onClick={() => stepBy(-1)}
               disabled={activeIndex === 0}
               aria-label="Tela anterior"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-slate-300 hover:text-[#071426] disabled:opacity-30 disabled:hover:border-slate-200 disabled:hover:text-slate-500"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-slate-300 hover:text-[#071426] disabled:opacity-30 disabled:hover:border-slate-200 disabled:hover:text-slate-500"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex max-w-[min(100%,220px)] items-center justify-center gap-1.5 sm:max-w-none sm:gap-2">
               {showcaseSlides.map((slide, i) => (
                 <button
                   key={slide.label}
@@ -343,12 +343,12 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
                   onClick={() => scrollToIndex(i)}
                   aria-label={`Ir para ${slide.label}`}
                   aria-current={i === activeIndex ? "step" : undefined}
-                  className="group flex flex-col items-center gap-1.5 px-0.5"
+                  className="group flex flex-col items-center gap-1 px-0.5 sm:gap-1.5"
                 >
                   <motion.span
                     className="block h-1 rounded-full bg-slate-200"
                     animate={{
-                      width: i === activeIndex ? 32 : 10,
+                      width: i === activeIndex ? 28 : 8,
                       backgroundColor:
                         i === activeIndex
                           ? "rgba(232, 93, 93, 0.95)"
@@ -358,7 +358,7 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
                   />
                   <span
                     className={cn(
-                      "text-[9px] tracking-wide transition-colors",
+                      "hidden text-[9px] tracking-wide transition-colors sm:block",
                       i === activeIndex
                         ? "text-[#e85d5d]"
                         : "text-slate-400 group-hover:text-slate-600"
@@ -375,17 +375,15 @@ export function TrampoFeitoShowcase({ className }: { className?: string }) {
               onClick={() => stepBy(1)}
               disabled={activeIndex === showcaseSlides.length - 1}
               aria-label="Próxima tela"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-slate-300 hover:text-[#071426] disabled:opacity-30 disabled:hover:border-slate-200 disabled:hover:text-slate-500"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-slate-300 hover:text-[#071426] disabled:opacity-30 disabled:hover:border-slate-200 disabled:hover:text-slate-500"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
 
-          {canScroll && (
-            <p className="mt-4 text-[11px] text-slate-600 lg:hidden">
-              Deslize ou toque uma tela para explorar
-            </p>
-          )}
+          <p className="mt-4 text-[11px] text-slate-600 lg:hidden">
+            Deslize ou use as setas para explorar as telas
+          </p>
         </div>
       </div>
     </div>
