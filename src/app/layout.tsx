@@ -6,7 +6,7 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://raffertec.com"),
+  metadataBase: new URL("https://raffertec.com.br"),
   title: "RafferTec | Tecnologia sob medida para negócios",
   description:
     "Sites, aplicativos, sistemas e automações desenvolvidos com estratégia e engenharia. Da ideia à publicação, com acompanhamento direto.",
