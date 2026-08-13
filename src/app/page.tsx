@@ -10,6 +10,7 @@ import { FeaturedProject } from "@/components/sections/FeaturedProject";
 import { LandingPossibilities } from "@/components/sections/LandingPossibilities";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Benefits } from "@/components/sections/Benefits";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { LandingOffer } from "@/components/sections/LandingOffer";
 import { About } from "@/components/sections/About";
 import { FAQ } from "@/components/sections/FAQ";
@@ -46,6 +47,9 @@ export default function Home() {
         <SectionDivider />
         <ScrollReveal y={36}>
           <Benefits />
+        </ScrollReveal>
+        <ScrollReveal y={36}>
+          <Testimonials />
         </ScrollReveal>
         <ScrollReveal y={40}>
           <LandingOffer />
