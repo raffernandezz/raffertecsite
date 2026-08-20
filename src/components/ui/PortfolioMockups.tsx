@@ -7,6 +7,8 @@ const BARBER = "/assets/portfolio/barber";
 const BARBER_HERO = `${BARBER}/conexao-hero-mockup.png`;
 const BARBER_SERVICES = `${BARBER}/conexao-services-mockup.png`;
 const BARBER_EXPERIENCE = `${BARBER}/conexao-experience-mockup.png`;
+const ANS = "/assets/portfolio/ans";
+const ANS_HERO = `${ANS}/01-home-hero.png`;
 const CLINIC = "/assets/portfolio/clinic/mockup-transparent.png";
 
 const restaurantDesktopScreens = [
@@ -55,11 +57,108 @@ const barberScreens = [
   },
 ];
 
+const ansScreens = [
+  {
+    src: ANS_HERO,
+    label: "Página inicial",
+    alt: "ANS Partner — hero com imóveis, construção, investimentos e crédito",
+  },
+  {
+    src: `${ANS}/02-escolha-seu-caminho.png`,
+    label: "Escolha seu caminho",
+    alt: "ANS Partner — imóveis, construção, incorporador, cartas, consórcio, locação e crédito",
+  },
+  {
+    src: `${ANS}/03-imoveis-destaque.png`,
+    label: "Imóveis em destaque",
+    alt: "ANS Partner — imóveis de luxo e altíssimo padrão em destaque",
+  },
+  {
+    src: `${ANS}/04-catalogo-imoveis.png`,
+    label: "Catálogo de imóveis",
+    alt: "ANS Partner — catálogo com busca, filtros e listagem de oportunidades",
+  },
+  {
+    src: `${ANS}/05-admin-dashboard.png`,
+    label: "Dashboard",
+    alt: "ANS Partner — painel administrativo com visão geral do site",
+  },
+  {
+    src: `${ANS}/06-admin-imoveis.png`,
+    label: "Gestão de imóveis",
+    alt: "ANS Partner — cadastro e gestão de imóveis para venda e locação",
+  },
+  {
+    src: `${ANS}/07-admin-projetos.png`,
+    label: "Projetos",
+    alt: "ANS Partner — gestão de projetos de investimento e incorporação",
+  },
+  {
+    src: `${ANS}/08-admin-banners.png`,
+    label: "Gestão de banners",
+    alt: "ANS Partner — configuração dos banners do hero da homepage",
+  },
+  {
+    src: `${ANS}/09-home-completa.png`,
+    label: "Home completa",
+    alt: "ANS Partner — visão completa da homepage com hero e caminhos",
+  },
+];
+
 /** Fundo branco — barbearia */
 export const barberPreviewSurface = "bg-white";
 
 /** Fundo branco — restaurante */
 export const restaurantPreviewSurface = "bg-white";
+
+/** Fundo branco — ANS Partner */
+export const ansPreviewSurface = "bg-white";
+
+export const restaurantThumbScreens = restaurantDesktopScreens.slice(0, 4);
+export const barberThumbScreens = barberScreens;
+export const ansThumbScreens = ansScreens.slice(0, 4);
+
+/** Miniaturas das telas no card do portfólio */
+export function ProjectThumbStrip({
+  screens,
+  totalCount,
+}: {
+  screens: { src: string; alt: string; label: string }[];
+  totalCount: number;
+}) {
+  const visible = screens.slice(0, 4);
+  const remaining = Math.max(0, totalCount - visible.length);
+
+  return (
+    <div className="mt-5 hidden border-t border-slate-200/80 pt-4 sm:block">
+      <p className="mb-2.5 text-[10px] font-semibold tracking-wide text-slate-500 uppercase">
+        Telas do projeto
+      </p>
+      <div className="flex items-center gap-2">
+        {visible.map((screen) => (
+          <div
+            key={screen.src}
+            className="relative h-14 w-[4.5rem] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+            title={screen.label}
+          >
+            <img
+              src={screen.src}
+              alt=""
+              className="h-full w-full object-cover object-top"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+        {remaining > 0 && (
+          <span className="flex h-14 min-w-14 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-white px-2 text-xs font-semibold text-slate-500">
+            +{remaining}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function MockupImage({
   src,
@@ -188,6 +287,35 @@ export function BarberModalGallery() {
         </p>
         <ProjectScreensGrid screens={barberScreens} />
       </div>
+    </div>
+  );
+}
+
+/** Card do portfolio — ANS Partner */
+export function AnsCardMockup() {
+  return (
+    <div className="relative mx-auto w-full max-w-[min(100%,540px)]">
+      <MockupImage
+        src={ANS_HERO}
+        alt="ANS Partner — site imobiliário com painel administrativo"
+        priority
+        className="relative z-10 w-full"
+      />
+    </div>
+  );
+}
+
+/** Modal do ANS Partner */
+export function AnsModalGallery() {
+  return (
+    <div>
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        Telas do projeto
+      </p>
+      <p className="mb-4 text-[11px] text-slate-500 sm:hidden">
+        Role para ver todas as telas
+      </p>
+      <ProjectScreensGrid screens={ansScreens} />
     </div>
   );
 }

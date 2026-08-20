@@ -12,7 +12,7 @@ import {
 
 const nav = [
   { href: "#solucoes", label: "Serviços" },
-  { href: "#trampofeito", label: "Trabalhos" },
+  { href: "#possibilidades", label: "Trabalhos" },
   { href: "#como-funciona", label: "Processo" },
   { href: "#sobre", label: "Sobre" },
   { href: "#faq", label: "FAQ" },
