@@ -383,7 +383,79 @@ export function LandingPossibilities() {
 
         <FadeIn delay={0.06}>
           <article
-            className="group mt-12 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white shadow-[0_18px_50px_rgba(15,40,90,0.06)] transition-all duration-500 hover:border-blue-300 hover:shadow-[0_28px_70px_rgba(15,40,90,0.1)] lg:grid lg:grid-cols-[1.15fr_0.85fr]"
+            className="group relative mt-12 overflow-hidden rounded-[1.75rem] border border-blue-200/90 bg-white shadow-[0_22px_60px_rgba(15,40,90,0.1)] ring-1 ring-blue-500/10 transition-all duration-500 hover:border-blue-300 hover:shadow-[0_32px_80px_rgba(15,40,90,0.14)] lg:grid lg:grid-cols-[1.2fr_0.8fr]"
+          >
+            <div
+              className={cn(
+                "flex min-h-[260px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_40%_30%,rgba(180,140,70,0.1),transparent_55%)] px-3 py-8 sm:min-h-[320px] sm:px-8 sm:py-12 lg:min-h-[480px] lg:border-r lg:border-slate-100",
+                ansPreviewSurface
+              )}
+            >
+              <AnsCardMockup />
+            </div>
+
+            <div className="flex flex-col justify-center p-7 sm:p-8 lg:p-10">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex w-fit rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-blue-700">
+                  Destaque
+                </span>
+                <span className="inline-flex w-fit rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-emerald-700">
+                  Projeto real
+                </span>
+                <span className="inline-flex w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-slate-600">
+                  Imobiliário · sistema
+                </span>
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-[#071426] sm:text-[1.85rem]">
+                ANS Partner
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Plataforma imobiliária premium — site público com catálogo de
+                imóveis e painel administrativo completo para gestão do conteúdo.
+              </p>
+              <ul className="mt-5 flex flex-col gap-2 border-t border-slate-100 pt-4">
+                {[
+                  "Hero e identidade institucional",
+                  "Catálogo com busca e filtros",
+                  "Painel administrativo",
+                  "Gestão de banners e conteúdo",
+                ].map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-center gap-2 text-sm text-slate-600"
+                  >
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-600" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <ProjectThumbStrip screens={ansThumbScreens} totalCount={9} />
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => setActiveDemo("ans")}
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                >
+                  Ver telas do projeto
+                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                </button>
+                <Button
+                  href={WHATSAPP_DESCRIBE_PROJECT_URL}
+                  external
+                  variant="outline"
+                  size="md"
+                  className="min-h-[46px]"
+                >
+                  Quero um site assim
+                </Button>
+              </div>
+            </div>
+          </article>
+        </FadeIn>
+
+        <FadeIn delay={0.08}>
+          <article
+            className="group mt-7 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white shadow-[0_18px_50px_rgba(15,40,90,0.06)] transition-all duration-500 hover:border-blue-300 hover:shadow-[0_28px_70px_rgba(15,40,90,0.1)] lg:grid lg:grid-cols-[1.15fr_0.85fr]"
           >
             <div
               className={cn(
@@ -454,7 +526,7 @@ export function LandingPossibilities() {
           </article>
         </FadeIn>
 
-        <FadeIn delay={0.08}>
+        <FadeIn delay={0.1}>
           <article
             className="group mt-7 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white shadow-[0_18px_50px_rgba(15,40,90,0.06)] transition-all duration-500 hover:border-blue-300 hover:shadow-[0_28px_70px_rgba(15,40,90,0.1)] lg:grid lg:grid-cols-[0.85fr_1.15fr]"
           >
@@ -522,75 +594,6 @@ export function LandingPossibilities() {
               )}
             >
               <BarberCardMockup />
-            </div>
-          </article>
-        </FadeIn>
-
-        <FadeIn delay={0.1}>
-          <article
-            className="group mt-7 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white shadow-[0_18px_50px_rgba(15,40,90,0.06)] transition-all duration-500 hover:border-blue-300 hover:shadow-[0_28px_70px_rgba(15,40,90,0.1)] lg:grid lg:grid-cols-[1.15fr_0.85fr]"
-          >
-            <div
-              className={cn(
-                "flex min-h-[240px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_40%_30%,rgba(180,140,70,0.08),transparent_55%)] px-3 py-7 sm:min-h-[300px] sm:px-8 sm:py-10 lg:min-h-[440px] lg:border-r lg:border-slate-100",
-                ansPreviewSurface
-              )}
-            >
-              <AnsCardMockup />
-            </div>
-
-            <div className="flex flex-col justify-center p-7 sm:p-8 lg:p-10">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex w-fit rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-emerald-700">
-                  Projeto real
-                </span>
-                <span className="inline-flex w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-semibold tracking-wide text-slate-600">
-                  Imobiliário · sistema
-                </span>
-              </div>
-              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-[#071426] sm:text-[1.7rem]">
-                ANS Partner
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Plataforma imobiliária premium — site público com catálogo de
-                imóveis e painel administrativo completo para gestão do conteúdo.
-              </p>
-              <ul className="mt-5 flex flex-col gap-2 border-t border-slate-100 pt-4">
-                {[
-                  "Hero e identidade institucional",
-                  "Catálogo com busca e filtros",
-                  "Painel administrativo",
-                  "Gestão de banners e conteúdo",
-                ].map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-center gap-2 text-sm text-slate-600"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-600" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <ProjectThumbStrip screens={ansThumbScreens} totalCount={9} />
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => setActiveDemo("ans")}
-                  className="inline-flex min-h-[46px] items-center justify-center rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-                >
-                  Ver telas do projeto
-                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
-                </button>
-                <Button
-                  href={WHATSAPP_DESCRIBE_PROJECT_URL}
-                  external
-                  variant="outline"
-                  size="md"
-                  className="min-h-[46px]"
-                >
-                  Quero um site assim
-                </Button>
-              </div>
             </div>
           </article>
         </FadeIn>
