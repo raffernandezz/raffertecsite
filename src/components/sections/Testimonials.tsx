@@ -62,7 +62,7 @@ export function Testimonials() {
   return (
     <section
       id="opinioes"
-      className="section-shell bg-white py-16 text-[#071426] lg:py-24"
+      className="section-shell bg-white py-20 text-[#071426] lg:py-28"
       aria-labelledby="testimonials-title"
     >
       <Container>
@@ -74,7 +74,11 @@ export function Testimonials() {
               </p>
               <h2
                 id="testimonials-title"
-                className="mt-3 max-w-xl font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold tracking-[-0.035em] sm:text-4xl"
+                className="mt-4 max-w-xl font-[family-name:'Space_Grotesk_Variable'] font-semibold tracking-[-0.035em]"
+                style={{
+                  fontSize: "clamp(1.65rem, 2vw + 1rem, 2.5rem)",
+                  lineHeight: 1.15,
+                }}
               >
                 Feedback direto, sem discurso de agência.
               </h2>
@@ -100,12 +104,12 @@ export function Testimonials() {
         </FadeIn>
 
         <StaggerContainer
-          className="mt-10 grid gap-4 md:grid-cols-3"
+          className="mt-12 grid gap-5 md:grid-cols-3"
           staggerDelay={0.08}
         >
           {testimonials.map((item) => (
             <StaggerItem key={item.name}>
-              <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-[#f8fafc] p-5 sm:p-6">
+              <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-[#f8fafc] p-5 transition-all duration-300 hover:border-blue-200 hover:bg-white hover:shadow-[0_14px_36px_rgba(15,40,90,0.06)] sm:p-6">
                 <Stars value={item.stars} />
                 <p className="mt-4 flex-1 text-sm leading-6 text-slate-600">
                   “{item.text}”

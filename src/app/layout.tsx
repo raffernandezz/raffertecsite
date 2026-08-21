@@ -11,12 +11,13 @@ export const metadata: Metadata = {
   description:
     "Sites, aplicativos, sistemas e automações desenvolvidos com estratégia e engenharia. Da ideia à publicação, com acompanhamento direto.",
   keywords: [
-    "landing page",
-    "site profissional",
-    "página de vendas",
-    "site para restaurante",
-    "site para clínica",
     "RafferTec",
+    "desenvolvimento de sites",
+    "aplicativos mobile",
+    "sistemas web",
+    "automações",
+    "site profissional",
+    "software sob medida",
   ],
   authors: [{ name: "RafferTec" }],
   openGraph: {

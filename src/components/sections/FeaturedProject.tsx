@@ -39,20 +39,35 @@ export function FeaturedProject() {
   return (
     <section
       id="trampofeito"
-      className="border-t border-slate-200/80 bg-white pb-10 text-[#071426] lg:pb-14 pt-16 lg:pt-24"
+      className="border-t border-slate-200/70 bg-white py-20 text-[#071426] lg:py-28"
     >
       <Container>
         <FadeIn>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold tracking-[0.14em] text-[#e85d5d]">
-                CASE REAL
+              <p className="technical-label text-[10px] text-[#e85d5d]">
+                Case real · aplicativo
               </p>
-              <h2 className="mt-2 font-[family-name:'Space_Grotesk_Variable'] text-2xl font-semibold tracking-[-0.035em] sm:text-3xl lg:text-[2.75rem]">
+              <h2
+                className="mt-3 font-[family-name:'Space_Grotesk_Variable'] font-semibold tracking-[-0.035em]"
+                style={{
+                  fontSize: "clamp(1.65rem, 2vw + 1rem, 2.5rem)",
+                  lineHeight: 1.15,
+                }}
+              >
                 TrampoFeito
               </h2>
+              <p className="mt-3 max-w-lg text-sm leading-7 text-slate-600">
+                App publicado nas lojas — busca por proximidade, avaliações e
+                contato entre clientes e profissionais.
+              </p>
             </div>
-            <Button href={TRAMPOFEITO_APP_STORE} external size="md" className="w-full sm:w-auto">
+            <Button
+              href={TRAMPOFEITO_APP_STORE}
+              external
+              size="md"
+              className="w-full sm:w-auto"
+            >
               Conhecer o aplicativo
               <ArrowUpRight className="h-4 w-4" />
             </Button>
@@ -60,11 +75,11 @@ export function FeaturedProject() {
         </FadeIn>
 
         <FadeIn delay={0.06}>
-          <TrampoFeitoShowcase className="mt-8 lg:mt-12" />
+          <TrampoFeitoShowcase className="mt-10 lg:mt-12" />
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="mt-8 grid gap-6 border-t border-slate-200 pt-8 sm:mt-12 sm:gap-8 sm:pt-10 lg:grid-cols-3 lg:gap-10 lg:pt-12">
+          <div className="mt-10 grid gap-6 border-t border-slate-200 pt-8 sm:mt-12 sm:gap-8 sm:pt-10 lg:grid-cols-3 lg:gap-10">
             {editorialBlocks.map((block) => (
               <div key={block.title}>
                 <h3 className="text-sm font-semibold text-[#071426]">

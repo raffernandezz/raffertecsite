@@ -41,10 +41,10 @@ export function About() {
                 </div>
                 <div className="absolute inset-x-5 bottom-5 rounded-xl border border-slate-200 bg-white/95 p-4 shadow-sm backdrop-blur-sm">
                   <p className="technical-label text-[9px] text-blue-600">
-                    Empresa 100% remota
+                    Atendimento nacional
                   </p>
                   <p className="mt-1 text-sm font-semibold text-[#071426]">
-                    Atendimento em todo o Brasil
+                    Parceria técnica do briefing à publicação
                   </p>
                 </div>
               </div>

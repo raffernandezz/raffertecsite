@@ -41,19 +41,25 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="section-shell bg-white py-24 text-[#071426] lg:py-32"
+      className="section-shell bg-white py-20 text-[#071426] lg:py-28"
     >
       <Container>
-        <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
           <FadeIn>
-            <div className="lg:sticky lg:top-32">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600">
+            <div className="lg:sticky lg:top-28">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 text-blue-600">
                 <MessageCircle className="h-5 w-5" />
               </span>
-              <p className="technical-label mt-7 text-[10px] text-blue-600">
+              <p className="technical-label mt-6 text-[10px] text-blue-600">
                 Perguntas frequentes
               </p>
-              <h2 className="mt-4 font-[family-name:'Space_Grotesk_Variable'] text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
+              <h2
+                className="mt-4 font-[family-name:'Space_Grotesk_Variable'] font-semibold tracking-[-0.04em]"
+                style={{
+                  fontSize: "clamp(1.65rem, 2vw + 1rem, 2.5rem)",
+                  lineHeight: 1.15,
+                }}
+              >
                 Antes de começar, tire suas dúvidas.
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">
@@ -70,23 +76,28 @@ export function FAQ() {
               </Button>
             </div>
           </FadeIn>
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.08}>
             <div className="space-y-3">
               {faqs.map(([q, a], i) => {
                 const active = open === i;
+                const panelId = `faq-panel-${i}`;
+                const buttonId = `faq-button-${i}`;
                 return (
                   <article
                     key={q}
                     className={`overflow-hidden rounded-2xl border transition-all ${
                       active
-                        ? "border-blue-200 bg-blue-50/60"
+                        ? "border-blue-200 bg-blue-50/50"
                         : "border-slate-200 bg-[#f8fafc] hover:border-slate-300"
                     }`}
                   >
                     <button
+                      id={buttonId}
+                      type="button"
                       onClick={() => setOpen(active ? null : i)}
-                      className="flex w-full items-center gap-4 p-5 text-left sm:p-6"
+                      className="flex w-full items-center gap-4 p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-inset sm:p-6"
                       aria-expanded={active}
+                      aria-controls={panelId}
                     >
                       <span className="technical-label text-[9px] text-blue-600">
                         0{i + 1}
@@ -97,6 +108,7 @@ export function FAQ() {
                       <motion.span
                         animate={{ rotate: active ? 45 : 0 }}
                         className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200"
+                        aria-hidden="true"
                       >
                         <Plus className="h-4 w-4" />
                       </motion.span>
@@ -104,10 +116,13 @@ export function FAQ() {
                     <AnimatePresence initial={false}>
                       {active && (
                         <motion.div
+                          id={panelId}
+                          role="region"
+                          aria-labelledby={buttonId}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.25 }}
                           className="overflow-hidden"
                         >
                           <p className="px-5 pb-6 pl-[4.75rem] text-sm leading-7 text-slate-600 sm:px-6 sm:pl-[5.25rem]">

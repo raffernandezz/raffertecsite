@@ -33,7 +33,13 @@ export function LandingOffer() {
               <p className="technical-label text-[10px] text-blue-600">
                 Comece uma conversa
               </p>
-              <h2 className="mt-5 font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#071426] sm:text-5xl">
+              <h2
+                className="mt-5 font-[family-name:'Space_Grotesk_Variable'] font-semibold tracking-[-0.045em] text-[#071426]"
+                style={{
+                  fontSize: "clamp(1.65rem, 2.2vw + 1rem, 2.75rem)",
+                  lineHeight: 1.1,
+                }}
+              >
                 Seu próximo projeto pode começar aqui.
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-7 text-slate-600">

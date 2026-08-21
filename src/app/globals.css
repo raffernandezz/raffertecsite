@@ -387,13 +387,13 @@ h1, h2, h3 { text-wrap: balance; }
 
 .bento-card {
   border: 1px solid rgba(148, 163, 184, 0.28);
-  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  background: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .bento-card:hover {
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 20px 48px rgba(15, 40, 90, 0.08), inset 0 1px rgba(255, 255, 255, 0.9);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 16px 40px rgba(15, 40, 90, 0.06);
   transform: translateY(-2px);
 }
 

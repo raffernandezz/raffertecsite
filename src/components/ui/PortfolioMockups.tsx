@@ -130,15 +130,15 @@ export function ProjectThumbStrip({
   const remaining = Math.max(0, totalCount - visible.length);
 
   return (
-    <div className="mt-5 hidden border-t border-slate-200/80 pt-4 sm:block">
+    <div className="mt-5 border-t border-slate-200/80 pt-4">
       <p className="mb-2.5 text-[10px] font-semibold tracking-wide text-slate-500 uppercase">
         Telas do projeto
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {visible.map((screen) => (
           <div
             key={screen.src}
-            className="relative h-14 w-[4.5rem] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+            className="relative h-12 w-16 shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm sm:h-14 sm:w-[4.5rem]"
             title={screen.label}
           >
             <img
@@ -151,7 +151,7 @@ export function ProjectThumbStrip({
           </div>
         ))}
         {remaining > 0 && (
-          <span className="flex h-14 min-w-14 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-white px-2 text-xs font-semibold text-slate-500">
+          <span className="flex h-12 min-w-12 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-white px-2 text-xs font-semibold text-slate-500 sm:h-14 sm:min-w-14">
             +{remaining}
           </span>
         )}

@@ -20,7 +20,7 @@ export function TechMarquee() {
 
   return (
     <div
-      className="relative overflow-hidden border-b border-slate-200/80 bg-[#f8fafc] py-3.5"
+      className="relative overflow-hidden border-y border-slate-200/80 bg-white py-4"
       aria-hidden="true"
     >
       <div className="flex animate-marquee gap-10 whitespace-nowrap">

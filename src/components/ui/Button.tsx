@@ -23,22 +23,22 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const base =
-    "group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white before:absolute before:inset-0 before:-z-10 before:translate-y-full before:transition-transform before:duration-300 hover:before:translate-y-0";
+    "group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98]";
 
   const variants = {
     primary:
-      "border border-blue-400/50 bg-[linear-gradient(135deg,#2563eb,#3b82f6)] text-white shadow-[0_10px_30px_rgba(37,99,235,.25),inset_0_1px_rgba(255,255,255,.25)] before:bg-[#174db4] hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(37,99,235,.35)] active:translate-y-0",
+      "border border-blue-500/40 bg-blue-600 text-white shadow-[0_8px_24px_rgba(37,99,235,0.22)] hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-[0_12px_28px_rgba(37,99,235,0.28)] active:translate-y-0",
     secondary:
-      "border border-slate-200 bg-white text-[#071426] shadow-sm before:bg-slate-50 hover:border-slate-300",
-    ghost: "text-[#071426] before:bg-slate-100 hover:text-blue-700",
+      "border border-slate-200 bg-white text-[#071426] shadow-sm hover:border-slate-300 hover:bg-slate-50",
+    ghost: "text-[#071426] hover:bg-slate-100 hover:text-blue-700",
     outline:
-      "border border-slate-300 bg-transparent text-[#071426] before:bg-blue-50 hover:border-blue-400 hover:text-blue-700",
+      "border border-slate-300 bg-transparent text-[#071426] hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-50/50 hover:text-blue-700 active:translate-y-0",
   };
 
   const sizes = {
     sm: "min-h-10 px-4 py-2 text-sm",
-    md: "min-h-12 px-6 py-3 text-sm",
-    lg: "min-h-14 px-7 py-3.5 text-[15px]",
+    md: "min-h-11 px-5 py-2.5 text-sm",
+    lg: "min-h-12 px-6 py-3 text-[15px]",
   };
 
   const classes = cn(base, variants[variant], sizes[size], className);

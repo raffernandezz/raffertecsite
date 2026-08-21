@@ -10,8 +10,8 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#solucoes", label: "Serviços" },
   { href: "#possibilidades", label: "Trabalhos" },
+  { href: "#solucoes", label: "Serviços" },
   { href: "#como-funciona", label: "Processo" },
   { href: "#sobre", label: "Sobre" },
   { href: "#faq", label: "FAQ" },
@@ -38,19 +38,19 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 right-0 left-0 z-50 transition-colors duration-200",
+        "fixed top-0 right-0 left-0 z-50 transition-[background-color,border-color,box-shadow] duration-200",
         scrolled
-          ? "border-b border-slate-200/80 bg-white/90 shadow-[0_8px_32px_rgba(15,40,90,0.06)] backdrop-blur-md"
+          ? "border-b border-slate-200/70 bg-white/92 shadow-[0_4px_24px_rgba(15,40,90,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       )}
     >
       <Container
         as="div"
-        className="flex h-[4.5rem] items-center justify-between lg:h-[4.75rem]"
+        className="flex h-[4.25rem] items-center justify-between lg:h-[4.5rem]"
       >
         <Link
           href="/"
-          className="relative z-50 flex items-center gap-2.5"
+          className="relative z-50 flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           onClick={() => setMobileOpen(false)}
         >
           <Image
@@ -71,21 +71,23 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-slate-600 transition-colors hover:text-[#071426]"
+              className="rounded-md text-sm text-slate-600 transition-colors hover:text-[#071426] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               {link.label}
             </Link>
           ))}
-          <Button href="#oferta" size="sm" className="button-sheen rounded-full">
+          <Button href="#oferta" size="sm">
             Pedir uma proposta
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Button>
         </nav>
 
         <button
+          type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
+          className="relative z-50 flex h-10 w-10 items-center justify-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 lg:hidden"
           aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={mobileOpen}
         >
           <div className="flex w-5 flex-col gap-1.5">
             <motion.span
@@ -126,7 +128,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="font-[family-name:'Space_Grotesk_Variable'] text-2xl font-semibold text-[#071426]"
+                    className="rounded-md font-[family-name:'Space_Grotesk_Variable'] text-2xl font-semibold text-[#071426] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     {link.label}
                   </Link>

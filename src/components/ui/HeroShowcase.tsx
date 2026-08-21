@@ -51,10 +51,10 @@ export function HeroCapabilityVisual({ className }: { className?: string }) {
                 initial={reduceMotion ? false : { opacity: 0, x: -6 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 + i * 0.08, duration: 0.45, ease }}
-                className="absolute flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 shadow-[0_8px_28px_rgba(15,40,90,0.08)] backdrop-blur-sm"
+                className="absolute flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/95 px-3 py-1.5 shadow-[0_6px_20px_rgba(15,40,90,0.06)]"
                 style={{
-                  top: `${14 + i * 22}%`,
-                  left: `${4 + (i % 2) * 2}%`,
+                  top: `${16 + i * 20}%`,
+                  left: `${5 + (i % 2) * 1.5}%`,
                 }}
               >
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-blue-600">

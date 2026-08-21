@@ -144,36 +144,34 @@ export function Solutions() {
   return (
     <section
       id="solucoes"
-      className="bg-[#f8fafc] py-16 text-[#071426] lg:py-24"
+      className="bg-[#f8fafc] py-20 text-[#071426] lg:py-28"
     >
       <Container>
         <FadeIn>
-          <p className="text-[11px] font-semibold tracking-[0.14em] text-blue-600">
-            Serviços
-          </p>
+          <p className="technical-label text-[10px] text-blue-600">Serviços</p>
           <h2
-            className="mt-3 max-w-2xl font-[family-name:'Space_Grotesk_Variable'] text-3xl font-semibold tracking-[-0.035em] sm:text-4xl"
+            className="mt-4 max-w-2xl font-[family-name:'Space_Grotesk_Variable'] font-semibold tracking-[-0.035em]"
+            style={{
+              fontSize: "clamp(1.65rem, 2vw + 1rem, 2.5rem)",
+              lineHeight: 1.15,
+            }}
           >
             O que desenvolvemos
           </h2>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600">
+          <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-[15px]">
             Da landing page ao sistema completo — cada entrega pensada para o
             seu negócio, não para um template genérico.
           </p>
         </FadeIn>
 
-        <div className="mt-12 space-y-4">
+        <div className="mt-12 space-y-5">
           <FadeIn delay={0.04}>
-            <article
-              className="bento-card group min-w-0 overflow-hidden rounded-2xl lg:rounded-3xl lg:grid lg:grid-cols-2"
-            >
-              <div
-                className="flex min-w-0 items-center justify-center bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.06),transparent_70%)] px-4 py-8 sm:px-5 lg:min-h-0 lg:py-10"
-              >
+            <article className="group min-w-0 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_12px_36px_rgba(15,40,90,0.04)] transition-all duration-300 hover:border-blue-200 hover:shadow-[0_18px_48px_rgba(15,40,90,0.07)] lg:grid lg:grid-cols-2 lg:rounded-3xl">
+              <div className="flex min-w-0 items-center justify-center bg-[#f8fafc] px-4 py-8 sm:px-5 lg:min-h-0 lg:py-10">
                 <ServiceVisual
                   image={featured.image}
                   alt={featured.alt}
-                  className="w-full max-w-[min(100%,320px)] transition-transform duration-500 group-hover:scale-[1.02] sm:max-w-sm lg:max-w-lg"
+                  className="w-full max-w-[min(100%,300px)] transition-transform duration-500 group-hover:scale-[1.015] sm:max-w-sm lg:max-w-md"
                 />
               </div>
               <div className="min-w-0 border-t border-slate-200/80 lg:border-l lg:border-t-0">
@@ -188,22 +186,18 @@ export function Solutions() {
           </FadeIn>
 
           <StaggerContainer
-            className="grid gap-4 md:grid-cols-2"
+            className="grid gap-5 md:grid-cols-2"
             staggerDelay={0.08}
           >
             {cards.map((service) => (
               <StaggerItem key={service.title}>
-                <article
-                  className="bento-card group flex min-w-0 flex-col overflow-hidden rounded-2xl lg:rounded-3xl"
-                >
-                  <div
-                    className="flex min-w-0 items-center justify-center bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.06),transparent_70%)] px-4 py-6 sm:px-5"
-                  >
+                <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_12px_36px_rgba(15,40,90,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_18px_48px_rgba(15,40,90,0.07)] lg:rounded-3xl">
+                  <div className="flex min-w-0 items-center justify-center bg-[#f8fafc] px-4 py-6 sm:px-5">
                     <ServiceVisual
                       image={service.image}
                       imageMobile={service.imageMobile}
                       alt={service.alt}
-                      className="w-full max-w-[220px] transition-transform duration-500 group-hover:scale-[1.02] sm:max-w-xs"
+                      className="w-full max-w-[200px] transition-transform duration-500 group-hover:scale-[1.015] sm:max-w-xs"
                     />
                   </div>
                   <div className="border-t border-slate-200/80">
